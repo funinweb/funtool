@@ -30,8 +30,24 @@ function isValidFile(fileName) {
 
 function getFunctionNames(filePath) {
 	const content = fs.readFileSync(filePath, "utf-8")
-	const matchAll = [...content.matchAll(/export function (\w+)/g)]
-	return matchAll.map((m) => m[1])
+  const functionNames = new Set()
+
+  // 1. 匹配 export function foo(...) {...}
+  const fnDeclMatches = content.matchAll(/export function (\w+)/g)
+  for (const match of fnDeclMatches) {
+    functionNames.add(match[1])
+  }
+
+  // 2. 匹配 export const foo = (...) => {...} 或 export const foo = function(...) {...}
+  //    注意这里简单匹配了箭头函数和 function 表达式
+  const constFnMatches = content.matchAll(
+    /export const (\w+)\s*=\s*(?:\([^\)]*\)\s*=>|function\s*\()/g
+  )
+  for (const match of constFnMatches) {
+    functionNames.add(match[1])
+  }
+
+  return [...functionNames]
 }
 
 function extractExistingNames(indexContent) {

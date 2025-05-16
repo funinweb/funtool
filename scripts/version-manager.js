@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const SRC_DIR = path.resolve("./src")
 
 const getDate = () => {
   const now = new Date();
@@ -10,12 +11,15 @@ function updateChangelog(content, version, date) {
   const header = `## ${version} ${date}`;
   return `${header}\n\n- TODO: description here\n\n${content}`;
 }
-
 async function updateVersion(version) {
   const pkgPath = path.join(process.cwd(), 'package.json');
   const pkg = JSON.parse(await fs.promises.readFile(pkgPath, 'utf-8'));
   pkg.version = version;
+  const versionContent = `export const VERSION = '${version}';\n`
+	const versionPath = path.join(SRC_DIR, "version.ts")
+
   await fs.promises.writeFile(pkgPath, JSON.stringify(pkg, null, 2), 'utf-8');
+  await fs.promises.writeFile(versionPath, versionContent, 'utf-8');
 }
 
 function hasVersion(content, version) {

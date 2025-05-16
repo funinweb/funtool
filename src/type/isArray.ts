@@ -6,7 +6,7 @@
  * isArray([]) // => ✅ true
  * isArray({}) // => ❌ false
  */
-export function isArray(v: any): v is [] {
+export function isArray<T = any>(v: any): v is T[] {
 	// Where Array.isArray is not supported
 	if (typeof Array.isArray === "function") {
 		return Array.isArray(v)

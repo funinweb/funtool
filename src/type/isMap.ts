@@ -6,7 +6,7 @@
  * isMap(new Map()) // => ✅ true
  * isMap({}) // => ❌ false
  */
-export function isMap(v: any): v is Map<any, any> {
+export function isMap<K = any, V = any>(v: any): v is Map<K, V> {
   return Object.prototype.toString.call(v) === '[object Map]' && v instanceof Map;
 }
 
@@ -18,6 +18,6 @@ export function isMap(v: any): v is Map<any, any> {
  * isWeakMap(new WeakMap()) // => ✅ true
  * isWeakMap(new Map()) // => ❌ false
  */
-export function isWeakMap(v: any): v is WeakMap<WeakKey, any> {
+export function isWeakMap<T = any>(v: any): v is WeakMap<WeakKey, T> {
   return Object.prototype.toString.call(v) === '[object WeakMap]' && v instanceof WeakMap;
 }

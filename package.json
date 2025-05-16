@@ -1,12 +1,12 @@
 {
   "name": "funtool",
   "version": "0.0.1-alpha.0",
-  "description": "A modular and high-performance JavaScript utility library",
+  "description": "A modern, efficient, and modular JavaScript utility library designed to enhance developer productivity.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "umd:main": "dist/index.umd.js",
   "scripts": {
-    "dev": "rollup -c -w",
+    "dev": "rollup -w -c rollup.config.js --bundleConfigAsCjs",
     "build": "rimraf dist && set NODE_ENV=production && rollup -c rollup.config.js --bundleConfigAsCjs",
     "test": "vitest",
     "coverage": "vitest run --coverage",
@@ -84,6 +84,36 @@
       "require": "./dist/index.cjs.js",
       "types": "./dist/index.d.ts",
       "default": "./dist/index.umd.js"
+    },
+    "./array": {
+      "import": "./dist/array/index.esm.js",
+      "require": "./dist/array/index.cjs.js",
+      "types": "./dist/array/index.d.ts",
+      "default": "./dist/array/index.umd.js"
+    },
+    "./common": {
+      "import": "./dist/common/index.esm.js",
+      "require": "./dist/common/index.cjs.js",
+      "types": "./dist/common/index.d.ts",
+      "default": "./dist/common/index.umd.js"
+    },
+    "./function": {
+      "import": "./dist/function/index.esm.js",
+      "require": "./dist/function/index.cjs.js",
+      "types": "./dist/function/index.d.ts",
+      "default": "./dist/function/index.umd.js"
+    },
+    "./object": {
+      "import": "./dist/object/index.esm.js",
+      "require": "./dist/object/index.cjs.js",
+      "types": "./dist/object/index.d.ts",
+      "default": "./dist/object/index.umd.js"
+    },
+    "./string": {
+      "import": "./dist/string/index.esm.js",
+      "require": "./dist/string/index.cjs.js",
+      "types": "./dist/string/index.d.ts",
+      "default": "./dist/string/index.umd.js"
     },
     "./type": {
       "import": "./dist/type/index.esm.js",

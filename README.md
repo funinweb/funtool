@@ -1,63 +1,95 @@
-# funtool
+# 🧰 funtool - A Modern Modular Utility Library
+## 1. Introduction
+`funtool` is a modern, modular JavaScript utility library designed to boost developer productivity. It offers well-organized modules, full TypeScript support, and an automated documentation system, making it suitable for multilingual projects, web applications, Node.js environments, and more. This project is a complete refactor of an older utility library, with versioning reset. Written in TypeScript, it features a cleaner structure, enhanced flexibility, and a more robust documentation system. `funtool` provides type-safe, reusable utility functions that significantly improve development efficiency for both JavaScript and TypeScript projects.
 
-funtool 是一个模块化的 JavaScript 实用工具库，旨在提高开发效率。它封装了数组、对象、字符串等原生功能，提供了简单易用的 API。
+## 2. Features
++ 🚀 **Boost Productivity**: Standardizes common logic to avoid reinventing the wheel, letting developers focus on core business logic.
++ 🌈 **Modular Design**: Import only what you need—such as `array`, `object`, `string`, or `type` modules—to keep bundle size minimal.
++ 🔍 **Type Safety**: Built with TypeScript, offering comprehensive type declarations and seamless IDE integration for a smoother development experience.
++ 🧪 **Robust Test Coverage**: High test coverage ensures the library's reliability and stability.
++ 🧱 **Progressive Integration**: Use it fully or integrate specific modules on demand.
++ 🔧 **Automated Release Workflow**: Supports semantic versioning, changelog generation, pre-releases, dry runs, and more.
 
-## 功能模块
+## 3. Getting Started
+### Installation
+```plain
+bash
 
-- [ ] **Array**: 数组操作工具
-- [ ] **Object**: 对象操作工具
-- [ ] **String**: 字符串操作工具
-- [x] **Type**: 类型判断工具
-  - isString: 判断是否为字符串
-  - isNumber: 判断是否为数字
-  - isBoolean: 判断是否为布尔值
-  - isNull: 判断是否为null
-  - isUndefined: 判断是否为undefined
-  - isArray: 判断是否为数组
-  - isObject: 判断是否为对象
-  - isDate: 判断是否为日期
-  - isFunction: 判断是否为函数
-  - isSet: 判断是否为Set
-  - isMap: 判断是否为Map
-  - isSymbol: 判断是否为Symbol
-  - isPromise: 判断是否为Promise
-  - isPrimitive: 判断是否为基本类型
-  - typeOf: 获取数据类型
 
-## 安装
-
-```bash
-pnpm install funtool
+复制编辑
+npm install funtool
+# or
+pnpm add funtool
 ```
 
-## 使用示例
+## 4. Usage Examples
+### Type Checking
+```plain
+ts
 
-```javascript
+
+复制编辑
 import { isString } from 'funtool/type';
+import { isNumber } from 'funtool';
 
-console.log(isString('hello')); // true
+console.log(isNumber(1)); // ✅ true
+console.log(isString('hello')); // ✅ true
 ```
 
-## 开发
+### Array Utilities
+```plain
+ts
 
-```bash
-# 安装依赖
-pnpm install
 
-# 开发模式
-pnpm run dev
+复制编辑
+import { chunk } from 'funtool/array';
 
-# 构建
-pnpm run build
-
-# 测试
-pnpm run test
+const array = [1, 2, 3, 4, 5];
+console.log(chunk(array, 2)); // [[1, 2], [3, 4], [5]]
 ```
 
-## 贡献
+## 5. Module Structure
+```plain
+src/
+├── array/           # Array utilities
+├── common/          # Common/shared utilities
+├── function/        # Function-related utilities
+├── object/          # Object utilities
+├── string/          # String utilities
+├── type/            # Type checking utilities
+├── version.ts       # Version information
+└── index.ts         # Main entry point
+```
 
-欢迎提交 Pull Request。请遵循项目的编码规范和 Git 工作流。
+## 6. Build & Release
+### Start Development
+```plain
+npm run dev
+```
 
-## 许可证
+### Build the Project
+```plain
+npm run build
+```
 
-MIT
+### Run Tests
+```plain
+npm run test
+```
+
+### Generate Modules (No manual import needed)
+```plain
+npm run generate:module
+```
+
+### Release a New Version
+```plain
+pnpm run release
+```
+
+## 8. License
+
+[MIT](https://opensource.org/licenses/MIT)
+
+Copyright (c) 2019-present xiaoqiujun
+
