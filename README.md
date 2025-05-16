@@ -12,11 +12,7 @@
 
 ## 3. Getting Started
 ### Installation
-```plain
-bash
-
-
-复制编辑
+```bash
 npm install funtool
 # or
 pnpm add funtool
@@ -24,11 +20,7 @@ pnpm add funtool
 
 ## 4. Usage Examples
 ### Type Checking
-```plain
-ts
-
-
-复制编辑
+```ts
 import { isString } from 'funtool/type';
 import { isNumber } from 'funtool';
 
@@ -37,11 +29,7 @@ console.log(isString('hello')); // ✅ true
 ```
 
 ### Array Utilities
-```plain
-ts
-
-
-复制编辑
+```ts
 import { chunk } from 'funtool/array';
 
 const array = [1, 2, 3, 4, 5];
@@ -63,27 +51,27 @@ src/
 
 ## 6. Build & Release
 ### Start Development
-```plain
+```bash
 npm run dev
 ```
 
 ### Build the Project
-```plain
+```bash
 npm run build
 ```
 
 ### Run Tests
-```plain
+```bash
 npm run test
 ```
 
 ### Generate Modules (No manual import needed)
-```plain
+```bash
 npm run generate:module
 ```
 
 ### Release a New Version
-```plain
+```bash
 pnpm run release
 ```
 
