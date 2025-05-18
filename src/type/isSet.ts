@@ -6,7 +6,7 @@
  * isSet(new Set()) // => true ✅
  * isSet({}) // => false ❌
  */
-export function isSet(v: any): v is Set<any> {
+export function isSet<T = any>(v: any): v is Set<T> {
   return Object.prototype.toString.call(v) === '[object Set]' && v instanceof Set;
 }
 

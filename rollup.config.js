@@ -80,13 +80,13 @@ const bundleModuleJS = (modules) => {
 const bundleDTS = (modules) => {
 	const outputs = [{
 		input: 'src/index.ts',
-		output: { file: 'dist/index.d.ts', format: 'es' },
+		output: { file: 'dist/index.d.ts'},
 		plugins: [dts()]
 	}];
 	modules.forEach((module) => {
 		outputs.push({
 			input:`src/${module}/index.ts`,
-			output: { file: `dist/${module}/index.d.ts`, format: 'es' },
+			output: { file: `dist/${module}/index.d.ts`},
 			plugins: [dts()]
 		})
 	})
