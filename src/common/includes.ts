@@ -13,8 +13,8 @@ import { isSet } from "../type/isSet";
  * @param {number} [fromIndex=0] - The index to start searching from.
  * @returns {boolean} True if found, otherwise false.
  * @example
- * includes([1, 2, 3], 2); // true
- * includes([1, 2, 3], 2, 2); // false
+ * includes([1, 2, 3], 2); // ✅ true
+ * includes([1, 2, 3], 2, 2); // ❌ false
  */
 export function includes<T>(source: T[], target: T, fromIndex?: number): boolean;
 
@@ -26,8 +26,8 @@ export function includes<T>(source: T[], target: T, fromIndex?: number): boolean
  * @param {number} [fromIndex=0] - The index to start searching from.
  * @returns {boolean} True if found, otherwise false.
  * @example
- * includes('hello world', 'world'); // true
- * includes('hello world', 'world', 8); // false
+ * includes('hello world', 'world'); // ✅ true
+ * includes('hello world', 'world', 8); // ❌ false
  */
 export function includes(source: string, target: string, fromIndex?: number): boolean;
 
@@ -38,7 +38,7 @@ export function includes(source: string, target: string, fromIndex?: number): bo
  * @param {*} target - The value to search for.
  * @returns {boolean} True if found, otherwise false.
  * @example
- * includes({ a: 1, b: 2 }, 2); // true
+ * includes({ a: 1, b: 2 }, 2); // ✅ true
  */
 export function includes(source: Record<string, any>, target: any): boolean;
 
@@ -50,7 +50,7 @@ export function includes(source: Record<string, any>, target: any): boolean;
  * @param {K} target - The key to search for.
  * @returns {boolean} True if found, otherwise false.
  * @example
- * includes(new Map([['a', 1], ['b', 2]]), 'b'); // true
+ * includes(new Map([['a', 1], ['b', 2]]), 'b'); // ✅ true
  */
 export function includes<K, V>(source: Map<K, V>, target: K): boolean;
 
@@ -62,7 +62,7 @@ export function includes<K, V>(source: Map<K, V>, target: K): boolean;
  * @param {T} target - The value to search for.
  * @returns {boolean} True if found, otherwise false.
  * @example
- * includes(new Set([1, 2, 3]), 2); // true
+ * includes(new Set([1, 2, 3]), 2); // ✅ true
  */
 export function includes<T>(source: Set<T>, target: T): boolean;
 

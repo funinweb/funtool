@@ -1,7 +1,7 @@
 import resolve from "rollup-plugin-node-resolve"
 import commonjs from "rollup-plugin-commonjs"
 import typescript from "rollup-plugin-typescript2"
-import babel from "rollup-plugin-babel"
+import babel from '@rollup/plugin-babel';
 import path from 'path'
 import fs from 'fs'
 import terser from '@rollup/plugin-terser';
@@ -22,38 +22,62 @@ const modules = fs.readdirSync('src').filter((name) =>
 	fs.statSync(path.join('src', name)).isDirectory()
 );
 
+const extensions = ['.js', '.ts']
+
 const basePlugins = [
 	// 打包插件
   resolve(),
   commonjs(),
   typescript({
     tsconfig: path.resolve(__dirname, './tsconfig.json'),
-    extensions: ['.js', '.ts']
+    extensions: extensions,
+		check: false,
+		exclude: ['node_modules/**']
   }),
-  babel({ exclude: 'node_modules/**' })
+  babel({ 
+		babelHelpers: 'bundled',
+  	extensions: extensions,
+		exclude: 'node_modules/**'
+	 })
 ];
+
+const legacyBabelPlugin = babel({
+  babelHelpers: 'bundled',
+  extensions: extensions,
+  exclude: 'node_modules/**',
+	presets: ['@babel/preset-env'],
+	plugins: [
+    // ["@babel/plugin-transform-runtime"]
+  ]
+});
 
 const exportsMap = {
 	'.': {
 		import: "./dist/index.esm.js",
 		require: "./dist/index.cjs.js",
-		types: "./dist/index.d.ts",
-		default: "./dist/index.umd.js"
+		default: "./dist/index.umd.js",
 	}
 };
 
 const bundleMainJS = (input = "src/index.ts") => {
-	const outputs = [
-		{ file: 'dist/index.cjs.js', format: 'cjs', plugins: [terser()], sourcemap: false },
-		{ file: 'dist/index.esm.js', format: 'esm', plugins: [terser()], sourcemap: false },
-		{ file: 'dist/index.umd.js', format: 'umd', name, plugins: [terser()], sourcemap: true },
-		{ file: 'dist/browser.global.js', format: 'iife', name, plugins: [terser()], sourcemap: true }
-	];
-	return [{
-		input,
-		output: outputs,
-		plugins: basePlugins
-	}]
+	return [
+    {
+      input,
+      output: [
+        { file: 'dist/index.cjs.js', format: 'cjs', plugins: [terser()], sourcemap: true },
+        { file: 'dist/index.esm.js', format: 'esm', plugins: [terser()], sourcemap: true },
+        { file: 'dist/index.umd.js', format: 'umd', name, plugins: [terser()], sourcemap: true },
+      ],
+      plugins: basePlugins // 普通构建
+    },
+    {
+      input,
+      output: [
+        { file: 'dist/browser.global.js', format: 'iife', name: name, sourcemap: true, plugins: [terser()] },
+      ],
+      plugins: [...basePlugins.filter(p => p !== basePlugins[3]), legacyBabelPlugin]
+    }
+  ]
 }
 
 const bundleModuleJS = (modules) => {
@@ -62,16 +86,16 @@ const bundleModuleJS = (modules) => {
 		outputs.push({
 			input: `src/${module}/index.ts`,
 			output: [
-				{file: `dist/${module}/index.cjs.js`,format: 'cjs',banner,plugins: [terser()],sourcemap: false},
-				{file: `dist/${module}/index.esm.js`,format: 'esm',banner,plugins: [terser()],sourcemap: false},
+				{file: `dist/${module}/index.cjs.js`,format: 'cjs',banner,plugins: [terser()],sourcemap: true},
+				{file: `dist/${module}/index.esm.js`,format: 'esm',banner,plugins: [terser()],sourcemap: true},
 				{file: `dist/${module}/index.umd.js`,format: 'umd',name:name,sourcemap: true,banner,plugins: [terser()]}
 			],
 			plugins:basePlugins
 		})
 		exportsMap[`./${module}`] = {
+			types: `./dist/${module}/index.d.ts`,
 			import: `./dist/${module}/index.esm.js`,
 			require: `./dist/${module}/index.cjs.js`,
-			types: `./dist/${module}/index.d.ts`,
 			default: `./dist/${module}/index.umd.js`
 		}
 	})

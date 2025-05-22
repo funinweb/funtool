@@ -8,6 +8,7 @@ export { isBoolean } from './isBoolean';
 export { isBuffer } from './isBuffer';
 export { isDataView } from './isDataView';
 export { isDate } from './isDate';
+export { isElement, isTextNode, isCommentNode, isDocument, isDocumentFragment, isNode, isWindow } from './isElement';
 export { isEmpty } from './isEmpty';
 export { isEqual } from './isEqual';
 export { isFunction } from './isFunction';

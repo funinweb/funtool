@@ -27,7 +27,7 @@
     "baseUrl": ".", // 解析非相对模块名的基准目录
     "paths": {}, // 模块名到基于baseUrl的路径映射
     "rootDirs": [], // 根文件夹列表
-    "typeRoots": [], // 包含类型定义的文件夹列表
+    "typeRoots": ["./node_modules/@types"], // 包含类型定义的文件夹列表
     "allowSyntheticDefaultImports": true, // 允许从没有默认导出的模块进行默认导入
     "esModuleInterop": true, // 启用ES模块互操作
     "forceConsistentCasingInFileNames": true, // 强制文件名大小写一致

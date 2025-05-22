@@ -6,6 +6,6 @@
  * isFunction(() => {}) // => ✅ true
  * isFunction({}) // => ❌ false
  */
-export function isFunction(v: any): boolean {
+export function isFunction(v: any): v is Function {
   return typeof v === 'function';
 }

@@ -7,6 +7,6 @@
  * isRegExp('abc') // => ❌ false
  */
 
-export function isRegExp(v: any): boolean {
+export function isRegExp(v: any): v is RegExp {
   return Object.prototype.toString.call(v) === '[object RegExp]';
 }

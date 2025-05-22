@@ -9,9 +9,9 @@
  * 
  * @example
  * const arr = [1, 2, 3, 4, 5];
- * at(arr, 2); // Returns 3
- * at(arr, -1); // Returns 5
- * at([], 0); // Returns undefined
+ * at(arr, 2);  // ✅ Returns 3
+ * at(arr, -1); // ✅ Returns 5
+ * at([], 0); // ✅ Returns undefined
  */
 export function at<T>(arr: T[], index: number): T | undefined {
   const len = arr.length;
