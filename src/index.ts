@@ -5,6 +5,7 @@ export * from './array';
 export * from './common';
 export * from './function';
 export * from './object';
+export * from './regex';
 export * from './string';
 export * from './type';
 
