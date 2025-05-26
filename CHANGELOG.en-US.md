@@ -10,6 +10,70 @@
 
 ---
 
+## 1.0.0-rc.0
+
+*2025-05-26*
+
+### ♻️ Refactors
+
+- Facilitates various string operations, including:
+  - `capitalizeFirstLetter`: Capitalize the first letter of a string
+  - `count`: Count the occurrence of a specific substring in a string
+  - `findIndex`: Find the index position of a substring in a string
+  - `insertAfter`: Insert a new string after a specified position or substring
+  - `insertBefore`: Insert a new string before a specified position or substring
+  - `lowercaseFirstLetter`: Lowercase the first letter of a string
+  - `padEnd`: Pad a string with specified characters at the end to a specified length
+  - `padStart`: Pad a string with specified characters at the start to a specified length
+  - `removeAfter`: Remove all characters after a specified position or substring
+  - `removeAt`: Remove the character at a specified position
+  - `removeBefore`: Remove all characters before a specified position or substring
+  - `repeat`: Repeat a string a specified number of times
+  - `replaceAll`: Replace all matching substrings in a string
+  - `reverse`: Reverse a string
+  - `substring`: Extract a substring from a string
+  - `toCamelCase`: Convert a string to camel case
+  - `toKebabCase`: Convert a string to kebab case (with hyphens)
+  - `toLowerAt`: Convert the character at a specified position to lowercase
+  - `toLowerCase`: Convert an entire string to lowercase
+  - `toPascalCase`: Convert a string to Pascal case
+  - `toSnakeCase`: Convert a string to snake case (with underscores)
+  - `toTitleCase`: Convert a string to title case (capitalize the first letter of each word)
+  - `toUpperAt`: Convert the character at a specified position to uppercase
+  - `toUpperCase`: Convert an entire string to uppercase
+  - `trim`: Remove whitespace from both ends of a string
+  - `trimEnd`: Remove whitespace from the end of a string
+  - `trimStart`: Remove whitespace from the start of a string
+  - `words`: Split a string into an array of words
+  
+- Regular Expression Module,Includes:
+  - Import the main `regex` instance as a unified entry point.
+  - Support `checker(input)` to create a validator, which can chain plugin rules for validation.
+  - Support `replacer(input)` to create a replacer for replacement via rules or regular expressions.
+  - Object Utilities Module,Includes:
+  - `hasOwn`: Check if an object has a specified own property
+  - `keys`: Return an array of an object’s own enumerable property keys
+  - `merge` and `mergeDeep`: Merge objects (with `mergeDeep` supporting deep merging)
+  - `omit` and `omitBy`: Exclude specified properties or properties satisfying conditions from an object
+  - `pick` and `pickBy`: Select specified properties or properties satisfying conditions from an object
+  - `values`: Return an array of an object’s own enumerable property values
+  
+- General Utilities Module,Includes:
+  - `clone`: Shallow copy multiple JavaScript types (arrays, dates, regular expressions, Map, Set, typed arrays, DataViews, and plain objects)
+  - `cloneWith`: Shallow copy using a custom function
+  - `cloneDeep`: Deep copy objects, arrays, Map, Set, dates, and regular expressions, with support for handling circular references
+  - `cloneDeepWith`: Deep copy using a custom function
+  - `includes`: Check if a value exists in an array, string, object, Map, or Set
+  
+- Array Operation Module,Includes:
+  - `at`: Get an element from an array by positive index or negative index (negative index counts from the end of the array)
+  - `intersect`: Get the intersection of two arrays, returning a new array with common elements
+  - `remove`: Remove specified values from an array, returning a new array without them
+  - `union`: Get the union of two arrays, returning a new array with all unique elements
+  - `unique`: Remove duplicate values from an array, returning a new array with only unique values
+
+
+
 ## 0.0.1-alpha.0
 
 *2025-05-15*
