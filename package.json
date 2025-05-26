@@ -78,7 +78,8 @@
   "files": [
     "dist",
     "*.d.ts",
-    "README.md"
+    "README.md",
+    "README-zh_CN.md"
   ],
   "unpkg": "dist/browser.global.js",
   "jsdelivr": "dist/browser.global.js",
@@ -112,6 +113,12 @@
       "import": "./dist/object/index.esm.js",
       "require": "./dist/object/index.cjs.js",
       "default": "./dist/object/index.umd.js"
+    },
+    "./regex": {
+      "types": "./dist/regex/index.d.ts",
+      "import": "./dist/regex/index.esm.js",
+      "require": "./dist/regex/index.cjs.js",
+      "default": "./dist/regex/index.umd.js"
     },
     "./string": {
       "types": "./dist/string/index.d.ts",

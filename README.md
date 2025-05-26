@@ -1,4 +1,5 @@
 # 🧰 funtool - A Modern Modular Utility Library
+English | [简体中文](./README-zh_CN.md)
 ## 1. Introduction
 `funtool` is a modern, modular JavaScript utility library designed to boost developer productivity. It offers well-organized modules, full TypeScript support, and an automated documentation system, making it suitable for multilingual projects, web applications, Node.js environments, and more. This project is a complete refactor of an older utility library, with versioning reset. Written in TypeScript, it features a cleaner structure, enhanced flexibility, and a more robust documentation system. `funtool` provides type-safe, reusable utility functions that significantly improve development efficiency for both JavaScript and TypeScript projects.
 
@@ -28,12 +29,14 @@ console.log(isNumber(1)); // ✅ true
 console.log(isString('hello')); // ✅ true
 ```
 
-### Array Utilities
+### Regex Utilities
 ```ts
-import { chunk } from 'funtool/array';
+import { regex } from 'funtool';
 
-const array = [1, 2, 3, 4, 5];
-console.log(chunk(array, 2)); // [[1, 2], [3, 4], [5]]
+const mobile = "13800138000";
+console.log(
+  regex.checker(mobile).use('mobile').isValid()
+); // ✅ true
 ```
 
 ## 5. Module Structure
@@ -43,6 +46,7 @@ src/
 ├── common/          # Common/shared utilities
 ├── function/        # Function-related utilities
 ├── object/          # Object utilities
+├── regex/          # Regular expression utilities
 ├── string/          # String utilities
 ├── type/            # Type checking utilities
 ├── version.ts       # Version information

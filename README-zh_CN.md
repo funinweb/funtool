@@ -1,5 +1,5 @@
 # 🧰 funtool - 现代化模块化工具库
-
+[English](./README.md) | 中文
 ## 1. 项目简介
 
 `funtool` 是一个现代化 、模块化的JavaScript 工具库，专为开发者日常开发提效而设计，提供清晰的模块划分、类型安全支持与自动化文档系统，适用于多语言项目、Web 应用、Node.js 工程等场景。该项目是对旧有工具库的全面重构，版本号已重置,采用 TypeScript 编写，结构更清晰、扩展更灵活、文档体系更完善。为 JavaScript 和 TypeScript 项目提供类型安全、可复用的工具函数，显著提升开发效率。
@@ -35,13 +35,12 @@ console.log(isNumber(1)); ✅ // true
 console.log(isString('hello')); ✅ // true
 ```
 
-### 数组操作
+### 正则操作
 
 ```
-import { chunk } from 'funtool/array';
-
-const array = [1, 2, 3, 4, 5];
-console.log(chunk(array, 2)); // [[1, 2], [3, 4], [5]]
+import {regex} from 'funtool';
+const mobile = "13800138000";
+console.log(regex.checker(mobile).use('mobile').isValid()); ✅ // true
 ```
 
 ## 5. 模块结构
@@ -52,6 +51,7 @@ src/
 ├── common/         # 通用工具模块
 ├── function/       # 函数相关模块
 ├── object/         # 对象操作模块
+├── regex/          # 正则表达式模块
 ├── string/         # 字符串操作模块
 ├── type/           # 类型判断模块
 ├── version.ts      # 版本信息
