@@ -1,0 +1,46 @@
+{
+  "gettingStarted": {
+    "en": "Getting Started",
+    "zh": "开始"
+  },
+  "api":{
+    "en": "API",
+    "zh": "API参考"
+  },
+  "features": {
+    "en": "Features",
+    "zh": "特性"
+  },
+  "guide": {
+    "en": "Guide",
+    "zh": "指南"
+  },
+  "typeChecking":{
+    "en":"Type Checking",
+    "zh":"类型检查"
+  },
+  "arrayUtilities":{
+    "en":"Array",
+    "zh":"数组操作"
+  },
+  "commonUtilities":{
+    "en":"Common/Shared",
+    "zh":"通用工具"
+  },
+  "objectUtilities":{
+    "en":"Object",
+    "zh":"Object对象操作"
+  },
+  "stringUtilities":{
+    "en":"String",
+    "zh":"字符串操作"
+  },
+  "functionUtilities":{
+    "en":"Function Related",
+    "zh":"函数相关"
+  },
+  "regularUtilities":{
+    "en":"Regular Expression",
+    "zh":"正则表达式"
+  }
+}

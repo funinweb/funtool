@@ -1,0 +1,37 @@
+[
+  {
+    "type":"dir",
+    "name":"type",
+    "label":"typeChecking"
+  },
+  {
+    "type":"dir",
+    "name":"string",
+    "label":"stringUtilities"
+  },
+  {
+    "type":"dir",
+    "name":"object",
+    "label":"objectUtilities"
+  },
+  {
+    "type":"dir",
+    "name":"array",
+    "label":"arrayUtilities"
+  },
+  {
+    "type":"dir",
+    "name":"regex",
+    "label":"regularUtilities"
+  },
+  {
+    "type":"dir",
+    "name":"common",
+    "label":"commonUtilities"
+  },
+  {
+    "type":"dir",
+    "name":"function",
+    "label":"functionUtilities"
+  }
+]

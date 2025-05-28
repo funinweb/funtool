@@ -1,0 +1,42 @@
+# Quick start
+
+import { PackageManagerTabs } from '@theme';
+
+This section will help you get started with `funtool` in just a few minutes.
+
+## 📦 Installation
+
+Install `funtool` using your favorite package manager:
+
+<PackageManagerTabs command="install funtool" />
+
+## ✨ Basic Usage
+
+### Type Checking
+```ts
+import { isString } from 'funtool/type';
+import { isNumber } from 'funtool';
+
+console.log(isNumber(1)); // ✅ true
+console.log(isString('hello')); // ✅ true
+```
+
+### Regex Utilities
+```ts
+import { regex } from 'funtool';
+
+const mobile = "13800138000";
+console.log(
+  regex.checker(mobile).use('mobile').isValid()
+); // ✅ true
+```
+
+### String Utilities
+```ts
+import { words } from 'funtool';
+
+const str = "helloWorld";
+console.log(
+  words('helloWorld')
+); // ✅ ['hello', 'World']
+```

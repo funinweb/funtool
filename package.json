@@ -16,7 +16,10 @@
     "prepublishOnly": "npm run build",
     "release": "node scripts/release.js",
     "preversion": "node scripts/check-changelog.js",
-    "generate:module": "node scripts/generate-module.js"
+    "generate:module": "node scripts/generate-module.js",
+    "docs:dev": "pnpm -F=docs dev",
+    "docs:build": "pnpm -F=docs build",
+    "docs:preview": "pnpm -F=docs preview"
   },
   "keywords": [
     "utility",

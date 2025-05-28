@@ -1,0 +1,36 @@
+---
+title: isArray
+description: Check if the given value is an array.
+---
+
+# `isArray`
+
+Check if the given `value` is an `array`.
+
+## Usage Scenarios
+
+- Data Validation : When processing user input or data returned by an API, you need to ensure that a certain value is an array before performing subsequent array operations, such as iteration, filtering, etc.
+- Function Parameter Validation : In a function, when an array is expected as a parameter, you can use the isArray method to verify the parameter type, avoiding errors caused by passing non - array values.
+- Conditional Judgment : Execute different logic based on whether a value is an array.
+
+## Examples
+
+```ts
+import { isArray } from 'funtool';
+
+isArray('hello'); // ❌ false
+isArray([]); // ✅ true
+```
+
+## Signature
+```ts
+function isArray<T = any>(v: any): v is T[]
+```
+
+
+## Parameters
+- `v` (`any`): The value to test if it is an array.
+
+## Returns
+
+- (`v is any[]`): Returns `true` if the value is an array, otherwise returns `false`.
