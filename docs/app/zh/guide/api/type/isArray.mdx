@@ -1,0 +1,36 @@
+---
+title: isArray
+description: 检查给定的值是否为一个数组。
+---
+
+# `isArray`
+
+检查给定的值是否为一个数组。
+
+## 使用场景
+
+- 数据校验：在处理用户输入或 API 返回的数据时，需要确保某个值是数组，才能进行后续的数组操作，例如遍历、过滤等。
+- 函数参数校验：在函数中，当期望参数为数组时，可以使用 isArray 方法验证参数类型，避免因传入非数组值而导致错误。
+- 条件判断：根据值是否为数组执行不同的逻辑。
+
+## Examples
+
+```ts
+import { isArray } from 'funtool';
+
+isArray('hello'); // ❌ false
+isArray([]); // ✅ true
+```
+
+## 签名
+```ts
+function isArray<T = any>(v: any): v is T[]
+```
+
+
+## 参数
+- `v` (`any`): 需要判断是否为数组的值。
+
+## 返回值
+
+- (`v is any[]`): 如果该值是数组，则返回 `true`，否则返回 `false`。

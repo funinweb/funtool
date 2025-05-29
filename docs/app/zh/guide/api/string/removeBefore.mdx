@@ -1,0 +1,37 @@
+---
+title: removeBefore
+描述: 从 `input` 字符串中移除 `target` 之前的所有字符。
+---
+
+# `removeBefore`
+
+从 `input` 字符串中移除 `target` 之前的所有字符。
+
+## 使用场景
+
+- **文本清理**：当你需要从字符串中提取特定部分，去除前面多余的内容时使用。
+- **数据解析**：在处理包含前缀的字符串数据时，提取主要内容。
+
+## 示例
+
+```ts
+import { removeBefore } from 'funtool';
+
+removeBefore('foo-bar', '-') // ✅ 'bar'
+removeBefore('hello', 3) // ✅ 'lo'
+```
+
+## 函数签名
+
+```typescript
+function removeBefore(input: string, target: string | number): string
+```
+
+## 参数
+
+- `input` ( `string` ): 输入的字符串。
+- `target` ( `string | number` ): 作为分割点的子字符串，其之前的内容将被移除。
+
+## 返回值
+
+- ( `string` ): 移除 target 之前所有字符后的新字符串。

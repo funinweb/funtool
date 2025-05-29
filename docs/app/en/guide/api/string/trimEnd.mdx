@@ -1,25 +1,37 @@
 ---
 title: trimEnd
-description: Documentation for `trimEnd` string utility.
+description: Removes whitespace from the right end of the `str`.
 ---
 
 # `trimEnd`
 
-Documentation for `trimEnd` string utility.
+Removes whitespace from the right end of the `str`.
+
+## Usage Scenarios
+
+- **Data Cleaning**: In data processing, clean strings by removing trailing whitespace.
+- **Input Validation**: Validate user input by removing unnecessary whitespace.
 
 ## Example
 
 ```ts
 import { trimEnd } from 'funtool/string'
 
-trimEnd('example input')
-// => ...
+trimEnd('hello  '); // ✅ 'hello'
+trimEnd(''); // ✅ ''
+trimEnd(123) // => '123' ✅
+```
+
+## Signature
+
+```ts
+function trimEnd(str: string): string
 ```
 
 ## Parameters
 
-- Depends on the function.
+- `str` ( `string` ): The input string.
 
 ## Returns
 
-- Depends on the function.
+- ( `string` ): A new string with trailing whitespace removed.

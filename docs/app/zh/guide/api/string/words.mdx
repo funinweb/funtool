@@ -1,0 +1,41 @@
+---
+title: words
+描述: 将 `str` 拆分为一个单词数组，支持多种大小写风格和分隔符。
+---
+
+# `words`
+
+将 `str` 拆分为一个单词数组，支持多种大小写风格和分隔符。
+
+## 使用场景
+
+- **文本分析**：在自然语言处理中，将文本拆分为单词进行分析。
+- **数据解析**：解析字符串为单词以便进一步处理。
+
+## 示例
+
+```ts
+import { words } from 'funtool/string'
+
+words('helloWorld'); // ✅ ['hello', 'World']
+words('HelloWorld'); // ✅ ['Hello', 'World']
+words('hello_world'); // ✅ ['hello', 'world']
+words('APIversion'); // ✅ ['API', 'version']
+words('userID2Token'); // ✅ ['user', 'ID', '2', 'Token']
+words('HTMLBody'); // ✅ ['HTML', 'Body']
+words('APIResponse'); // ✅ ['API', 'Response']
+```
+
+## 函数签名
+
+```ts
+function words(str: string): string[]
+```
+
+## 参数
+
+- `str` ( `string` ): 输入字符串。
+
+## 返回值
+
+- ( `string[]` ): 从字符串中提取的单词数组。

@@ -1,25 +1,37 @@
 ---
 title: repeat
-description: Documentation for `repeat` string utility.
+description: Repeats the `str` the specified `count` number of times.
 ---
 
 # `repeat`
 
-Documentation for `repeat` string utility.
+Repeats the `str` the specified `count` number of times.
+
+## Usage Scenarios
+
+- **Text Generation**: Generate repetitive text, such as borders or patterns.
+- **Data Testing**: Create test data with repeated strings.
 
 ## Example
 
 ```ts
 import { repeat } from 'funtool/string'
 
-repeat('example input')
-// => ...
+repeat('hi', 3); // ✅ 'hihihi'
+repeat('hi', 0); // ✅ ''
 ```
 
+## Signature
+
+```ts
+function repeat(str: string, count: number): string
+
+```
 ## Parameters
 
-- Depends on the function.
+- `str ( `string` ): The input string.
+- `count ( `number` ): The number of times to repeat the string.
 
 ## Returns
 
-- Depends on the function.
+- ( `string` ): The repeated string.

@@ -1,25 +1,37 @@
 ---
 title: toUpperAt
-description: Documentation for `toUpperAt` string utility.
+description: Converts the character at the specified `index` in the `input` string to uppercase.
 ---
 
 # `toUpperAt`
 
-Documentation for `toUpperAt` string utility.
+Converts the character at the specified `index` in the `input` string to uppercase.
+
+## Usage Scenarios
+
+- **Text Correction**: In text editing, correct the case of a specific character.
+- **Data Normalization**: Standardize the case of characters in a string.
 
 ## Example
 
 ```ts
 import { toUpperAt } from 'funtool/string'
 
-toUpperAt('example input')
-// => ...
+toUpperAt('hello', 0) // ✅ 'Hello'
+toUpperAt('foo-bar', 'b') // ✅ 'foo-Bar'
+```
+
+## Signature
+
+```ts
+function toUpperAt(input: string, target: string | number): string
 ```
 
 ## Parameters
 
-- Depends on the function.
+- `input` ( `string` ): The input string.
+- `target` ( `string | number` ): The index of the character to convert to uppercase.
 
 ## Returns
 
-- Depends on the function.
+- ( `string` ): A new string with the character at the specified index uppercased.

@@ -1,0 +1,36 @@
+---
+title: replaceAll
+描述: 将 `str` 中所有出现的 `searchValue` 替换为 `replaceValue`。
+---
+
+# `replaceAll`
+
+将 `str` 中所有出现的 `searchValue` 替换为 `replaceValue`。
+
+## 使用场景
+
+- **文本替换**：在文本编辑器中，替换所有出现的单词或短语。
+- **数据清理**：通过替换特定字符或子字符串来清理数据。
+
+## 示例
+
+```ts
+import { replaceAll } from 'funtool'
+
+replaceAll('hello world', 'world', 'everyone'); // 'hello everyone'
+```
+
+## 函数签名
+
+```ts
+function replaceAll(str: string, target: string, replacement: string): string
+```
+## 参数
+
+- `str` ( `string` ): 输入的字符串。
+- `searchValue` ( `string` ): 要替换的子字符串。
+- `replaceValue` ( `string` ): 用于替换的字符串。
+
+## 返回值
+
+- ( `string` ): 一个新的字符串，其中所有出现的搜索值都已被替换。

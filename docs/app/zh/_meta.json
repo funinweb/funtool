@@ -1,0 +1,12 @@
+[
+  {
+    "text": "首页",
+    "link": "/",
+    "activeMatch": "/(?:index)?(?:.html)?$"
+  },
+  {
+    "text": "指南",
+    "link": "/guide/start/introduction",
+    "activeMatch": "/guide/"
+  }
+]

@@ -1,25 +1,36 @@
 ---
 title: findIndex
-description: Documentation for `findIndex` string utility.
+description: Finds the first index of the `substr` in the `str`. If not found, returns -1.
 ---
 
 # `findIndex`
 
-Documentation for `findIndex` string utility.
+Finds the first index of the `substr` in the `str`. If not found, returns -1.
+
+## Usage Scenarios
+
+- **Text Search**: In text processing, find the position of a specific substring.
+- **Data Validation**: Check if a substring exists in a string and get its position.
 
 ## Example
 
 ```ts
 import { findIndex } from 'funtool/string'
 
-findIndex('example input')
-// => ...
+findIndex('hello world', 'world'); // ✅ 6
+findIndex('abc', 'z'); // ❌ -1
+```
+## Signature
+
+```typescript
+function findIndex(str: string, substr: string): number
 ```
 
 ## Parameters
 
-- Depends on the function.
+- `str` ( `string` ): The input string.
+- `substr` ( `string` ): The substring to find.
 
 ## Returns
 
-- Depends on the function.
+- ( `number` ): The index of the first occurrence of the substring, or -1 if not found.

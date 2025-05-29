@@ -1,25 +1,36 @@
 ---
 title: trimStart
-description: Documentation for `trimStart` string utility.
+description: Removes whitespace from the left end of the `str`.
 ---
 
 # `trimStart`
 
-Documentation for `trimStart` string utility.
+Removes whitespace from the left end of the `str`.
+
+## Usage Scenarios
+
+- **Data Cleaning**: In data processing, clean strings by removing leading whitespace.
+- **Input Validation**: Validate user input by removing unnecessary whitespace.
 
 ## Example
 
 ```ts
 import { trimStart } from 'funtool/string'
 
-trimStart('example input')
-// => ...
+trimStart('  hello') // => 'hello' ✅
+trimStart(123) // => '123' ✅
+```
+
+## Signature
+
+```ts
+function trimStart(str: string): string
 ```
 
 ## Parameters
 
-- Depends on the function.
+- `str` ( `string` ): The input string.
 
 ## Returns
 
-- Depends on the function.
+- ( `string` ): A new string with leading whitespace removed.

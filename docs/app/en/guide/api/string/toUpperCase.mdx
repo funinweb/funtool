@@ -1,25 +1,36 @@
 ---
 title: toUpperCase
-description: Documentation for `toUpperCase` string utility.
+description: Converts all characters in the `str` to uppercase.
 ---
 
 # `toUpperCase`
 
-Documentation for `toUpperCase` string utility.
+Converts all characters in the `str` to uppercase.
+
+## Usage Scenarios
+
+- **Text Emphasis**: In text processing, emphasize text by converting it to uppercase.
+- **Data Standardization**: Standardize the case of strings for comparison.
 
 ## Example
 
 ```ts
 import { toUpperCase } from 'funtool/string'
 
-toUpperCase('example input')
-// => ...
+toUpperCase('hello') // => 'HELLO' ✅
+toUpperCase(123) // => '123' ✅
+```
+
+## Signature
+
+```ts
+function toUpperCase(str: string): string
 ```
 
 ## Parameters
 
-- Depends on the function.
+- `str` ( `string` ): The input string.
 
 ## Returns
 
-- Depends on the function.
+- ( `string` ): A new string with all characters in uppercase.

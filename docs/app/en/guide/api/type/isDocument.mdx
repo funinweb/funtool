@@ -1,0 +1,35 @@
+---
+title: isDocument
+description: Checks if the value is a Document node.
+---
+
+# `isDocument`
+
+Checks if the `value` is a Document node.
+
+## Usage Scenarios
+
+- DOM Initialization: When initializing a web application, you can use `isDocument` to verify that you are working with the main Document object.
+- DOM Manipulation: You can use this method to perform operations specific to the Document node.
+
+## Examples
+
+```ts
+import { isDocument } from 'funtool';
+
+isDocument(document); // ✅ true
+```
+
+## Signature
+
+```ts
+function isDocument<T = unknown>(value: T): value is T & Document
+```
+
+## Parameters
+
+- `value` (`T`): The value to check.
+
+## Returns
+
+- (`value is T & Document`): Returns `true` if the value is a Document node.

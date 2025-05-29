@@ -1,0 +1,35 @@
+---
+title: isDataView
+description: Check if the given value is a DataView.
+---
+
+# `isDataView`
+
+Check if the given `value` is a `DataView`.
+
+## Usage Scenarios
+
+- Data Validation: When dealing with low - level binary data manipulation, you need to ensure that a certain value is a DataView before performing operations like reading or writing data at specific byte offsets.
+- Function Parameter Validation: In a function where a DataView is expected as a parameter, you can use the `isDataView` method to verify the parameter type, avoiding errors caused by passing non - DataView values.
+- Conditional Judgment: Execute different logic based on whether a value is a DataView.
+
+## Examples
+
+```ts
+import { isDataView } from 'funtool';
+
+isDataView(new DataView(new ArrayBuffer(1))); // ✅ true
+isDataView([]); // ❌ false
+```
+
+## Signature
+```ts
+function isDataView(v: any): v is DataView
+```
+
+## Parameters
+- `v` (`any`): The value to test if it is a DataView.
+
+## Returns
+
+- (`v is DataView`): Returns `true` if the value is a DataView, otherwise returns `false`.

@@ -1,0 +1,42 @@
+---
+title: isElement
+description: Checks whether the given value is a DOM Element.
+---
+
+# `isElement`
+
+Checks whether the given `value` is a DOM `Element`.
+
+## Usage Scenarios
+
+- DOM Manipulation: When working with the Document Object Model, you need to ensure that a certain value is a DOM Element before performing operations like adding classes, modifying attributes, or appending child nodes.
+- Function Parameter Validation: In a function where a DOM Element is expected as a parameter, you can use the `isElement` method to verify the parameter type, avoiding errors caused by passing non - Element values.
+- Conditional Judgment: Execute different logic based on whether a value is a DOM Element.
+
+## Examples
+
+```ts
+import { isElement } from 'funtool';
+
+const el = document.createElement('div');
+if (isElement(el)) {
+  el.classList.add('active');
+}
+
+const notEl = {};
+if (!isElement(notEl)) {
+  console.log('Not a DOM element');
+}
+```
+
+## Signature
+```ts
+function isElement<T = unknown>(value: T): value is T & Element
+```
+
+## Parameters
+- `value` (`T`): The value to check.
+
+## Returns
+
+- (`value is T & Element`): Returns `true` if the value is a DOM Element, and narrows the type to `T & Element`.

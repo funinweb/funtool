@@ -1,0 +1,37 @@
+---
+title: removeAfter
+描述: 从 `input` 字符串中移除 `target` 之后的所有字符。
+---
+
+# `removeAfter`
+
+从 `input` 字符串中移除 `target` 之后的所有字符。
+
+## 使用场景
+
+- **文本清理**：在处理文本时，去除不必要的后缀。
+- **数据提取**：从字符串中提取特定部分。
+
+## 示例
+
+```ts
+import { removeAfter } from 'funtool';
+
+removeAfter('foo-bar', '-') // ✅ 'foo-'
+removeAfter('hello', 3) // ✅ 'hel'
+```
+
+## 函数签名
+
+```ts
+function removeAfter(input: string, target: string | number): string
+```
+
+## 参数
+
+- `input` ( `string` )：输入字符串。
+- `target` ( `string | number` )：作为移除起始点的子字符串。
+
+## 返回值
+
+- ( `string` )：移除 target 之后字符的新字符串。

@@ -1,25 +1,36 @@
 ---
 title: capitalizeFirstLetter
-description: Documentation for `capitalizeFirstLetter` string utility.
+description: Capitalize the first letter of a string.
 ---
 
 # `capitalizeFirstLetter`
 
-Documentation for `capitalizeFirstLetter` string utility.
+Capitalize the first letter of the input string.
+
+## Usage Scenarios
+
+- **Data Display**: When displaying user - input names, titles, or other information, ensure the first letter is capitalized to enhance the normativity and aesthetics of the information.
+- **Formatting Output**: When generating documents, reports, or other content, format specific strings.
 
 ## Example
 
-```ts
-import { capitalizeFirstLetter } from 'funtool/string'
+```typescript
+import { capitalizeFirstLetter } from 'funtool';
+//import { capitalizeFirstLetter } from 'funtool/string';
 
-capitalizeFirstLetter('example input')
-// => ...
+capitalizeFirstLetter('hello'); // ✅ 'Hello'
+capitalizeFirstLetter(''); // ✅ ''
+
+## Signature
+
+```typescript
+function capitalizeFirstLetter(str: string): string
 ```
 
 ## Parameters
 
-- Depends on the function.
+- `str` ( `string` ): The input string.
 
 ## Returns
 
-- Depends on the function.
+- ( `string` ): The string with the first letter capitalized. If the input is an empty string, an empty string is returned.

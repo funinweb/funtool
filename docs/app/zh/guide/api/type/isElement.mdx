@@ -1,0 +1,42 @@
+---
+title: isElement
+描述: 检查给定的值是否为 DOM 元素。
+---
+
+# `isElement`
+
+检查给定的 `value` 是否为 DOM `Element`。
+
+## 使用场景
+
+- DOM 操作：在处理文档对象模型时，你需要确保某个值是 DOM 元素，然后再执行添加类、修改属性或追加子节点等操作。
+- 函数参数验证：在一个期望参数为 DOM 元素的函数中，你可以使用 `isElement` 方法来验证参数类型，避免因传入非元素值而导致错误。
+- 条件判断：根据某个值是否为 DOM 元素执行不同的逻辑。
+
+## 示例
+
+```ts
+import { isElement } from 'funtool';
+
+const el = document.createElement('div');
+if (isElement(el)) {
+  el.classList.add('active');
+}
+
+const notEl = {};
+if (!isElement(notEl)) {
+  console.log('不是 DOM 元素');
+}
+```
+
+## 函数签名
+```ts
+function isElement<T = unknown>(value: T): value is T & Element
+```
+
+## 参数
+- `value` (`T`): 需要检查的值。
+
+## 返回值
+
+- (`value is T & Element`): 如果该值是 DOM 元素，则返回 `true`，并将类型缩小为 `T & Element`。

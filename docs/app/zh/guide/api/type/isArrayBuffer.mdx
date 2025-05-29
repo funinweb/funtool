@@ -1,0 +1,35 @@
+---
+title: isArrayBuffer
+描述: 检查给定的值是否为一个 ArrayBuffer。
+---
+
+# `isArrayBuffer`
+
+检查给定的 `value` 是否为一个 `ArrayBuffer`。
+
+## 使用场景
+
+- 数据验证：在处理二进制数据时，你需要确保某个值是 ArrayBuffer，才能进行后续操作，例如数据解析或序列化。
+- 函数参数验证：在函数中，当期望参数为 ArrayBuffer 时，可以使用 `isArrayBuffer` 方法验证参数类型，避免因传入非 ArrayBuffer 值而导致错误。
+- 条件判断：根据值是否为 ArrayBuffer 执行不同的逻辑。
+
+## 示例
+
+```ts
+import { isArrayBuffer } from 'funtool';
+
+isArrayBuffer(new ArrayBuffer(8)); // ✅ true
+isArrayBuffer([]); // ❌ false
+```
+
+## 函数签名
+```ts
+function isArrayBuffer(v: any): v is ArrayBuffer
+```
+
+## 参数
+- `v` (`any`): 需要测试是否为 ArrayBuffer 的值。
+
+## 返回值
+
+- (`v is ArrayBuffer`): 如果该值是 ArrayBuffer，则返回 `true`，否则返回 `false`。

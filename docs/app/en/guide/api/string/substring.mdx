@@ -1,25 +1,37 @@
 ---
 title: substring
-description: Documentation for `substring` string utility.
+description: Extracts a substring from the `str` between the `start` and `end` indices.
 ---
 
 # `substring`
 
-Documentation for `substring` string utility.
+Extracts a substring from the `str` between the `start` and `end` indices.
+
+## Usage Scenarios
+
+- **Text Extraction**: In text processing, extract a specific part of a string.
+- **Data Parsing**: Parse data by extracting relevant substrings.
 
 ## Example
 
 ```ts
 import { substring } from 'funtool/string'
 
-substring('example input')
-// => ...
+substring('hello world', 0, 5); // ✅ 'hello'
+```
+
+## Signature
+
+```ts
+function substring(str: string, start: number, end: number): string
 ```
 
 ## Parameters
 
-- Depends on the function.
+- `str` ( `string` ): The input string.
+- `start` ( `number` ): The starting index.
+- `end` ( `number` ): The ending index.
 
 ## Returns
 
-- Depends on the function.
+- ( `string` ): The extracted substring.

@@ -1,0 +1,35 @@
+---
+title: isBlob
+description: Check if the given value is a Blob.
+---
+
+# `isBlob`
+
+Check if the given `value` is a `Blob`.
+
+## Usage Scenarios
+
+- Data Validation: When handling file uploads or working with binary data, you need to ensure that a certain value is a Blob before performing subsequent operations, such as reading or uploading the data.
+- Function Parameter Validation: In a function, when a Blob is expected as a parameter, you can use the `isBlob` method to verify the parameter type, avoiding errors caused by passing non-Blob values.
+- Conditional Judgment: Execute different logic based on whether a value is a Blob.
+
+## Examples
+
+```ts
+import { isBlob } from 'funtool';
+
+isBlob(new Blob()); // ✅ true
+isBlob({}); // ❌ false
+```
+
+## Signature
+```ts
+function isBlob(v: any): v is Blob
+```
+
+## Parameters
+- `v` (`any`): The value to test if it is a Blob.
+
+## Returns
+
+- (`v is Blob`): Returns `true` if the value is a Blob, otherwise returns `false`.

@@ -1,25 +1,37 @@
 ---
 title: toLowerAt
-description: Documentation for `toLowerAt` string utility.
+description: Converts the character at the specified `index` in the `input` string to lowercase.
 ---
 
 # `toLowerAt`
 
-Documentation for `toLowerAt` string utility.
+Converts the character at the specified `index` in the `input` string to lowercase.
+
+## Usage Scenarios
+
+- **Text Correction**: In text editing, correct the case of a specific character.
+- **Data Normalization**: Standardize the case of characters in a string.
 
 ## Example
 
 ```ts
 import { toLowerAt } from 'funtool/string'
 
-toLowerAt('example input')
-// => ...
+toLowerAt('Hello', 0) // ✅ 'hello'
+toLowerAt('Foo-Bar', 'B') // ✅ 'Foo-bar'
+```
+
+## Signature
+
+```ts
+function toLowerAt(input: string, target: string | number): string
 ```
 
 ## Parameters
 
-- Depends on the function.
+- `input` ( `string` ): The input string.
+- `target` ( `string | number` ): The index of the character to convert to lowercase.
 
 ## Returns
 
-- Depends on the function.
+- ( `string` ): A new string with the character at the specified index lowercased.

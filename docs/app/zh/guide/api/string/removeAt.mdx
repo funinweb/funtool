@@ -1,0 +1,36 @@
+---
+title: removeAt
+描述: 从 `input` 字符串中移除指定索引位置的字符。
+---
+
+# `removeAt`
+
+从 `input` 字符串中移除指定索引位置的字符。
+
+## 使用场景
+- **文本编辑**：在处理文本时，移除特定位置的字符。
+- **数据清理**：在处理字符串数据时，去除不需要的字符。
+
+## 示例
+
+```ts
+import { removeAt } from 'funtool/string'
+
+removeAt('hello', 1) // ✅ 'hllo'
+removeAt('abc-def', '-') // ✅ 'abcdef'
+```
+
+## 函数签名
+
+```ts
+function removeAt(input: string, target: string | number): string
+```
+
+## 参数
+
+- `input` ( `string` )：输入字符串。
+- `target` ( `string | number` )：要移除字符的索引位置。
+
+## 返回值
+
+- ( `string` )：移除指定字符后的新字符串。

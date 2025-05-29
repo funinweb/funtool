@@ -1,0 +1,35 @@
+---
+title: isArrayBuffer
+description: Check if the given value is an ArrayBuffer.
+---
+
+# `isArrayBuffer`
+
+Check if the given `value` is an `ArrayBuffer`.
+
+## Usage Scenarios
+
+- Data Validation: When processing binary data, you need to ensure that a certain value is an ArrayBuffer before performing subsequent operations, such as data parsing or serialization.
+- Function Parameter Validation: In a function, when an ArrayBuffer is expected as a parameter, you can use the `isArrayBuffer` method to verify the parameter type, avoiding errors caused by passing non-ArrayBuffer values.
+- Conditional Judgment: Execute different logic based on whether a value is an ArrayBuffer.
+
+## Examples
+
+```ts
+import { isArrayBuffer } from 'funtool';
+
+isArrayBuffer(new ArrayBuffer(8)); // ✅ true
+isArrayBuffer([]); // ❌ false
+```
+
+## Signature
+```ts
+function isArrayBuffer(v: any): v is ArrayBuffer
+```
+
+## Parameters
+- `v` (`any`): The value to test if it is an ArrayBuffer.
+
+## Returns
+
+- (`v is ArrayBuffer`): Returns `true` if the value is an ArrayBuffer, otherwise returns `false`.

@@ -1,25 +1,33 @@
 ---
 title: lowercaseFirstLetter
-description: Documentation for `lowercaseFirstLetter` string utility.
+description: Lowercase the first letter of the given `string`.
 ---
 
 # `lowercaseFirstLetter`
 
-Documentation for `lowercaseFirstLetter` string utility.
+Lowercase the first letter of the given `string`.
+
+## Usage Scenarios
+
+- **Text Formatting**: When converting titles or names to a specific case style.
+- **Data Normalization**: In data processing, standardize the case of strings.
 
 ## Example
 
 ```ts
-import { lowercaseFirstLetter } from 'funtool/string'
+import { lowercaseFirstLetter } from 'funtool';
 
-lowercaseFirstLetter('example input')
-// => ...
+lowercaseFirstLetter('Hello'); // ✅ 'hello'
 ```
+## Signature
 
+```ts
+function lowercaseFirstLetter(str: string): string
+```
 ## Parameters
 
-- Depends on the function.
+- `str` ( `string` ): The input string to lowercase the first letter.
 
 ## Returns
 
-- Depends on the function.
+- ( `string` ): A new string with the first letter lowercased.

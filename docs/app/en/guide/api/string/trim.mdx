@@ -1,25 +1,36 @@
 ---
 title: trim
-description: Documentation for `trim` string utility.
+description: Removes whitespace from both ends of the `str`.
 ---
 
 # `trim`
 
-Documentation for `trim` string utility.
+Removes whitespace from both ends of the `str`.
+
+## Usage Scenarios
+
+- **Data Cleaning**: In data processing, clean strings by removing leading and trailing whitespace.
+- **Input Validation**: Validate user input by removing unnecessary whitespace.
 
 ## Example
 
 ```ts
 import { trim } from 'funtool/string'
 
-trim('example input')
-// => ...
+trim('  hello  ') // => 'hello' ✅
+trim(123) // => '123' ✅
+```
+
+## Signature
+
+```ts
+function trim(str: string): string
 ```
 
 ## Parameters
 
-- Depends on the function.
+- `str` ( `string` ): The input string.
 
 ## Returns
 
-- Depends on the function.
+- ( `string` ): A new string with leading and trailing whitespace removed.

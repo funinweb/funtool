@@ -1,0 +1,35 @@
+---
+title: isDocument
+描述: 检查该值是否为文档节点。
+---
+
+# `isDocument`
+
+检查 `value` 是否为文档节点。
+
+## 使用场景
+
+- DOM 初始化：在初始化 Web 应用程序时，你可以使用 `isDocument` 来验证你正在操作的是主文档对象。
+- DOM 操作：你可以使用此方法执行特定于文档节点的操作。
+
+## 示例
+
+```ts
+import { isDocument } from 'funtool';
+
+isDocument(document); // ✅ true
+```
+
+## 函数签名
+
+```ts
+function isDocument<T = unknown>(value: T): value is T & Document
+```
+
+## 参数
+
+- `value` (`T`): 需要检查的值。
+
+## 返回值
+
+- (`value is T & Document`): 如果该值是文档节点，则返回 `true`。

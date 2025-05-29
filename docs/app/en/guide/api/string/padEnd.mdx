@@ -1,25 +1,37 @@
 ---
 title: padEnd
-description: Documentation for `padEnd` string utility.
+description: Pads the `str` from the end to the specified `length` with the `padChar`.
 ---
 
 # `padEnd`
 
-Documentation for `padEnd` string utility.
+Pads the `str` from the end to the specified `length` with the `padChar`.
+
+## Usage Scenarios
+
+- **Text Alignment**: In text formatting, align strings to a specific width.
+- **Data Formatting**: In data output, ensure strings have a consistent length.
 
 ## Example
 
 ```ts
 import { padEnd } from 'funtool/string'
 
-padEnd('example input')
-// => ...
+padEnd('hello', 10, '*'); // 'hello*****'
+```
+
+## Signature
+
+```ts
+function padEnd(str: string, length: number, padChar: string = ' '): string
 ```
 
 ## Parameters
 
-- Depends on the function.
+- `str` ( `string` ): The input string.
+- `length` ( `number` ): The target length of the string.
+- `padChar` ( `string` ): The character to pad with. Defaults to a space.
 
 ## Returns
 
-- Depends on the function.
+- ( `string` ): The padded string.

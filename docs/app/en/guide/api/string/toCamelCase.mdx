@@ -1,25 +1,39 @@
 ---
 title: toCamelCase
-description: Documentation for `toCamelCase` string utility.
+description: Converts the `str` to camelCase, where the first letter of each word after the first is capitalized.
 ---
 
 # `toCamelCase`
 
-Documentation for `toCamelCase` string utility.
+Converts the `str` to camelCase, where the first letter of each word after the first is capitalized.
+
+## Usage Scenarios
+
+- **Variable Naming**: In programming, convert strings to camelCase for variable names.
+- **Data Standardization**: Standardize string formats in data processing.
 
 ## Example
 
 ```ts
 import { toCamelCase } from 'funtool/string'
 
-toCamelCase('example input')
-// => ...
+toCamelCase('hello_world'); // ✅ 'helloWorld'
+toCamelCase('hello-world'); // ✅ 'helloWorld'
+toCamelCase('api_version'); // ✅ 'apiVersion'
+toCamelCase('API_version'); // ✅ 'apiVersion'
+toCamelCase('my-xml-parser'); // ✅ 'myXmlParser'
+```
+
+## Signature
+
+```ts
+function toCamelCase(str: string): string
 ```
 
 ## Parameters
 
-- Depends on the function.
+- `str` ( `string` ): The input string.
 
 ## Returns
 
-- Depends on the function.
+- ( `string` ): A new string in camelCase format.

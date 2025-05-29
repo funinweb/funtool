@@ -1,0 +1,37 @@
+---
+title: substring
+描述: 从 `str` 中提取 `start` 和 `end` 索引之间的子字符串。
+---
+
+# `substring`
+
+从 `str` 中提取 `start` 和 `end` 索引之间的子字符串。
+
+## 使用场景
+
+- **文本提取**：在文本处理中，提取字符串的特定部分。
+- **数据解析**：通过提取相关子字符串来解析数据。
+
+## 示例
+
+```ts
+import { substring } from 'funtool/string'
+
+substring('hello world', 0, 5); // ✅ 'hello'
+```
+
+## 函数签名
+
+```ts
+function substring(str: string, start: number, end: number): string
+```
+
+## 参数
+
+- `str` ( `string` ): 输入的字符串。
+- `start` ( `number` ): 起始索引。
+- `end` ( `number` ): 结束索引。
+
+## 返回值
+
+- ( `string` ): 提取的子字符串。

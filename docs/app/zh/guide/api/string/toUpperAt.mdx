@@ -1,0 +1,37 @@
+---
+title: toUpperAt
+描述: 将 `input` 字符串中指定 `index` 位置的字符转换为大写。
+---
+
+# `toUpperAt`
+
+将 `input` 字符串中指定 `index` 位置的字符转换为大写。
+
+## 使用场景
+
+- **文本校正**：在文本编辑中，校正特定字符的大小写。
+- **数据标准化**：标准化字符串中字符的大小写。
+
+## 示例
+
+```ts
+import { toUpperAt } from 'funtool/string'
+
+toUpperAt('hello', 0) // ✅ 'Hello'
+toUpperAt('foo-bar', 'b') // ✅ 'foo-Bar'
+```
+
+## 函数签名
+
+```ts
+function toUpperAt(input: string, target: string | number): string
+```
+
+## 参数
+
+- `input` ( `string` ): 输入字符串。
+- `target` ( `string | number` ): 要转换为大写的字符的索引。
+
+## 返回值
+
+- ( `string` ): 一个新的字符串，其中指定索引位置的字符已转换为大写。

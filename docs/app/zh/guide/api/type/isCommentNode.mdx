@@ -1,0 +1,34 @@
+---
+title: isCommentNode
+描述: 检查该值是否为注释节点。
+---
+
+# `isCommentNode`
+
+检查 `value` 是否为注释节点。
+
+## 使用场景
+
+- DOM 检查：在调试或分析 DOM 结构时，你可以使用 `isCommentNode` 来识别注释节点。
+- DOM 操作：你可以使用此方法有选择地删除或修改注释节点。
+
+## 示例
+
+```ts
+import { isCommentNode } from 'funtool';
+
+isCommentNode(document.createComment('test')); // ✅ true
+```
+
+## 函数签名
+```ts
+function isCommentNode<T = unknown>(value: T): value is T & Comment
+```
+
+## 参数
+
+- `value` (`T`): 需要检查的值。
+
+## 返回值
+
+- (`value is T & Comment`): 如果该值是注释节点，则返回 `true`。

@@ -1,0 +1,36 @@
+---
+title: toUpperCase
+描述: 将 `str` 中的所有字符转换为大写。
+---
+
+# `toUpperCase`
+
+将 `str` 中的所有字符转换为大写。
+
+## 使用场景
+
+- **文本强调**：在文本处理中，通过将文本转换为大写来强调文本。
+- **数据标准化**：标准化字符串的大小写以便进行比较。
+
+## 示例
+
+```ts
+import { toUpperCase } from 'funtool/string'
+
+toUpperCase('hello') // => 'HELLO' ✅
+toUpperCase(123) // => '123' ✅
+```
+
+## 函数签名
+
+```ts
+function toUpperCase(str: string): string
+```
+
+## 参数
+
+- `str` ( `string` ): 输入字符串。
+
+## 返回值
+
+- ( `string` ): 一个新的字符串，其中所有字符均为大写。

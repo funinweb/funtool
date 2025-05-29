@@ -1,0 +1,35 @@
+---
+title: isBoolean
+描述: 检查给定的值是否为一个布尔值。
+---
+
+# `isBoolean`
+
+检查给定的 `value` 是否为一个 `boolean`。
+
+## 使用场景
+
+- 数据验证：在处理用户输入或来自 API 的数据时，你需要确保某个值是布尔值，才能做出逻辑决策。
+- 函数参数验证：在函数中，当期望参数为布尔值时，可以使用 `isBoolean` 方法验证参数类型，避免因传入非布尔值而导致错误。
+- 条件判断：根据值是否为布尔值执行不同的逻辑。
+
+## 示例
+
+```ts
+import { isBoolean } from 'funtool';
+
+isBoolean(true); // ✅ true
+isBoolean('true'); // ❌ false
+```
+
+## 函数签名
+```ts
+function isBoolean(v: any): v is boolean
+```
+
+## 参数
+- `v` (`any`): 需要测试是否为布尔值的值。
+
+## 返回值
+
+- (`v is boolean`): 如果该值是布尔值，则返回 `true`，否则返回 `false`。

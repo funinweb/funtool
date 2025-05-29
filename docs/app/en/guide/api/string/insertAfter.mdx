@@ -1,25 +1,38 @@
 ---
 title: insertAfter
-description: Documentation for `insertAfter` string utility.
+description: Inserts the `insertText` after the specified `target` in the `input` string.
 ---
 
 # `insertAfter`
 
-Documentation for `insertAfter` string utility.
+Inserts the `insertText` after the specified `target` in the `input` string.
+
+## Usage Scenarios
+
+- **Text Manipulation**: In text editors, insert text after a specific position or keyword.
+- **Data Generation**: Generate dynamic text by inserting content at specific locations.
 
 ## Example
 
 ```ts
-import { insertAfter } from 'funtool/string'
+import { insertAfter } from 'funtool';
 
-insertAfter('example input')
-// => ...
+insertAfter('hello', 'X', 1); // ✅ 'heXllo'
+insertAfter('foo-bar', '_', '-'); // ✅ 'foo-_bar'
+insertAfter('abc', '_', 'z'); // ❌ 'abc'
+```
+## Signature
+
+```typescript
+function insertAfter(input: string, insertText: string, target: string | number): string
 ```
 
 ## Parameters
 
-- Depends on the function.
+- `input` ( `string` ): The input string.
+- `insertText` ( `string` ): The text to insert.
+- `target` ( `string | number` ): The index or substring after which to insert the text.
 
 ## Returns
 
-- Depends on the function.
+- ( `string` ): A new string with the text inserted.

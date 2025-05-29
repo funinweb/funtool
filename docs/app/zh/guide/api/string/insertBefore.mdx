@@ -1,0 +1,37 @@
+---
+title: insertBefore
+描述: 在 `input` 字符串中指定的 `target` 之前插入 `insertText`。
+---
+
+# `insertBefore`
+
+在 `input` 字符串中指定的 `target` 之前插入 `insertText`。
+
+## 使用场景
+- **文本操作**：在文本编辑器中，在特定位置或关键字之前插入文本。
+- **数据生成**：通过在特定位置插入内容来生成动态文本。
+
+## 示例
+
+```ts
+import { insertBefore } from 'funtool';
+
+insertBefore('hello', 'X', 1); // ✅ 'hXello'
+insertBefore('foo-bar', '_', '-'); // ✅ 'foo_-bar'
+```
+
+## 函数签名
+
+```ts
+function insertBefore(input: string, insertText: string, target: string | number): string
+```
+
+## 参数
+
+- `input` ( `string` )：输入字符串。
+- `insertText` ( `string` )：要插入的文本。
+- `target` ( `string | number` )：插入文本的位置索引或子字符串。
+
+## 返回值
+
+- ( `string` )：插入文本后的新字符串。

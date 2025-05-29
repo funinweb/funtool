@@ -1,25 +1,42 @@
 ---
 title: words
-description: Documentation for `words` string utility.
+description: Splits the `str` into an array of words, supporting various case styles and delimiters.
+
 ---
 
 # `words`
 
-Documentation for `words` string utility.
+Splits the `str` into an array of words, supporting various case styles and delimiters.
+
+## Usage Scenarios
+
+- **Text Analysis**: In natural language processing, split text into words for analysis.
+- **Data Parsing**: Parse strings into words for further processing.
 
 ## Example
 
 ```ts
 import { words } from 'funtool/string'
 
-words('example input')
-// => ...
+words('helloWorld'); // ✅ ['hello', 'World']
+words('HelloWorld'); // ✅ ['Hello', 'World']
+words('hello_world'); // ✅ ['hello', 'world']
+words('APIversion'); // ✅ ['API', 'version']
+words('userID2Token'); // ✅ ['user', 'ID', '2', 'Token']
+words('HTMLBody'); // ✅ ['HTML', 'Body']
+words('APIResponse'); // ✅ ['API', 'Response']
+```
+
+## Signature
+
+```ts
+function words(str: string): string[]
 ```
 
 ## Parameters
 
-- Depends on the function.
+- `str` ( `string` ): The input string.
 
 ## Returns
 
-- Depends on the function.
+- ( `string[]` ): An array of words extracted from the string.

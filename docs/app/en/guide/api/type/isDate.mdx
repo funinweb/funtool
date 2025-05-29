@@ -1,0 +1,35 @@
+---
+title: isDate
+description: Check if the given value is a Date object.
+---
+
+# `isDate`
+
+Check if the given `value` is a `Date` object.
+
+## Usage Scenarios
+
+- Data Validation: When processing dates from user input or API responses, you need to ensure that a certain value is a Date object before performing date - related operations, such as formatting, comparison, or calculation.
+- Function Parameter Validation: In a function where a Date object is expected as a parameter, you can use the `isDate` method to verify the parameter type, avoiding errors caused by passing non - Date values.
+- Conditional Judgment: Execute different logic based on whether a value is a Date object.
+
+## Examples
+
+```ts
+import { isDate } from 'funtool';
+
+isDate(new Date()); // ✅ true
+isDate('2023-01-01'); // ❌ false
+```
+
+## Signature
+```ts
+function isDate(v: any): v is Date
+```
+
+## Parameters
+- `v` (`any`): The value to test if it is a Date object.
+
+## Returns
+
+- (`v is Date`): Returns `true` if the value is a Date object, otherwise returns `false`.

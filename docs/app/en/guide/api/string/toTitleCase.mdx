@@ -1,25 +1,37 @@
 ---
 title: toTitleCase
-description: Documentation for `toTitleCase` string utility.
+description: Converts the `str` to title case, where the first letter of each word is capitalized.
 ---
 
 # `toTitleCase`
 
-Documentation for `toTitleCase` string utility.
+Converts the `str` to title case, where the first letter of each word is capitalized.
+
+## Usage Scenarios
+
+- **Title Formatting**: In text processing, format titles to title case.
+- **Data Presentation**: Present text in a more professional and readable format.
 
 ## Example
 
 ```ts
 import { toTitleCase } from 'funtool/string'
 
-toTitleCase('example input')
-// => ...
+toTitleCase('hello_world');   // ✅ 'Hello World'
+toTitleCase('hello-world');   // ✅ 'Hello World'
+toTitleCase('user_id');       // ✅ 'User Id'
+```
+
+## Signature
+
+```ts
+function toTitleCase(str: string): string
 ```
 
 ## Parameters
 
-- Depends on the function.
+- `str` ( `string` ): The input string.
 
 ## Returns
 
-- Depends on the function.
+- ( `string` ): A new string in title case format.

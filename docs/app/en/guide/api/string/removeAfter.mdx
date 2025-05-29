@@ -1,25 +1,37 @@
 ---
 title: removeAfter
-description: Documentation for `removeAfter` string utility.
+description: Removes the part of the `input` string after the specified `target`.
 ---
 
 # `removeAfter`
 
-Documentation for `removeAfter` string utility.
+Removes the part of the `input` string after the specified `target`.
+
+## Usage Scenarios
+
+- **Text Cleaning**: In text processing, remove unnecessary content after a specific position or keyword.
+- **Data Extraction**: Extract a part of the string before a certain point.
 
 ## Example
 
 ```ts
 import { removeAfter } from 'funtool/string'
 
-removeAfter('example input')
-// => ...
+removeAfter('foo-bar', '-') // ✅ 'foo-'
+removeAfter('hello', 3) // ✅ 'hel'
+```
+
+## Signature
+
+```ts
+function removeAfter(input: string, target: string | number): string
 ```
 
 ## Parameters
 
-- Depends on the function.
+- `input` ( `string` ): The input string.
+- `target` ( `string | number` ): The index or substring after which to remove the content.
 
 ## Returns
 
-- Depends on the function.
+- ( `string` ): A new string with the content after the target removed.

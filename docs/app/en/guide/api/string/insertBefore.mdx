@@ -1,25 +1,37 @@
 ---
 title: insertBefore
-description: Documentation for `insertBefore` string utility.
+description: Inserts the `insertText` before the specified `target` in the `input` string.
 ---
 
 # `insertBefore`
 
-Documentation for `insertBefore` string utility.
+Inserts the `insertText` before the specified `target` in the `input` string.
+
+## Usage Scenarios
+- **Text Manipulation**: In text editors, insert text before a specific position or keyword.
+- **Data Generation**: Generate dynamic text by inserting content at specific locations.
 
 ## Example
 
 ```ts
-import { insertBefore } from 'funtool/string'
+import { insertBefore } from 'funtool';
 
-insertBefore('example input')
-// => ...
+insertAfter('hello', 'X', 1) // ✅ 'heXllo'
+insertAfter('foo-bar', '_', '-') // ✅ 'foo-_bar'
+```
+
+## Signature
+
+```ts
+function insertBefore(input: string, insertText: string, target: string | number): string
 ```
 
 ## Parameters
 
-- Depends on the function.
+- `input` ( `string` ): The input string.
+- `insertText` ( `string` ): The text to insert.
+- `target` ( `string | number` ): The index or substring before which to insert the text.
 
 ## Returns
 
-- Depends on the function.
+- ( `string` ): A new string with the text inserted.

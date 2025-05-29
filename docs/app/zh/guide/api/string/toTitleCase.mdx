@@ -1,0 +1,37 @@
+---
+title: toTitleCase
+描述: 将 `str` 转换为标题大小写，即每个单词的首字母大写。
+---
+
+# `toTitleCase`
+
+将 `str` 转换为标题大小写，即每个单词的首字母大写。
+
+## 使用场景
+
+- **标题格式化**：在文本处理中，将标题格式化为标题大小写。
+- **数据展示**：以更专业和易读的格式展示文本。
+
+## 示例
+
+```ts
+import { toTitleCase } from 'funtool/string'
+
+toTitleCase('hello_world');   // ✅ 'Hello World'
+toTitleCase('hello-world');   // ✅ 'Hello World'
+toTitleCase('user_id');       // ✅ 'User Id'
+```
+
+## 函数签名
+
+```ts
+function toTitleCase(str: string): string
+```
+
+## 参数
+
+- `str` ( `string` ): 输入字符串。
+
+## 返回值
+
+- ( `string` ): 一个新的标题大小写格式的字符串。

@@ -1,0 +1,36 @@
+---
+title: isNode
+description: Checks if the value is a general DOM Node.
+---
+
+# `isNode`
+
+Checks if the `value` is a general DOM Node.
+
+## Usage Scenarios
+
+- DOM Traversal: During DOM traversal, you can use `isNode` to identify all types of DOM nodes.
+- DOM Manipulation: You can use this method to perform operations common to all DOM nodes.
+
+## Examples
+
+```ts
+import { isNode } from 'funtool';
+
+isNode(document.createTextNode('Hi')); // ✅ true
+isNode(document.createElement('div')); // ✅ true
+```
+
+## Signature
+
+```ts
+function isNode<T = unknown>(value: T): value is T & Node
+```
+
+## Parameters
+
+- `value` (`T`): The value to check.
+
+## Returns
+
+- (`value is T & Node`): Returns `true` if the value is a general DOM Node.

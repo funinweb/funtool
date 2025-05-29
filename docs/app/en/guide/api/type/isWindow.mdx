@@ -1,0 +1,33 @@
+---
+title: isWindow
+description: Checks if the value is a global window object.
+---
+
+# `isWindow`
+
+Checks if the `value` is a global window object.
+
+## Usage Scenarios
+
+- Browser - Specific Operations: When performing browser - specific operations, you can use `isWindow` to verify that you are working with the global window object.
+- Event Handling: You can use this method to attach or detach event listeners to the window object.
+
+## Examples
+
+```ts
+import { isWindow } from 'funtool';
+
+isWindow(window); // ✅ true
+```
+
+## Signature
+```ts
+function isWindow<T = unknown>(value: T): value is T & Window
+```
+
+## Parameters
+- `value` (`T`): The value to check.
+
+## Returns
+
+- (`value is T & Window`): Returns `true` if the value is a global window object.

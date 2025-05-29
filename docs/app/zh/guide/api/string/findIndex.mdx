@@ -1,0 +1,37 @@
+---
+title: findIndex
+描述: 查找 `substr` 在 `str` 中首次出现的索引。如果未找到，则返回 -1。
+---
+
+# `findIndex`
+
+查找 `substr` 在 `str` 中首次出现的索引。如果未找到，则返回 -1。
+
+## 使用场景
+
+- **文本搜索**：在文本处理中，查找特定子字符串的位置。
+- **数据验证**：检查字符串中是否存在子字符串，并获取其位置。
+
+## 示例
+
+```ts
+import { findIndex } from 'funtool/string'
+
+findIndex('hello world', 'world'); // ✅ 6
+findIndex('abc', 'z'); // ❌ -1
+```
+
+## 函数签名
+
+```typescript
+function findIndex(str: string, substr: string): number
+```
+
+## 参数
+
+- `str` ( `string` )：输入字符串。
+- `substr` ( `string` )：要查找的子字符串。
+
+## 返回值
+
+- ( `number` )：子字符串首次出现的索引，如果未找到则返回 -1。

@@ -1,0 +1,37 @@
+---
+title: count
+描述: 计算子字符串在字符串中出现的次数。
+---
+
+# `count`
+
+计算子字符串在字符串中出现的次数。
+
+## 使用场景
+
+- **数据分析**：在分析文本数据时，统计特定关键词的出现频率。
+- **文本处理**：在文本编辑器或搜索引擎中，统计搜索词的出现次数。
+
+## 示例
+
+```ts
+import { count } from 'funtool/string'
+
+count('hello world, hello again', 'hello'); // ✅ 2
+count('abc', 'x'); // ❌ 0
+```
+
+## 函数签名
+
+```typescript
+function count(str: string, substr: string): number
+```
+
+## 参数
+
+- `str` ( `string` )：输入字符串。
+- `substr` ( `string` )：要统计的子字符串。
+
+## 返回值
+
+- ( `number` )：子字符串在字符串中出现的次数。

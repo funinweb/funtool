@@ -1,0 +1,35 @@
+---
+title: isBuffer
+description: Check if the given value is a Buffer.
+---
+
+# `isBuffer`
+
+Check if the given `value` is a `Buffer`.
+
+## Usage Scenarios
+
+- Data Validation: When working with Node.js applications that handle binary data, you need to ensure that a certain value is a Buffer before performing operations like encoding, decoding, or file I/O.
+- Function Parameter Validation: In a function where a Buffer is expected as a parameter, you can use the `isBuffer` method to verify the parameter type, preventing errors from non - Buffer values.
+- Conditional Judgment: Execute different logic based on whether a value is a Buffer.
+
+## Examples
+
+```ts
+import { isBuffer } from 'funtool';
+
+isBuffer(Buffer.from('test')); // ✅ true
+isBuffer('test'); // ❌ false
+```
+
+## Signature
+```ts
+function isBuffer(v: any): boolean
+```
+
+## Parameters
+- `v` (`any`): The value to test if it is a Buffer.
+
+## Returns
+
+- (`boolean`): Returns `true` if the value is a Buffer, otherwise returns `false`.

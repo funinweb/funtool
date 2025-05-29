@@ -1,0 +1,36 @@
+---
+title: trimStart
+描述: 移除 `str` 左端的空白字符。
+---
+
+# `trimStart`
+
+移除 `str` 左端的空白字符。
+
+## 使用场景
+
+- **数据清理**：在数据处理中，通过移除字符串开头的空白字符来清理数据。
+- **输入验证**：通过移除不必要的空白字符来验证用户输入。
+
+## 示例
+
+```ts
+import { trimStart } from 'funtool/string'
+
+trimStart('  hello') // => 'hello' ✅
+trimStart(123) // => '123' ✅
+```
+
+## 函数签名
+
+```ts
+function trimStart(str: string): string
+```
+
+## 参数
+
+- `str` ( `string` ): 输入字符串。
+
+## 返回值
+
+- ( `string` ): 一个新的移除了开头空白字符的字符串。

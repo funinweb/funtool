@@ -1,25 +1,40 @@
 ---
 title: toKebabCase
-description: Documentation for `toKebabCase` string utility.
+description: Converts the `str` to kebab-case, where words are separated by hyphens and all letters are lowercase.
 ---
 
 # `toKebabCase`
 
-Documentation for `toKebabCase` string utility.
+Converts the `str` to kebab-case, where words are separated by hyphens and all letters are lowercase.
+
+## Usage Scenarios
+
+- **File Naming**: In programming, convert strings to kebab-case for file names.
+- **Data Standardization**: Standardize string formats in data processing.
 
 ## Example
 
 ```ts
 import { toKebabCase } from 'funtool/string'
 
-toKebabCase('example input')
-// => ...
+toKebabCase('helloWorld'); // ✅ 'hello-world'
+toKebabCase('HelloWorld'); // ✅ 'hello-world'
+toKebabCase('myXMLParser'); // ✅ 'my-xml-parser'
+toKebabCase('MyXMLParser'); // ✅ 'my-xml-parser'
+toKebabCase('hello_world'); // ✅ 'hello-world'
+toKebabCase('userID_token'); // ✅ 'user-id-token'
+```
+
+## Signature
+
+```ts
+function toKebabCase(str: string): string
 ```
 
 ## Parameters
 
-- Depends on the function.
+- `str` ( `string` ): The input string.
 
 ## Returns
 
-- Depends on the function.
+- ( `string` ): A new string in kebab-case format.

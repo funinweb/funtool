@@ -1,25 +1,39 @@
 ---
 title: toSnakeCase
-description: Documentation for `toSnakeCase` string utility.
+description: Converts the `str` to snake_case, where words are separated by underscores and all letters are lowercase.
 ---
 
 # `toSnakeCase`
 
-Documentation for `toSnakeCase` string utility.
+Converts the `str` to snake_case, where words are separated by underscores and all letters are lowercase.
+
+## Usage Scenarios
+
+- **Variable Naming**: In programming, convert strings to snake_case for variable names.
+- **Data Standardization**: Standardize string formats in data processing.
 
 ## Example
 
 ```ts
 import { toSnakeCase } from 'funtool/string'
 
-toSnakeCase('example input')
-// => ...
+toSnakeCase('helloWorld'); // ✅ 'hello_world'
+toSnakeCase('HelloWorld'); // ✅ 'hello_world'
+toSnakeCase('hello-world'); // ✅ 'hello_world'
+toSnakeCase('APIVersion');  // ✅ 'api_version'
+toSnakeCase('MyXMLParser'); // ✅ 'my_xml_parser
+```
+
+## Signature
+
+```ts
+function toSnakeCase(str: string): string
 ```
 
 ## Parameters
 
-- Depends on the function.
+- `str` ( `string` ): The input string.
 
 ## Returns
 
-- Depends on the function.
+- ( `string` ): A new string in snake_case format.

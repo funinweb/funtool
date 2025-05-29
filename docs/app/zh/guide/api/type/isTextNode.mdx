@@ -1,0 +1,35 @@
+---
+title: isTextNode
+描述: 检查该值是否为文本节点。
+---
+
+# `isTextNode`
+
+检查 `value` 是否为文本节点。
+
+## 使用场景
+
+- 文本操作：当你需要处理 DOM 中的文本内容时，你可以使用 `isTextNode` 来识别文本节点，然后再执行更新文本内容等操作。
+- 遍历 DOM：在进行 DOM 遍历时，你可以使用此方法过滤出文本节点进行特定处理。
+
+## 示例
+
+```ts
+import { isTextNode } from 'funtool';
+
+isTextNode(document.createTextNode('Hello')); // ✅ true
+```
+
+## 函数签名
+
+```ts
+function isTextNode<T = unknown>(value: T): value is T & Text
+```
+
+## 参数
+
+- `value` (`T`): 需要检查的值。
+
+## 返回值
+
+- (`value is T & Text`): 如果该值是文本节点，则返回 `true`。

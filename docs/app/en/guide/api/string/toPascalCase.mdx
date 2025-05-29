@@ -1,25 +1,37 @@
 ---
 title: toPascalCase
-description: Documentation for `toPascalCase` string utility.
+description: Converts the `str` to PascalCase, where the first letter of each word is capitalized.
 ---
 
 # `toPascalCase`
 
-Documentation for `toPascalCase` string utility.
+Converts the `str` to PascalCase, where the first letter of each word is capitalized.
+
+## Usage Scenarios
+
+- **Class Naming**: In programming, convert strings to PascalCase for class names.
+- **Data Standardization**: Standardize string formats in data processing.
 
 ## Example
 
 ```ts
 import { toPascalCase } from 'funtool/string'
 
-toPascalCase('example input')
-// => ...
+toPascalCase('hello_world'); // ✅ 'HelloWorld'
+toPascalCase('api_version'); // ✅ 'ApiVersion'
+toPascalCase('API_version'); // ✅ 'APIVersion'
+```
+
+## Signature
+
+```ts
+function toPascalCase(str: string): string
 ```
 
 ## Parameters
 
-- Depends on the function.
+- `str` ( `string` ): The input string.
 
 ## Returns
 
-- Depends on the function.
+- ( `string` ): A new string in PascalCase format.

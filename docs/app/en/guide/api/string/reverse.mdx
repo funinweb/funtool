@@ -1,25 +1,35 @@
 ---
 title: reverse
-description: Documentation for `reverse` string utility.
+description: Reverses the order of characters in the `str`.
 ---
 
 # `reverse`
 
-Documentation for `reverse` string utility.
+Reverses the order of characters in the `str`.
+
+## Usage Scenarios
+
+- **Text Transformation**: In text processing, reverse the order of a string for various purposes.
+- **Data Encryption**: As a simple form of data encryption or obfuscation.
 
 ## Example
 
 ```ts
-import { reverse } from 'funtool/string'
+import { reverse } from 'funtool'
 
-reverse('example input')
-// => ...
+reverse('hello'); // 'olleh'
+```
+
+## Signature
+
+```ts
+function reverse(str: string): string
 ```
 
 ## Parameters
 
-- Depends on the function.
+- `str` ( `string` ): The input string.
 
 ## Returns
 
-- Depends on the function.
+- ( `string` ): A new string with the characters in reverse order.

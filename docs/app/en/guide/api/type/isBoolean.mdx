@@ -1,0 +1,35 @@
+---
+title: isBoolean
+description: Check if the given value is a boolean.
+---
+
+# `isBoolean`
+
+Check if the given `value` is a `boolean`.
+
+## Usage Scenarios
+
+- Data Validation: When processing user input or data from an API, you need to ensure that a certain value is a boolean before making logical decisions.
+- Function Parameter Validation: In a function, when a boolean is expected as a parameter, you can use the `isBoolean` method to verify the parameter type, avoiding errors caused by passing non - boolean values.
+- Conditional Judgment: Execute different logic based on whether a value is a boolean.
+
+## Examples
+
+```ts
+import { isBoolean } from 'funtool';
+
+isBoolean(true); // ✅ true
+isBoolean('true'); // ❌ false
+```
+
+## Signature
+```ts
+function isBoolean(v: any): v is boolean
+```
+
+## Parameters
+- `v` (`any`): The value to test if it is a boolean.
+
+## Returns
+
+- (`v is boolean`): Returns `true` if the value is a boolean, otherwise returns `false`.

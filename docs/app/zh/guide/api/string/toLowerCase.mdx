@@ -1,0 +1,36 @@
+---
+title: toLowerCase
+描述: 将 `str` 中的所有字符转换为小写。
+---
+
+# `toLowerCase`
+
+将 `str` 中的所有字符转换为小写。
+
+## 使用场景
+
+- **文本标准化**：在文本处理中，标准化字符串的大小写以便进行比较。
+- **数据清理**：通过将所有字符串转换为小写来清理数据。
+
+## 示例
+
+```ts
+import { toLowerCase } from 'funtool/string'
+
+toLowerCase('HELLO') // => 'hello' ✅
+toLowerCase(123) // => '123' ✅
+```
+
+## 函数签名
+
+```ts
+function toLowerCase(str: string): string
+```
+
+## 参数
+
+- `str` ( `string` ): 输入的字符串。
+
+## 返回值
+
+- ( `string` ): 一个新的所有字符均为小写的字符串。

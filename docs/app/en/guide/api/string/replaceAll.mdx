@@ -1,25 +1,36 @@
 ---
 title: replaceAll
-description: Documentation for `replaceAll` string utility.
+description: Replaces all occurrences of the `searchValue` in the `str` with the `replaceValue`.
 ---
 
 # `replaceAll`
 
-Documentation for `replaceAll` string utility.
+Replaces all occurrences of the `searchValue` in the `str` with the `replaceValue`.
+
+## Usage Scenarios
+
+- **Text Replacement**: In text editors, replace all instances of a word or phrase.
+- **Data Cleaning**: Clean data by replacing specific characters or substrings.
 
 ## Example
 
 ```ts
-import { replaceAll } from 'funtool/string'
+import { replaceAll } from 'funtool'
 
-replaceAll('example input')
-// => ...
+replaceAll('hello world', 'world', 'everyone'); // 'hello everyone'
 ```
 
+## Signature
+
+```ts
+function replaceAll(str: string, target: string, replacement: string): string
+```
 ## Parameters
 
-- Depends on the function.
+- `str` ( `string` ): The input string.
+- `searchValue` ( `string` ): The substring to replace.
+- `replaceValue` ( `string` ): The string to replace with.
 
 ## Returns
 
-- Depends on the function.
+- ( `string` ): A new string with all occurrences of the search value replaced.

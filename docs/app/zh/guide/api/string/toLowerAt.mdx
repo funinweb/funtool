@@ -1,0 +1,37 @@
+---
+title: toLowerAt
+描述: 将 `input` 字符串中指定 `index` 位置的字符转换为小写。
+---
+
+# `toLowerAt`
+
+将 `input` 字符串中指定 `index` 位置的字符转换为小写。
+
+## 使用场景
+
+- **文本校正**：在文本编辑中，校正特定字符的大小写。
+- **数据标准化**：标准化字符串中字符的大小写。
+
+## 示例
+
+```ts
+import { toLowerAt } from 'funtool/string'
+
+toLowerAt('Hello', 0) // ✅ 'hello'
+toLowerAt('Foo-Bar', 'B') // ✅ 'Foo-bar'
+```
+
+## 函数签名
+
+```ts
+function toLowerAt(input: string, target: string | number): string
+```
+
+## 参数
+
+- `input` ( `string` ): 输入的字符串。
+- `target` ( `string | number` ): 要转换为小写的字符的索引。
+
+## 返回值
+
+- ( `string` ): 一个新的字符串，其中指定索引位置的字符已转换为小写。

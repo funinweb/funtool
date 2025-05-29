@@ -1,0 +1,42 @@
+# 快速开始
+
+import { PackageManagerTabs } from '@theme';
+
+本节将帮助您在几分钟内快速上手 `funtool`。
+
+## 📦 安装
+
+使用您喜欢的包管理器安装 `funtool`：
+
+<PackageManagerTabs command="install funtool" />
+
+## ✨ 基础用法
+
+### 类型检查
+```ts
+import { isString } from 'funtool/type';
+import { isNumber } from 'funtool';
+
+console.log(isNumber(1)); // ✅ true
+console.log(isString('hello')); // ✅ true
+```
+
+### 正则工具
+```ts
+import { regex } from 'funtool';
+
+const mobile = "13800138000";
+console.log(
+  regex.checker(mobile).use('mobile').isValid()
+); // ✅ true
+```
+
+### 字符串操作
+```ts
+import { words } from 'funtool';
+
+const str = "helloWorld";
+console.log(
+  words('helloWorld')
+); // ✅ ['hello', 'World']
+```

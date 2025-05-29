@@ -1,25 +1,37 @@
 ---
 title: removeBefore
-description: Documentation for `removeBefore` string utility.
+description: Removes the part of the `input` string before the specified `target`.
 ---
 
 # `removeBefore`
 
-Documentation for `removeBefore` string utility.
+Removes the part of the `input` string before the specified `target`.
+
+## Usage Scenarios
+
+- **Text Cleaning**: In text processing, remove unnecessary content before a specific position or keyword.
+- **Data Extraction**: Extract a part of the string after a certain point.
 
 ## Example
 
 ```ts
 import { removeBefore } from 'funtool/string'
 
-removeBefore('example input')
-// => ...
+removeBefore('foo-bar', '-') // ✅ 'bar'
+removeBefore('hello', 3) // ✅ 'lo'
+```
+
+## Signature
+
+```ts
+function removeBefore(input: string, target: string | number): string
 ```
 
 ## Parameters
 
-- Depends on the function.
+- `input` ( `string` ): The input string.
+- `target` ( `string | number` ): The index or substring before which to remove the content.
 
 ## Returns
 
-- Depends on the function.
+- ( `string` ): A new string with the content before the target removed.

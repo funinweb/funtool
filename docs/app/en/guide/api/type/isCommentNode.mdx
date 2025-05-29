@@ -1,0 +1,35 @@
+---
+title: isCommentNode
+description: Checks if the value is a Comment node.
+---
+
+# `isCommentNode`
+
+Checks if the `value` is a Comment node.
+
+## Usage Scenarios
+
+- DOM Inspection: When debugging or analyzing the DOM structure, you can use `isCommentNode` to identify comment nodes.
+- DOM Manipulation: You can use this method to selectively remove or modify comment nodes.
+
+## Examples
+
+```ts
+import { isCommentNode } from 'funtool';
+
+isCommentNode(document.createComment('test')); // ✅ true
+```
+
+## Signature
+
+```ts
+function isCommentNode<T = unknown>(value: T): value is T & Comment
+```
+
+## Parameters
+
+- `value` (`T`): The value to check.
+
+## Returns
+
+- (`value is T & Comment`): Returns `true` if the value is a Comment node.

@@ -1,0 +1,35 @@
+---
+title: isDocumentFragment
+description: Checks if the value is a DocumentFragment.
+---
+
+# `isDocumentFragment`
+
+Checks if the `value` is a DocumentFragment.
+
+## Usage Scenarios
+
+- Performance Optimization: When you need to perform multiple DOM operations, you can use a DocumentFragment to batch these operations and improve performance. `isDocumentFragment` can help you verify the type.
+- DOM Manipulation: You can use this method to handle DocumentFragment nodes specifically.
+
+## Examples
+
+```ts
+import { isDocumentFragment } from 'funtool';
+
+isDocumentFragment(document.createDocumentFragment()); // ✅ true
+```
+
+## Signature
+
+```ts
+function isDocumentFragment<T = unknown>(value: T): value is T & DocumentFragment
+```
+
+## Parameters
+
+- `value` (`T`): The value to check.
+
+## Returns
+
+- (`value is T & DocumentFragment`): Returns `true` if the value is a DocumentFragment.

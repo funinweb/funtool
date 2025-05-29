@@ -7,11 +7,11 @@ hero:
   tagline: Modular,type-safe and efficiency
   actions:
     - theme: brand
-      text: Quick Start
-      link: /guide/
+      text: Introduction
+      link: /guide/start/introduction
     - theme: alt
-      text: GitHub
-      link: https://github.com/funinweb/funtool
+      text: Quick Start
+      link: /guide/start/getting-started
 features:
   - title: Boost Productivity
     details: Standardizes common logic to avoid reinventing the wheel, letting developers focus on core business logic.

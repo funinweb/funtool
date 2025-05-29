@@ -1,25 +1,36 @@
 ---
 title: removeAt
-description: Documentation for `removeAt` string utility.
+description: Removes the character at the specified `index` in the `input` string.
 ---
 
 # `removeAt`
 
-Documentation for `removeAt` string utility.
+Removes the character at the specified `index` in the `input` string.
+
+## Usage Scenarios
+
+- **Text Correction**: In text editing, remove a typo or unwanted character.
+- **Data Manipulation**: Modify a string by removing a specific character.
 
 ## Example
 
 ```ts
 import { removeAt } from 'funtool/string'
 
-removeAt('example input')
-// => ...
+removeAt('hello', 1) // ✅ 'hllo'
+removeAt('abc-def', '-') // ✅ 'abcdef'
 ```
 
+## Signature
+
+```ts
+function removeAt(input: string, target: string | number): string
+```
 ## Parameters
 
-- Depends on the function.
+- `input` ( `string` ): The input string.
+- `target` ( `string | number` ): The index of the character to remove.
 
 ## Returns
 
-- Depends on the function.
+- ( `string` ): A new string with the character at the specified index removed.

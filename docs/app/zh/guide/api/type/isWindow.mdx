@@ -1,0 +1,33 @@
+---
+title: isWindow
+描述: 检查该值是否为全局窗口对象。
+---
+
+# `isWindow`
+
+检查 `value` 是否为全局窗口对象。
+
+## 使用场景
+
+- 浏览器特定操作：在执行浏览器特定操作时，你可以使用 `isWindow` 来验证你正在操作的是全局窗口对象。
+- 事件处理：你可以使用此方法向窗口对象附加或移除事件监听器。
+
+## 示例
+
+```ts
+import { isWindow } from 'funtool';
+
+isWindow(window); // ✅ true
+```
+
+## 函数签名
+```ts
+function isWindow<T = unknown>(value: T): value is T & Window
+```
+
+## 参数
+- `value` (`T`): 需要检查的值。
+
+## 返回值
+
+- (`value is T & Window`): 如果该值是全局窗口对象，则返回 `true`。

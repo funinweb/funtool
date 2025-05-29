@@ -1,0 +1,36 @@
+---
+title: isNode
+描述: 检查该值是否为通用 DOM 节点。
+---
+
+# `isNode`
+
+检查 `value` 是否为通用 DOM 节点。
+
+## 使用场景
+
+- DOM 遍历：在进行 DOM 遍历时，你可以使用 `isNode` 来识别所有类型的 DOM 节点。
+- DOM 操作：你可以使用此方法执行所有 DOM 节点通用的操作。
+
+## 示例
+
+```ts
+import { isNode } from 'funtool';
+
+isNode(document.createTextNode('Hi')); // ✅ true
+isNode(document.createElement('div')); // ✅ true
+```
+
+## 函数签名
+
+```ts
+function isNode<T = unknown>(value: T): value is T & Node
+```
+
+## 参数
+
+- `value` (`T`): 需要检查的值。
+
+## 返回值
+
+- (`value is T & Node`): 如果该值是通用 DOM 节点，则返回 `true`。

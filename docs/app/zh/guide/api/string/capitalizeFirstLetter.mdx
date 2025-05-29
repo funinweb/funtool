@@ -1,0 +1,37 @@
+---
+title: capitalizeFirstLetter
+描述: 将字符串的首字母大写。
+---
+
+# `capitalizeFirstLetter`
+
+将输入字符串的首字母大写。
+
+## 使用场景
+
+- **数据展示**：在展示用户输入的姓名、标题或其他信息时，确保首字母大写，以增强信息的规范性和美观性。
+- **输出格式化**：在生成文档、报告或其他内容时，对特定字符串进行格式化。
+
+## 示例
+
+```typescript
+import { capitalizeFirstLetter } from 'funtool';
+//import { capitalizeFirstLetter } from 'funtool/string';
+
+capitalizeFirstLetter('hello'); // ✅ 'Hello'
+capitalizeFirstLetter(''); // ✅ ''
+```
+
+## 函数签名
+
+```typescript
+function capitalizeFirstLetter(str: string): string
+```
+
+## 参数
+
+- `str` ( `string` )：输入字符串。
+
+## 返回值
+
+- ( `string` )：首字母大写后的字符串。如果输入为空字符串，则返回空字符串。

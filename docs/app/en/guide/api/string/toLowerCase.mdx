@@ -1,25 +1,36 @@
 ---
 title: toLowerCase
-description: Documentation for `toLowerCase` string utility.
+description: Converts all characters in the `str` to lowercase.
 ---
 
 # `toLowerCase`
 
-Documentation for `toLowerCase` string utility.
+Converts all characters in the `str` to lowercase.
+
+## Usage Scenarios
+
+- **Text Normalization**: In text processing, standardize the case of strings for comparison.
+- **Data Cleaning**: Clean data by converting all strings to lowercase.
 
 ## Example
 
 ```ts
 import { toLowerCase } from 'funtool/string'
 
-toLowerCase('example input')
-// => ...
+toLowerCase('HELLO') // => 'hello' ✅
+toLowerCase(123) // => '123' ✅
+```
+
+## Signature
+
+```ts
+function toLowerCase(str: string): string
 ```
 
 ## Parameters
 
-- Depends on the function.
+- `str` ( `string` ): The input string.
 
 ## Returns
 
-- Depends on the function.
+- ( `string` ): A new string with all characters in lowercase.

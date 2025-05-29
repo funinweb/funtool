@@ -1,0 +1,35 @@
+---
+title: isDocumentFragment
+描述: 检查该值是否为文档片段。
+---
+
+# `isDocumentFragment`
+
+检查 `value` 是否为文档片段。
+
+## 使用场景
+
+- 性能优化：当你需要执行多个 DOM 操作时，你可以使用文档片段来批量处理这些操作并提高性能。`isDocumentFragment` 可以帮助你验证类型。
+- DOM 操作：你可以使用此方法专门处理文档片段节点。
+
+## 示例
+
+```ts
+import { isDocumentFragment } from 'funtool';
+
+isDocumentFragment(document.createDocumentFragment()); // ✅ true
+```
+
+## 函数签名
+
+```ts
+function isDocumentFragment<T = unknown>(value: T): value is T & DocumentFragment
+```
+
+## 参数
+
+- `value` (`T`): 需要检查的值。
+
+## 返回值
+
+- (`value is T & DocumentFragment`): 如果该值是文档片段，则返回 `true`。

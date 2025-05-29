@@ -1,25 +1,36 @@
 ---
 title: count
-description: Documentation for `count` string utility.
+description: Counts the number of occurrences of a substring in a string.
 ---
 
 # `count`
 
-Documentation for `count` string utility.
+Counts the number of occurrences of a substring in a string.
+
+## Usage Scenarios
+
+- **Data Analysis**: When analyzing text data, count the frequency of specific keywords.
+- **Text Processing**: In text editors or search engines, count the number of occurrences of a search term.
 
 ## Example
 
 ```ts
 import { count } from 'funtool/string'
 
-count('example input')
-// => ...
+count('hello world, hello again', 'hello'); // ✅ 2
+count('abc', 'x'); // ❌ 0
 ```
 
+## Signature
+
+```typescript
+function count(str: string, substr: string): number
+```
 ## Parameters
 
-- Depends on the function.
+- `str` ( `string` ): The input string.
+- `substr` ( `string` ): The substring to count.
 
 ## Returns
 
-- Depends on the function.
+- ( `number` ): The number of times the substring appears in the string.

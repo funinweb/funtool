@@ -1,0 +1,37 @@
+---
+title: repeat
+描述: 将 `str` 重复指定的 `count` 次数。
+---
+
+# `repeat`
+
+将 `str` 重复指定的 `count` 次数。
+
+## 使用场景
+
+- **文本生成**：生成重复的文本，如分隔线或图案。
+- **数据测试**：创建包含重复字符串的测试数据。
+
+## 示例
+
+```ts
+import { repeat } from 'funtool/string'
+
+repeat('hi', 3); // ✅ 'hihihi'
+repeat('hi', 0); // ✅ ''
+```
+
+## 函数签名
+
+```ts
+function repeat(str: string, count: number): string
+
+```
+## 参数
+
+- `str` ( `string` ): 输入的字符串。
+- `count` ( `number` ): 字符串重复的次数。
+
+## 返回值
+
+- ( `string` ): 重复后的字符串。
