@@ -1,11 +1,11 @@
 import { definePlugin } from '../definePlugin';
 
-const emailRegex = /^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,}$/;
+const emailRegex = /\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/i;
 
 const email = definePlugin({
   name: 'email',
   pattern: emailRegex,
-  validate: (input: string) => emailRegex.test(input),
+  validate: (ctx) => ctx.pattern.test(ctx.input),
 })
 
 export default email;

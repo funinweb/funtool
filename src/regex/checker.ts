@@ -35,15 +35,14 @@ export class Checker {
    * @returns The Checker instance for method chaining.
    * @throws Will throw an error if the rule name is not registered.
    */
-  use(rule: RuleName | RegExp): this {
-    console.log(store.get(rule as RuleName)); // 看是否有值
+  use(rule: RuleName | RegExp | (string & {})): this {
     let passed = false;
     if (rule instanceof RegExp) {
       passed = rule.test(this.input);
     } else {
       const plugin = store.get(rule);
       if (!plugin) throw new Error(`Unknown rule: '${rule}'`);
-      passed = plugin.validate(this.input);
+      passed = plugin.validate({input:this.input,name:plugin.name, pattern: plugin.pattern});
     }
     this.result = this.isNegated ? !passed : passed;
     this.isNegated = false;
