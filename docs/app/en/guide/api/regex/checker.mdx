@@ -1,0 +1,51 @@
+---
+title: Checker
+description: Validates strings against regex patterns or registered rules with method chaining support.
+---
+
+# `Checker`
+
+Validates strings against regex patterns or registered rules with method chaining support.
+
+## Usage Scenarios
+
+- **Form Validation**: Validate user input in forms against specific patterns
+- **Data Sanitization**: Ensure data meets expected formats before processing
+- **Conditional Logic**: Chain multiple validation rules with `.not()` negation
+
+## Examples
+
+```ts
+import { regex } from 'funtool';
+
+// Basic validation
+const isValidEmail = regex.checker('test@example.com').use(/^\S+@\S+\.\S+$/).isValid();
+
+// Using registered rules
+const isValidPassword = regex.checker('test@example.com').use('email').isValid();
+```
+
+## Signature
+
+```ts
+class Checker {
+  constructor(input: string);
+  use(rule: RuleName | RegExp): this;
+  not(): this;
+  isValid(): boolean;
+}
+```
+
+## Methods
+
+### `use(rule: RuleName | RegExp): this`
+- `rule`: Registered rule name or RegExp pattern
+- Returns: Checker instance for chaining
+- Throws: Error if rule name is not registered
+
+### `not(): this`
+- Returns: Checker instance with next validation negated
+
+### `isValid(): boolean`
+
+- Returns: `true` if validation passed, `false` otherwise

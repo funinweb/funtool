@@ -1,0 +1,60 @@
+---
+title: definePlugin
+description: 定义并注册自定义正则表达式插件规则，验证保留名称。
+---
+
+# `definePlugin`
+
+定义并注册自定义正则表达式插件规则，验证保留名称。
+
+## 使用场景
+
+- **自定义验证规则**：为常见验证需求创建可重用的正则表达式模式
+- **模式共享**：注册一次模式并在应用中复用
+- **规则管理**：通过名称访问集中管理正则表达式模式定义
+
+## 示例
+
+```ts
+import { regex } from 'funtool';
+
+// 定义自定义邮箱验证插件
+const emailPlugin = regex.definePlugin({
+  name: 'email',
+  pattern: /^\S+@\S+\.\S+$/,
+  validate: (ctx) => ctx.pattern.test(ctx.input)
+});
+
+// 使用注册的插件
+const isValid = regex.checker('test@example.com').use('email').isValid();
+```
+
+## 签名
+
+```ts
+type RegexValidateContext<T extends string> = {
+  name: T;
+  pattern: RegExp;
+  input: string;
+}
+interface DefineRegexPlugin<T extends string> {
+  name: T;
+  pattern: RegExp;
+  validate: (ctx: RegexValidateContext<T>) => boolean;
+}
+definePlugin<RuleName extends string>(plugin: DefineRegexPlugin<RuleName>):DefineRegexPlugin<RuleName>
+```
+
+## 参数
+
+### `plugin: DefineRegexPlugin<RuleName>`
+
+- 包含以下属性的对象：
+  - `name` (`string`): 插件的唯一标识符(不能是保留名称)
+  - `pattern (`RegExp`)`: 要注册的正则表达式模式
+  - `validate` (`(ctx:RegexValidateContext<T>) => boolean`): 验证函数
+- 返回：注册的插件
+
+## 返回值
+
+返回注册的插件对象用于链式调用或直接使用。

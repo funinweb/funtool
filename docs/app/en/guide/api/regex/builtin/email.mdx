@@ -1,0 +1,45 @@
+---
+title: email
+description: Built-in regex plugin for validating email addresses.
+---
+
+# `email`
+
+Built-in regex plugin for validating email addresses.
+
+## Usage Scenarios
+
+- **Form Validation**: Validate email input fields
+- **Data Sanitization**: Ensure email addresses are properly formatted
+- **User Registration**: Verify email format during signup
+
+## Examples
+
+```ts
+import { regex } from 'funtool';
+
+// Basic validation
+const isValid = regex.checker('test@example.com').use('email').isValid();
+
+// With error message
+const result = regex.checker('invalid').use('email');
+if (!result.isValid()) {
+  console.log('Invalid email format');
+}
+```
+
+## Pattern
+
+```ts
+/^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,}$/
+```
+
+## Validation Rules
+
+- Must contain exactly one @ symbol
+- Must have a valid domain part with at least 2 characters
+- Allows letters, numbers, dots, underscores and hyphens
+
+## Error Message
+
+Returns `false` for invalid emails without a specific message.

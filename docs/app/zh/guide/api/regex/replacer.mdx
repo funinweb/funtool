@@ -1,0 +1,68 @@
+---
+title: Replacer
+description: 通过方法链支持执行基于正则表达式的字符串替换。
+---
+
+# `Replacer`
+
+通过方法链支持执行基于正则表达式的字符串替换。
+
+## 使用场景
+
+- **文本转换**：基于模式修改字符串
+- **数据脱敏**：用占位符替换敏感信息
+- **模板处理**：动态替换模板中的占位符
+
+## 示例
+
+```ts
+import { regex } from 'funtool';
+
+// 基础替换
+const masked = regex.replacer('信用卡: 1234-5678-9012-3456')
+  .use(/\d{4}-\d{4}-\d{4}-\d{4}/)
+  .with('****-****-****-****')
+  .result();
+// masked => '信用卡: ****-****-****-****'
+
+// 使用注册规则
+const formatted = regex.replacer('20230523')
+  .use('dateRule')
+  .with((match) => `${match.slice(0,4)}/${match.slice(4,6)}/${match.slice(6)}`)
+  .result();
+// formatted => '2023/05/23'
+
+// 链式替换
+const clean = regex.replacer('移除   多余   空格')
+  .use(/\s+/g)
+  .with(' ')
+  .result();
+// clean => '移除 多余 空格'
+```
+
+## 签名
+
+```ts
+class Replacer {
+  constructor(input: string);
+  use(rule: RuleName | RegExp): this;
+  with(replacer: string | ((match: string) => string)): this;
+  result(): string;
+}
+```
+
+## 方法
+
+### `use(rule: RuleName | RegExp): this`
+- `rule`：已注册规则名称或正则表达式模式
+- 返回：用于链式调用的Replacer实例
+- 抛出：如果规则名称未注册则抛出错误
+
+### `with(replacer: string | ((match: string) => string)): this`
+- `replacer`：替换字符串或转换函数
+- 返回：用于链式调用的Replacer实例
+- 抛出：如果未定义模式则抛出错误
+
+### `result(): string`
+
+- 返回：所有替换后的转换字符串

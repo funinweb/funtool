@@ -42,5 +42,21 @@
   "regularUtilities":{
     "en":"Regular Expression",
     "zh":"正则表达式"
+  },
+  "regexBuiltin":{
+    "en":"Built-in Regular Rules",
+    "zh":"内置正则规则"
+  },
+  "regexChecker":{
+    "en":"Checker",
+    "zh":"校验工具"
+  },
+  "regexReplacer":{
+    "en":"Replacer",
+    "zh":"替换工具"
+  },
+  "regexDefinePlugin":{
+    "en":"definePlugin",
+    "zh":"定义正则规则插件"
   }
 }

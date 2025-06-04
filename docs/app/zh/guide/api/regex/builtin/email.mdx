@@ -1,0 +1,45 @@
+---
+title: email
+description: 内置正则表达式插件，用于验证电子邮件地址。
+---
+
+# `email`
+
+内置正则表达式插件，用于验证电子邮件地址。
+
+## 使用场景
+
+- **表单验证**：验证电子邮件输入字段
+- **数据清理**：确保电子邮件地址格式正确
+- **用户注册**：在注册过程中验证电子邮件格式
+
+## 示例
+
+```ts
+import { regex } from 'funtool';
+
+// 基本验证
+const isValid = regex.checker('test@example.com').use('email').isValid();
+
+// 带错误信息
+const result = regex.checker('invalid').use('email');
+if (!result.isValid()) {
+  console.log('无效的电子邮件格式');
+}
+```
+
+## 正则规则
+
+```ts
+/^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,}$/
+```
+
+## 验证规则
+
+- 必须包含一个@符号
+- 必须有一个至少2个字符的有效域名部分
+- 允许字母、数字、点、下划线和连字符
+
+## 错误信息
+
+对于无效的电子邮件返回`false`，没有特定错误信息。

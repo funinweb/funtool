@@ -1,0 +1,51 @@
+---
+title: Checker
+description: 通过方法链支持验证字符串是否符合正则表达式模式或注册规则。
+---
+
+# `Checker`
+
+通过方法链支持验证字符串是否符合正则表达式模式或注册规则。
+
+## 使用场景
+
+- **表单验证**：验证表单输入是否符合特定模式
+- **数据清理**：确保数据处理前符合预期格式
+- **条件逻辑**：通过`.not()`否定链式验证多个规则
+
+## 示例
+
+```ts
+import { regex } from 'funtool';
+
+// 基础验证
+const isValidEmail = regex.checker('test@example.com').use(/^\S+@\S+\.\S+$/).isValid();
+
+// 使用注册规则
+const isValidPassword = regex.checker('test@example.com').use('email').isValid();
+```
+
+## 签名
+
+```ts
+class Checker {
+  constructor(input: string);
+  use(rule: RuleName | RegExp): this;
+  not(): this;
+  isValid(): boolean;
+}
+```
+
+## 方法
+
+### `use(rule: RuleName | RegExp): this`
+- `rule`：已注册规则名称或正则表达式模式
+- 返回：用于链式调用的Checker实例
+- 抛出：如果规则名称未注册则抛出错误
+
+### `not(): this`
+- 返回：下一个验证将被否定的Checker实例
+
+### `isValid(): boolean`
+
+- 返回：验证通过返回`true`，否则返回`false`

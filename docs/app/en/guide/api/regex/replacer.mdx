@@ -1,0 +1,68 @@
+---
+title: Replacer
+description: Performs regex-based string replacements with method chaining support.
+---
+
+# `Replacer`
+
+Performs regex-based string replacements with method chaining support.
+
+## Usage Scenarios
+
+- **Text Transformation**: Modify strings based on patterns
+- **Data Masking**: Replace sensitive information with placeholders
+- **Template Processing**: Dynamically replace placeholders in templates
+
+## Examples
+
+```ts
+import { regex } from 'funtool';
+
+// Basic replacement
+const masked = regex.replacer('Credit card: 1234-5678-9012-3456')
+  .use(/\d{4}-\d{4}-\d{4}-\d{4}/)
+  .with('****-****-****-****')
+  .result();
+// masked => 'Credit card: ****-****-****-****'
+
+// Using registered rules
+const formatted = regex.replacer('20230523')
+  .use('dateRule')
+  .with((match) => `${match.slice(0,4)}/${match.slice(4,6)}/${match.slice(6)}`)
+  .result();
+// formatted => '2023/05/23'
+
+// Chained replacements
+const clean = regex.replacer('Remove   extra   spaces')
+  .use(/\s+/g)
+  .with(' ')
+  .result();
+// clean => 'Remove extra spaces'
+```
+
+## Signature
+
+```ts
+class Replacer {
+  constructor(input: string);
+  use(rule: RuleName | RegExp): this;
+  with(replacer: string | ((match: string) => string)): this;
+  result(): string;
+}
+```
+
+## Methods
+
+### `use(rule: RuleName | RegExp): this`
+- `rule`: Registered rule name or RegExp pattern
+- Returns: Replacer instance for chaining
+- Throws: Error if rule name is not registered
+
+### `with(replacer: string | ((match: string) => string)): this`
+- `replacer`: Replacement string or transformation function
+- Returns: Replacer instance for chaining
+- Throws: Error if no pattern defined
+
+### `result(): string`
+
+- Returns: The transformed string after all replacements

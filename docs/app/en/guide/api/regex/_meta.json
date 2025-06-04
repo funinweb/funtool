@@ -1,0 +1,19 @@
+[
+  {
+    "type":"dir",
+    "name":"builtin",
+    "label":"regexBuiltin"
+  },
+  {
+    "name":"checker",
+    "label":"regexChecker"
+  },
+  {
+    "name":"replacer",
+    "label":"regexReplacer"
+  },
+  {
+    "name":"definePlugin",
+    "label":"regexDefinePlugin"
+  }
+]

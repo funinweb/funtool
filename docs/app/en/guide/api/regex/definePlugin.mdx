@@ -1,0 +1,60 @@
+---
+title: definePlugin
+description: Defines and registers custom regex plugin rules with validation against reserved names.
+---
+
+# `definePlugin`
+
+Defines and registers custom regex plugin rules with validation against reserved names.
+
+## Usage Scenarios
+
+- **Custom Validation Rules**: Create reusable regex patterns for common validation needs
+- **Pattern Sharing**: Register patterns once and reuse across the application
+- **Rule Management**: Centralize regex pattern definitions with name-based access
+
+## Examples
+
+```ts
+import { regex } from 'funtool';
+
+// Define a custom email validation plugin
+const emailPlugin = regex.definePlugin({
+  name: 'email',
+  pattern: /^\S+@\S+\.\S+$/,
+  validate: (ctx) => ctx.pattern.test(ctx.input)
+});
+
+// Use the registered plugin
+const isValid = regex.checker('test@example.com').use('email').isValid();
+```
+
+## Signature
+
+```ts
+type RegexValidateContext<T extends string> = {
+  name: T;
+  pattern: RegExp;
+  input: string;
+}
+interface DefineRegexPlugin<T extends string> {
+  name: T;
+  pattern: RegExp;
+  validate: (ctx: RegexValidateContext<T>) => boolean;
+}
+definePlugin<RuleName extends string>(plugin: DefineRegexPlugin<RuleName>):DefineRegexPlugin<RuleName>
+```
+
+## Parameters
+
+### `plugin: DefineRegexPlugin<RuleName>`
+
+- Object containing:
+  - `name` (`string`): Unique identifier for the plugin (cannot be a reserved name)
+  - `pattern (`RegExp`)`: Regex pattern to register.
+  - `validate` (`(ctx:RegexValidateContext<T>) => boolean`): Validation function
+- Returns: The registered plugin
+
+## Return Value
+
+Returns the registered plugin object for chaining or direct use.

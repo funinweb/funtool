@@ -1,0 +1,45 @@
+---
+title: mobile
+description: Built-in regex plugin for validating Chinese mobile numbers.
+---
+
+# `mobile`
+
+Built-in regex plugin for validating Chinese mobile numbers.
+
+## Usage Scenarios
+
+- **Form Validation**: Validate mobile number input fields
+- **User Registration**: Verify phone numbers during signup
+- **SMS Verification**: Ensure valid numbers before sending SMS
+
+## Examples
+
+```ts
+import { regex } from 'funtool';
+
+// Basic validation
+const isValid = regex.checker('13800138000').use('mobile').isValid();
+
+// With error handling
+const result = regex.checker('invalid').use('mobile');
+if (!result.isValid()) {
+  console.log('Invalid mobile number');
+}
+```
+
+## Pattern
+
+```ts
+/^1[3|4|5|6|7|8|9][0-9]{9}$/
+```
+
+## Validation Rules
+
+- Must start with 1
+- Second digit must be 3-9
+- Must contain exactly 11 digits
+
+## Error Message
+
+Returns `false` for invalid numbers without a specific message.
