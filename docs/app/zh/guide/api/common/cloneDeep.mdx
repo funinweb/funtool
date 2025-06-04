@@ -1,0 +1,103 @@
+---
+title: cloneDeep
+description: 深度拷贝对象，支持循环引用和各种JavaScript类型。
+---
+
+# `cloneDeep`
+
+深度拷贝对象。不支持的类型如函数、Symbol、WeakMap、WeakSet会触发警告并返回原值。处理循环引用并支持多种JavaScript类型，包括Date、RegExp、Map、Set和普通对象。
+
+## 使用场景
+
+- **不可变状态更新**：当需要创建复杂状态对象的完全独立副本时。
+- **数据转换**：当处理需要修改而不影响原始值的嵌套数据结构时。
+- **配置管理**：当处理可能需要克隆和修改的深度配置对象时。
+
+## 示例
+
+```ts
+import { cloneDeep } from 'funtool';
+
+// 深度克隆对象
+const original = { name: "Alice", details: { age: 25 } };
+const copy = cloneDeep(original);
+console.log(copy.details.age); // 25
+console.log(copy !== original); // true
+
+// 深度克隆包含嵌套对象的数组
+const arr = [1, { nested: true }, [3]];
+const copy = cloneDeep(arr);
+console.log(copy[1].nested); // true
+
+// 深度克隆Map
+const map = new Map<string, number>([["a", 1], ["b", 2]]);
+const copy = cloneDeep(map);
+console.log(copy.get("b")); // 2
+
+// 深度克隆Set
+const set = new Set([1, 2, 3]);
+const copy = cloneDeep(set);
+console.log(copy.has(2)); // true
+
+// 深度克隆Date
+const date = new Date("2020-01-01");
+const copy = cloneDeep(date);
+console.log(copy.getFullYear()); // 2020
+
+// 深度克隆RegExp
+const regex = /abc/gi;
+const copy = cloneDeep(regex);
+console.log(copy.source); // "abc"
+console.log(copy.flags); // "gi"
+
+// 处理循环引用
+const obj: any = {};
+obj.self = obj;
+const copy = cloneDeep(obj);
+console.log(copy.self === copy); // true
+```
+
+## 签名
+
+```ts
+type CloneDeep<T> =
+  // 保留原始类型和函数不变
+  T extends Primitive | ((...args: any[]) => any)
+    ? T
+    : // 如果是元组，保留精确的索引类型
+    IsTuple<T> extends true
+    ? { [K in keyof T]: CloneDeep<T[K]> }
+    : // 如果是数组(非元组)，深度拷贝元素
+    T extends ReadonlyArray<infer U>
+    ? Array<CloneDeep<U>>
+    : // 深度拷贝Map值
+    T extends Map<infer K, infer V>
+    ? Map<K, CloneDeep<V>>
+    : // 深度拷贝Set值
+    T extends Set<infer U>
+    ? Set<CloneDeep<U>>
+    : // 保留特定的内置对象类型
+    T extends Date
+    ? Date
+    : T extends RegExp
+    ? RegExp
+    : // 深度拷贝普通对象，移除`readonly`并保留Symbol键
+    T extends object
+    ? {
+        -readonly [K in keyof T]: CloneDeep<T[K]>;
+      } & {
+        [K in keyof T as K extends symbol ? K : never]: CloneDeep<T[K]>;
+      }
+    : T;
+    
+function cloneDeep<T>(obj: T, seen: WeakMap<object, any> = new WeakMap()): CloneDeep<T>
+```
+
+## 参数
+
+- `obj` (`T`): 要深度拷贝的对象。
+- `seen` (`WeakMap<object, any>`): 用于跟踪已拷贝引用的WeakMap缓存(可选)。
+
+## 返回值
+
+- (`CloneDeep<T>`): 保留类型的深度拷贝对象。

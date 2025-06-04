@@ -1,0 +1,39 @@
+---
+title: isString
+描述: 检查给定的值是否为字符串。
+---
+
+# `isString`
+
+检查给定的 `value` 是否为 `string`。
+
+## 使用场景
+
+- 输入验证：在处理之前验证字符串输入。
+- 类型检查：在执行字符串操作之前确保值是字符串。
+- 类型收窄：在 TypeScript 中收窄变量类型。
+
+## 示例
+
+```ts
+import { isString } from 'funtool';
+
+isString('hello'); // ✅ true
+isString(123); // ❌ false
+isString(null); // ❌ false
+isString(undefined); // ❌ false
+```
+
+## 函数签名
+
+```ts
+function isString(v: any): v is string
+```
+
+## 参数
+
+- `v` (`any`): 要测试是否为字符串的值。
+
+## 返回值
+
+- (`v is string`): 如果值是字符串，则返回 `true`，否则返回 `false`。

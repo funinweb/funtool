@@ -1,0 +1,38 @@
+---
+title: intersect
+description: Get the intersection of two arrays.
+---
+
+# `intersect`
+
+Get the intersection of two arrays `arr1` and `arr2`, returning a new array containing elements present in both arrays.
+
+## Usage Scenarios
+
+- **Data Comparison**: When you need to find common elements between two datasets.
+- **Filtering Data**: Filtering out unique elements from two arrays to get only the shared ones.
+- **Set Operations**: Performing set - like intersection operations on arrays.
+
+## Examples
+
+```ts
+import { intersect } from 'funtool';
+
+intersect([1, 2, 3], [2, 3, 4]); // ✅ [2, 3]
+intersect(['a', 'b'], ['b', 'c']); // ✅ ['b']
+```
+
+## Signature
+
+```ts
+function intersect<T>(arr1: T[], arr2: T[]): T[]
+```
+
+## Parameters
+
+- `arr1` (`T[]`): The first array.
+- `arr2` (`T[]`): The second array.
+
+## Returns
+
+- (`T[]`): A new array containing elements present in both arrays.

@@ -1,0 +1,37 @@
+---
+title: isNodeJS
+description: 检查当前环境是否为 Node.js。
+---
+
+# `isNodeJS`
+
+检查当前环境是否为 Node.js。
+
+## 使用场景
+
+- 环境检测：确定代码是在 Node.js 还是浏览器中运行。
+- 模块加载：有条件地加载 Node.js 特定模块。
+- 功能检测：启用或禁用 Node.js 特定功能。
+
+## 示例
+
+```ts
+import { isNodeJS } from 'funtool';
+
+isNodeJS(); // ✅ true (在 Node.js 中)
+isNodeJS(); // ❌ false (在浏览器中)
+```
+
+## 函数签名
+
+```ts
+function isNodeJS(): boolean
+```
+
+## 参数
+
+无
+
+## 返回值
+
+- (`boolean`): 如果环境是 Node.js，则返回 `true`，否则返回 `false`。

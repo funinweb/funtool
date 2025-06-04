@@ -1,0 +1,43 @@
+---
+title: isPlainObject
+description: 检查给定的值是否为普通对象。
+---
+
+# `isPlainObject`
+
+检查给定的 `value` 是否为普通对象，即是否由 `Object` 构造函数创建或是否为 `{}` 字面量形式创建。
+
+## 使用场景
+
+- 数据验证：在处理配置对象或 API 响应时，确保数据是普通对象。
+- 深度克隆：只对普通对象进行深度克隆，避免克隆其他类型的对象。
+- 合并对象：只合并普通对象，忽略其他类型的值。
+
+## 示例
+
+```ts
+import { isPlainObject } from 'funtool';
+
+isPlainObject({}); // ✅ true
+isPlainObject(new Object()); // ✅ true
+isPlainObject(Object.create(null)); // ✅ true
+
+isPlainObject([]); // ❌ false
+isPlainObject(new Date()); // ❌ false
+isPlainObject(() => {}); // ❌ false
+isPlainObject(null); // ❌ false
+```
+
+## 函数签名
+
+```ts
+function isPlainObject(v: any): boolean
+```
+
+## 参数
+
+- `v` (`any`): 要测试是否为普通对象的值。
+
+## 返回值
+
+- (`boolean`): 如果值为普通对象，则返回 `true`，否则返回 `false`。

@@ -1,0 +1,59 @@
+---
+title: clone
+description: Creates a shallow clone of the given value.
+---
+
+# `clone`
+
+Creates a shallow clone of the given value. Supports a wide range of built-in JavaScript types including primitives, arrays, Date objects, RegExp objects, Map, Set, TypedArrays, DataView, and plain objects.
+
+## Usage Scenarios
+
+- **Shallow Copying**: When you need a new instance of an object but don't require deep copying of nested properties.
+- **Preserving Prototypes**: When you want to clone an object while maintaining its prototype chain.
+- **Performance Optimization**: When deep copying is unnecessary and shallow copying provides sufficient isolation.
+
+## Examples
+
+```ts
+import { clone } from 'funtool';
+
+// Clone an array
+const arr = [1, 2, 3];
+const clonedArr = clone(arr);
+console.log(clonedArr); // [1, 2, 3]
+console.log(clonedArr === arr); // false
+
+// Clone an object
+const obj = { a: 1, b: { c: 2 } };
+const clonedObj = clone(obj);
+console.log(clonedObj); // { a: 1, b: { c: 2 } }
+console.log(clonedObj === obj); // false
+console.log(clonedObj.b === obj.b); // true (shallow clone)
+
+// Clone a Date
+const date = new Date();
+const clonedDate = clone(date);
+console.log(clonedDate); // Same date as original
+console.log(clonedDate === date); // false
+
+// Clone a Map
+const map = new Map([['key', 'value']]);
+const clonedMap = clone(map);
+console.log(clonedMap.get('key')); // 'value'
+console.log(clonedMap === map); // false
+```
+
+## Signature
+
+```ts
+function clone<T>(value: T): T
+```
+
+## Parameters
+
+- `value` (`T`): The value to be cloned.
+
+## Returns
+
+- (`T`): A shallow copy of the original value.

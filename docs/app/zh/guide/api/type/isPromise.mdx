@@ -1,0 +1,39 @@
+---
+title: isPromise
+描述: 检查给定的值是否为 Promise。
+---
+
+# `isPromise`
+
+检查给定的 `value` 是否为 `Promise`。
+
+## 使用场景
+
+- 异步处理：在使用 `await` 或 `.then()` 之前，验证值是否为 Promise。
+- API 响应处理：在链式操作之前，检查 API 是否返回 Promise。
+- 错误预防：通过检查 Promise 类型避免运行时错误。
+
+## 示例
+
+```ts
+import { isPromise } from 'funtool';
+
+isPromise(Promise.resolve()); // ✅ true
+isPromise(new Promise(() => {})); // ✅ true
+isPromise({}); // ❌ false
+isPromise('promise'); // ❌ false
+```
+
+## 函数签名
+
+```ts
+function isPromise(v: any): boolean
+```
+
+## 参数
+
+- `v` (`any`): 要测试是否为 Promise 的值。
+
+## 返回值
+
+- (`boolean`): 如果值是 Promise，则返回 `true`，否则返回 `false`。

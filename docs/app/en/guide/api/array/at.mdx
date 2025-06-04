@@ -1,0 +1,40 @@
+---
+title: at
+description: Retrieves the element at the specified index in the array. Supports negative indices, which count from the end of the array.
+---
+
+# `at`
+
+Retrieves the element at the specified `index` in the `arr` array. Supports negative indices, which count from the end of the array.
+
+## Usage Scenarios
+
+- **Data Retrieval**: When you need to access a specific element in an array, especially when dealing with negative indices to get elements from the end.
+- **Array Navigation**: In algorithms that require traversing an array from both ends.
+- **Index - Based Operations**: Performing operations based on the position of an element in the array.
+
+## Examples
+
+```ts
+import { at } from 'funtool';
+
+const arr = [1, 2, 3, 4, 5];
+at(arr, 2);  // ✅ Returns 3
+at(arr, -1); // ✅ Returns 5
+at([], 0); // ✅ Returns undefined
+```
+
+## Signature
+
+```ts
+function at<T>(arr: T[], index: number): T | undefined
+```
+
+## Parameters
+
+- `arr` (`T[]`): The input array.
+- `index` (`number`): The index of the element to retrieve. Can be negative.
+
+## Returns
+
+- (`T | undefined`): The element at the specified index, or `undefined` if the index is out of bounds or the array is empty.

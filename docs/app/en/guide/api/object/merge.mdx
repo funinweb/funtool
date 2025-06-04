@@ -1,0 +1,48 @@
+---
+title: merge
+description: Merges two objects into one, with properties from the second object overwriting those from the first.
+---
+
+# `merge`
+
+Merges two objects into one, with properties from the `source` object overwriting those from the `target` object. Supports symbol keys and preserves property descriptors.
+
+## Usage Scenarios
+
+- **Object Composition**: Combine properties from multiple objects into one.
+- **Default Values**: Merge default values with user-provided values.
+- **Immutable Updates**: Create new objects by merging changes with original state.
+
+## Examples
+
+```ts
+import { merge } from 'funtool';
+
+const sym = Symbol('id');
+const a = { name: 'Alice', age: 25 };
+const b = { age: 30, [sym]: 123 };
+const result = merge(a, b);
+// result: { name: 'Alice', age: 30, [sym]: 123 }
+
+// With property descriptors
+const withGetter = {
+  get fullName() { return `${this.first} ${this.last}`; }
+};
+const merged = merge({ first: 'John', last: 'Doe' }, withGetter);
+merged.fullName; // 'John Doe'
+```
+
+## Signature
+
+```ts
+function merge<T extends object, U extends object>(target: T, source: U): T & U
+```
+
+## Parameters
+
+- `target` (`T extends object`): The target object to receive properties.
+- `source` (`U extends object`): The source object to copy properties from.
+
+## Returns
+
+- (`T & U`): A new object with merged properties.

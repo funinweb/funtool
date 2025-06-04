@@ -1,0 +1,38 @@
+---
+title: remove
+description: Remove specified values from an array.
+---
+
+# `remove`
+
+Remove specified `values` from an `arr` array, and return a new array with the specified values removed.
+
+## Usage Scenarios
+
+- **Data Cleaning**: When you need to clean up unnecessary data from an array.
+- **Filtering Results**: Filtering out specific elements from an array based on certain criteria.
+- **Array Manipulation**: Modifying an array by removing specific elements.
+
+## Examples
+
+```ts
+import { remove } from 'funtool';
+
+remove([1, 2, 3], [2]); // ✅ [1, 3]
+remove(['a', 'b', 'c'], ['b', 'c']); // ✅ ['a']
+```
+
+## Signature
+
+```ts
+function remove<T>(arr: T[], values: T[]): T[]
+```
+
+## Parameters
+
+- `arr` (`T[]`): The array to process.
+- `values` (`T[]`): The values to remove.
+
+## Returns
+
+- (`T[]`): A new array with specified values removed.

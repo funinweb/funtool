@@ -1,0 +1,69 @@
+---
+title: includes
+description: 检查值是否存在于集合中(数组、字符串、对象、Map或Set)。
+---
+
+# `includes`
+
+检查值是否存在于集合中。支持数组、字符串、对象、Map和Set，对于数组和字符串可指定起始索引。
+
+## 使用场景
+
+- **集合搜索**：快速检查值是否存在于各种集合类型中。
+- **数据验证**：验证输入数据中是否包含所需的值。
+- **条件逻辑**：根据值的存在与否执行不同的代码路径。
+
+## 示例
+
+```ts
+import { includes } from 'funtool';
+
+// 检查数组
+includes([1, 2, 3], 2); // true
+includes([1, 2, 3], 2, 2); // false (从索引2开始)
+
+// 检查字符串
+includes('hello world', 'world'); // true
+includes('hello world', 'world', 8); // false (从索引8开始)
+
+// 检查对象值
+includes({ a: 1, b: 2 }, 2); // true
+
+// 检查Map键
+includes(new Map([['a', 1], ['b', 2]]), 'b'); // true
+
+// 检查Set值
+includes(new Set([1, 2, 3]), 2); // true
+```
+
+## 签名
+
+```ts
+// 数组版本
+function includes<T>(source: T[], target: T, fromIndex?: number): boolean;
+
+// 字符串版本
+function includes(source: string, target: string, fromIndex?: number): boolean;
+
+// 对象版本
+function includes(source: Record<string, any>, target: any): boolean;
+
+// Map版本
+function includes<K, V>(source: Map<K, V>, target: K): boolean;
+
+// Set版本
+function includes<T>(source: Set<T>, target: T): boolean;
+
+// 通用实现
+function includes(source: any, target: any, fromIndex: number = 0): boolean;
+```
+
+## 参数
+
+- `source` (`T[] | string | Record<string, any> | Map<K, V> | Set<T>`): 要搜索的集合。
+- `target` (`T | string | any | K`): 要搜索的值。
+- `fromIndex` (`number`): 数组/字符串的可选起始索引(默认为0)。
+
+## 返回值
+
+- (`boolean`): 如果找到返回true，否则返回false。

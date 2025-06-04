@@ -1,0 +1,56 @@
+---
+title: cloneWith
+description: 执行浅拷贝并允许通过自定义函数转换克隆值。
+---
+
+# `cloneWith`
+
+执行值的浅拷贝，调用自定义函数来转换克隆值。如果自定义函数返回定义的值，将使用该值而不是默认的克隆逻辑。
+
+## 使用场景
+
+- **自定义转换**：当需要在克隆过程中修改值时。
+- **选择性克隆**：当某些属性在克隆过程中需要特殊处理时。
+- **数据规范化**：当克隆值需要被规范化或转换时。
+
+## 示例
+
+```ts
+import { cloneWith } from 'funtool';
+
+// 在克隆过程中递增数字
+const obj = { a: 1, b: 2 };
+const result = cloneWith(obj, (val) => typeof val === 'number' ? val + 1 : undefined);
+// result => { a: 2, b: 3 }
+
+// 将日期转换为ISO字符串
+const withDate = { created: new Date() };
+const dateClone = cloneWith(withDate, (val) => val instanceof Date ? val.toISOString() : undefined);
+// dateClone => { created: "2023-07-20T12:34:56.789Z" }
+
+// 过滤掉undefined值
+const data = { a: 1, b: undefined, c: 3 };
+const filtered = cloneWith(data, (val) => val !== undefined ? val : undefined);
+// filtered => { a: 1, c: 3 }
+```
+
+## 签名
+
+```ts
+type Customizer<T> = T extends any[]
+  ? (val: T[number], index: number) => T[number] | undefined
+  : T extends object
+  ? (val: T[keyof T], key: keyof T) => T[keyof T] | undefined
+  : never;
+  
+function cloneWith<T>(value: T, customizer: Customizer<T>): T
+```
+
+## 参数
+
+- `value` (`T`): 要克隆的值。
+- `customizer` (`Customizer<T>`): 转换克隆值的函数。
+
+## 返回值
+
+- (`T`): 应用了自定义转换的克隆值。

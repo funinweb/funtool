@@ -1,0 +1,56 @@
+---
+title: mergeDeep
+description: Recursively deep merges two objects, with properties from the second object overwriting those from the first.
+---
+
+# `mergeDeep`
+
+Recursively deep merges two objects, with properties from the `source` object overwriting those from the `target` object. Supports symbol keys and preserves property descriptors. Arrays are merged by index.
+
+## Usage Scenarios
+
+- **Nested Object Merging**: Combine deeply nested objects while preserving their structure.
+- **Configuration Management**: Merge default configurations with user overrides.
+- **State Management**: Combine complex state objects in immutable updates.
+
+## Examples
+
+```ts
+import { mergeDeep } from 'funtool';
+
+const a = { 
+  user: { 
+    name: 'Alice', 
+    hobbies: [{ sport: 'tennis' }] 
+  } 
+};
+const b = { 
+  user: { 
+    age: 30, 
+    hobbies: [{ level: 'pro' }] 
+  } 
+};
+const result = mergeDeep(a, b);
+// result: { 
+//   user: { 
+//     name: 'Alice', 
+//     age: 30, 
+//     hobbies: [{ sport: 'tennis', level: 'pro' }] 
+//   } 
+// }
+```
+
+## Signature
+
+```ts
+function mergeDeep<T extends object, U extends object>(target: T, source: U): T & U
+```
+
+## Parameters
+
+- `target` (`T extends object`): The target object to receive properties.
+- `source` (`U extends object`): The source object to copy properties from.
+
+## Returns
+
+- (`T & U`): A new object with deeply merged properties.

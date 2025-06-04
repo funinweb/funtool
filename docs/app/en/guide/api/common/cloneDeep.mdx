@@ -1,0 +1,103 @@
+---
+title: cloneDeep
+description: Deep copy an object with support for circular references and various JavaScript types.
+---
+
+# `cloneDeep`
+
+Deep copy an object. Unsupported types like functions, symbols, WeakMap, WeakSet will trigger a warning and return original. Handles circular references and supports various JavaScript types including Date, RegExp, Map, Set, and plain objects.
+
+## Usage Scenarios
+
+- **Immutable State Updates**: When you need to create a completely independent copy of a complex state object.
+- **Data Transformation**: When processing nested data structures that need to be modified without affecting the original.
+- **Configuration Management**: When working with deep configuration objects that may need to be cloned and modified.
+
+## Examples
+
+```ts
+import { cloneDeep } from 'funtool';
+
+// Deep clone an object
+const original = { name: "Alice", details: { age: 25 } };
+const copy = cloneDeep(original);
+console.log(copy.details.age); // 25
+console.log(copy !== original); // true
+
+// Deep clone an array with nested objects
+const arr = [1, { nested: true }, [3]];
+const copy = cloneDeep(arr);
+console.log(copy[1].nested); // true
+
+// Deep clone a Map
+const map = new Map<string, number>([["a", 1], ["b", 2]]);
+const copy = cloneDeep(map);
+console.log(copy.get("b")); // 2
+
+// Deep clone a Set
+const set = new Set([1, 2, 3]);
+const copy = cloneDeep(set);
+console.log(copy.has(2)); // true
+
+// Deep clone a Date
+const date = new Date("2020-01-01");
+const copy = cloneDeep(date);
+console.log(copy.getFullYear()); // 2020
+
+// Deep clone a RegExp
+const regex = /abc/gi;
+const copy = cloneDeep(regex);
+console.log(copy.source); // "abc"
+console.log(copy.flags); // "gi"
+
+// Handle circular references
+const obj: any = {};
+obj.self = obj;
+const copy = cloneDeep(obj);
+console.log(copy.self === copy); // true
+```
+
+## Signature
+
+```ts
+type CloneDeep<T> =
+  // Leave primitive types and functions unchanged
+  T extends Primitive | ((...args: any[]) => any)
+    ? T
+    : // If it's a Tuple, preserve exact index types
+    IsTuple<T> extends true
+    ? { [K in keyof T]: CloneDeep<T[K]> }
+    : // If it's an array (not a Tuple), deeply copy elements
+    T extends ReadonlyArray<infer U>
+    ? Array<CloneDeep<U>>
+    : // Deep copy Map values
+    T extends Map<infer K, infer V>
+    ? Map<K, CloneDeep<V>>
+    : // Deep copy Set values
+    T extends Set<infer U>
+    ? Set<CloneDeep<U>>
+    : // Retain specific built-in object types
+    T extends Date
+    ? Date
+    : T extends RegExp
+    ? RegExp
+    : // Deep copy plain object, removing `readonly` and preserving symbol keys
+    T extends object
+    ? {
+        -readonly [K in keyof T]: CloneDeep<T[K]>;
+      } & {
+        [K in keyof T as K extends symbol ? K : never]: CloneDeep<T[K]>;
+      }
+    : T;
+    
+function cloneDeep<T>(obj: T, seen: WeakMap<object, any> = new WeakMap()): CloneDeep<T>
+```
+
+## Parameters
+
+- `obj` (`T`): The object to deep copy.
+- `seen` (`WeakMap<object, any>`): WeakMap cache to track copied references (optional).
+
+## Returns
+
+- (`CloneDeep<T>`): Deep copied object with preserved types.

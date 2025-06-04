@@ -1,0 +1,94 @@
+---
+title: cloneDeepWith
+description: 深度拷贝对象，允许通过自定义函数转换特定值。
+---
+
+# `cloneDeepWith`
+
+执行对象的深度克隆，同时允许通过自定义函数转换特定值。如果自定义函数返回定义的值，将使用该值而不是默认的深度克隆逻辑。
+
+## 使用场景
+
+- **自定义值转换**：当需要在深度克隆过程中转换某些值时。
+- **选择性深度克隆**：当某些属性在深度克隆过程中需要特殊处理时。
+- **数据规范化**：当克隆值需要以特定方式规范化或转换时。
+
+## 示例
+
+```ts
+import { cloneDeepWith } from 'funtool';
+
+// 在克隆过程中将日期转换为ISO字符串
+const obj = { created: new Date(), data: { value: 1 } };
+const result = cloneDeepWith(obj, (val) => {
+  if (val instanceof Date) return val.toISOString();
+});
+// result => { created: "2023-07-20T12:34:56.789Z", data: { value: 1 } }
+
+// 跳过特定属性的深度克隆
+const config = { deep: { nested: true }, skip: { complex: true } };
+const cloned = cloneDeepWith(config, (val, key) => {
+  if (key === 'skip') return val; // 返回原值而不进行深度克隆
+});
+// cloned.skip === config.skip (true)
+// cloned.deep !== config.deep (true)
+
+// 将数字转换为字符串
+const data = { id: 123, name: "Test" };
+const transformed = cloneDeepWith(data, (val) => {
+  if (typeof val === 'number') return String(val);
+});
+// transformed => { id: "123", name: "Test" }
+```
+
+## 签名
+
+```ts
+type CloneDeep<T> =
+  // 保留原始类型和函数不变
+  T extends Primitive | ((...args: any[]) => any)
+    ? T
+    : // 如果是元组，保留精确的索引类型
+    IsTuple<T> extends true
+    ? { [K in keyof T]: CloneDeep<T[K]> }
+    : // 如果是数组(非元组)，深度拷贝元素
+    T extends ReadonlyArray<infer U>
+    ? Array<CloneDeep<U>>
+    : // 深度拷贝Map值
+    T extends Map<infer K, infer V>
+    ? Map<K, CloneDeep<V>>
+    : // 深度拷贝Set值
+    T extends Set<infer U>
+    ? Set<CloneDeep<U>>
+    : // 保留特定的内置对象类型
+    T extends Date
+    ? Date
+    : T extends RegExp
+    ? RegExp
+    : // 深度拷贝普通对象，移除`readonly`并保留Symbol键
+    T extends object
+    ? {
+        -readonly [K in keyof T]: CloneDeep<T[K]>;
+      } & {
+        [K in keyof T as K extends symbol ? K : never]: CloneDeep<T[K]>;
+      }
+    : T;
+
+type CloneDeepCustomizer = (value: any, key?: PropertyKey, object?: any) => any;
+
+function cloneDeepWith<T>(
+  obj: T,
+  customizer: CloneDeepCustomizer,
+  seen?: WeakMap<object, any>
+): CloneDeep<T>
+```
+
+## 参数
+
+- `obj` (`T`): 要深度克隆的对象。
+- `customizer` (`CloneDeepCustomizer`): 在克隆过程中转换特定值的函数。
+- `seen` (`WeakMap<object, any>`): 用于处理循环引用的可选WeakMap缓存。
+
+## 返回值
+
+- (`CloneDeep<T>`): 应用了自定义转换的深度克隆对象。

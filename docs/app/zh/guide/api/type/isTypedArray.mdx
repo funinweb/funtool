@@ -1,0 +1,52 @@
+---
+title: isTypedArray
+描述: 检查给定的值是否为 TypedArray。
+---
+
+# `isTypedArray`
+
+检查给定的 `value` 是否为 `TypedArray`。
+
+## 使用场景
+
+- 二进制数据处理：在进行二进制操作之前验证数据类型。
+- 性能优化：使用 TypedArray 进行高性能计算。
+- 数据验证：在处理之前确保输入是 TypedArray。
+
+## 示例
+
+```ts
+import { isTypedArray } from 'funtool';
+
+isTypedArray(new Uint8Array()); // ✅ true
+isTypedArray(new Float32Array()); // ✅ true
+isTypedArray([]); // ❌ false
+isTypedArray({}); // ❌ false
+```
+
+## 函数签名
+
+```ts
+type TypedArrayTypes =
+	| Uint8Array
+	| Uint8ClampedArray
+	| Uint16Array
+	| Uint32Array
+	| BigUint64Array
+	| Int8Array
+	| Int16Array
+	| Int32Array
+	| BigInt64Array
+	| Float32Array
+	| Float64Array
+
+function isTypedArray(v: any): v is TypedArrayTypes
+```
+
+## 参数
+
+- `v` (`any`)：要测试是否为 TypedArray 的值。
+
+## 返回值
+
+- (`v is TypedArrayTypes`)：如果该值是 TypedArray，则返回 `true`，否则返回 `false`。

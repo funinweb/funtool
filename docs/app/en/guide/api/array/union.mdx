@@ -1,0 +1,38 @@
+---
+title: union
+description: Get the union of two arrays.
+---
+
+# `union`
+
+Get the union of two arrays `arr1` and `arr2`, returning a new array containing elements from both arrays without duplicates.
+
+## Usage Scenarios
+
+- **Data Aggregation**: When you need to combine two datasets without duplicate entries.
+- **Merging Lists**: Merging two lists while ensuring uniqueness of elements.
+- **Set Operations**: Performing set - like union operations on arrays.
+
+## Examples
+
+```ts
+import { union } from 'funtool';
+
+union([1, 2], [2, 3]); // ✅ [1, 2, 3]
+union(['a'], ['b', 'a']); // ✅ ['a', 'b']
+```
+
+## Signature
+
+```ts
+function union<T>(arr1: T[], arr2: T[]): T[]
+```
+
+## Parameters
+
+- `arr1` (`T[]`): The first array.
+- `arr2` (`T[]`): The second array.
+
+## Returns
+
+- (`T[]`): A new array containing elements from both arrays without duplicates.

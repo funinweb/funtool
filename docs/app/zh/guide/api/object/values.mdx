@@ -1,0 +1,62 @@
+---
+title: values
+description: 获取对象自身的属性值，可通过可选谓词进行过滤。
+---
+
+# `values`
+
+检索`obj`对象自身的属性值，包含可选谓词函数，可根据键名和属性描述符过滤值。
+
+## 使用场景
+
+- **值提取**：获取对象的所有值用于检查或迭代。
+- **值过滤**：根据可枚举性或其他描述符属性过滤值。
+- **Symbol支持**：访问Symbol属性对应的值。
+
+## 示例
+
+```ts
+import { values } from 'funtool';
+
+const obj = {
+  a: 1,
+  b: 2,
+  get c() { return 3; }
+};
+Object.defineProperty(obj, 'd', {
+  value: 4,
+  enumerable: false
+});
+const sym = Symbol('e');
+obj[sym] = 5;
+
+// 获取仅可枚举值(默认)
+values(obj); // [1, 2, 3, 5]
+
+// 获取所有值，包括不可枚举
+values(obj, () => true); // [1, 2, 3, 4, 5]
+
+// 获取仅不可枚举值
+values(obj, (key, desc) => !desc.enumerable); // [4]
+
+// 获取Symbol属性值
+values(obj, (key) => typeof key === 'symbol'); // [5]
+```
+
+## 签名
+
+```ts
+function values<T extends object>(
+  obj: T,
+  predicate?: (key?: string | symbol, descriptor?: PropertyDescriptor) => boolean
+): T[keyof T][]
+```
+
+## 参数
+
+- `obj` (`T extends object`): 要检索值的对象。
+- `predicate` (`(key?: string | symbol, descriptor?: PropertyDescriptor) => boolean`): 可选函数用于过滤值。
+
+## 返回值
+
+- (`T[keyof T][]`): 经过谓词过滤的对象自身值数组。

@@ -1,0 +1,69 @@
+---
+title: includes
+description: Checks if a value exists in a collection (array, string, object, Map, or Set).
+---
+
+# `includes`
+
+Checks if a value exists in a collection. Supports arrays, strings, objects, Maps, and Sets with optional starting index for arrays and strings.
+
+## Usage Scenarios
+
+- **Collection Search**: Quickly check if a value exists in various collection types.
+- **Data Validation**: Verify if required values are present in input data.
+- **Conditional Logic**: Execute different code paths based on presence of values.
+
+## Examples
+
+```ts
+import { includes } from 'funtool';
+
+// Check array
+includes([1, 2, 3], 2); // true
+includes([1, 2, 3], 2, 2); // false (starting from index 2)
+
+// Check string
+includes('hello world', 'world'); // true
+includes('hello world', 'world', 8); // false (starting from index 8)
+
+// Check object values
+includes({ a: 1, b: 2 }, 2); // true
+
+// Check Map keys
+includes(new Map([['a', 1], ['b', 2]]), 'b'); // true
+
+// Check Set values
+includes(new Set([1, 2, 3]), 2); // true
+```
+
+## Signature
+
+```ts
+// Array version
+function includes<T>(source: T[], target: T, fromIndex?: number): boolean;
+
+// String version
+function includes(source: string, target: string, fromIndex?: number): boolean;
+
+// Object version
+function includes(source: Record<string, any>, target: any): boolean;
+
+// Map version
+function includes<K, V>(source: Map<K, V>, target: K): boolean;
+
+// Set version
+function includes<T>(source: Set<T>, target: T): boolean;
+
+// Generic implementation
+function includes(source: any, target: any, fromIndex: number = 0): boolean;
+```
+
+## Parameters
+
+- `source` (`T[] | string | Record<string, any> | Map<K, V> | Set<T>`): The collection to search.
+- `target` (`T | string | any | K`): The value to search for.
+- `fromIndex` (`number`): Optional starting index for arrays/strings (default: 0).
+
+## Returns
+
+- (`boolean`): True if found, otherwise false.

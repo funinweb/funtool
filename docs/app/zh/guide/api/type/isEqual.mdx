@@ -1,0 +1,61 @@
+---
+title: isEqual
+description: 深度比较两个值是否相等。
+---
+
+# `isEqual`
+
+深度比较两个值是否相等，支持处理对象、数组、日期、正则表达式、Map、Set、符号和 BigInt。
+
+## 使用场景
+
+- 数据比较：比较复杂的对象或数组是否深度相等。
+- 状态管理：在触发更新之前检查状态是否发生变化。
+- 测试：验证测试中的预期值和实际值是否匹配。
+
+## 示例
+
+```ts
+import { isEqual } from 'funtool';
+
+// 比较基本类型值
+isEqual(5, 5); // ✅ true
+isEqual(5, '5'); // ❌ false
+
+// 比较数组（有序）
+isEqual([1, 2, 3], [1, 2, 3]); // ✅ true
+isEqual([1, 2, 3], [3, 2, 1]); // ❌ false (默认 ordered=true)
+
+// 比较数组（无序）
+isEqual([1, 2, 3], [3, 2, 1], { ordered: false }); // ✅ true
+
+// 比较对象
+isEqual({ a: 1, b: 2 }, { b: 2, a: 1 }); // ✅ true
+isEqual({ a: 1, b: 2 }, { a: 1, b: 3 }); // ❌ false
+
+// 比较日期
+isEqual(new Date('2025-05-01'), new Date('2025-05-01')); // ✅ true
+isEqual(new Date('2025-05-01'), new Date('2025-05-02')); // ❌ false
+```
+
+## 函数签名
+
+```ts
+function isEqual(
+  a: any,
+  b: any,
+  options: boolean | { ordered: boolean } = true,
+  seen: WeakMap<object, object> = new WeakMap()
+): boolean
+```
+
+## 参数
+
+- `a` (`any`): 要比较的第一个值。
+- `b` (`any`): 要比较的第二个值。
+- `options` (`boolean | { ordered: boolean }`): 如果为 `true`，则按顺序比较数组，否则无序比较。默认值：`true`。
+- `seen` (`WeakMap<object, object>`): 用于在比较过程中跟踪循环引用的映射。
+
+## 返回值
+
+- (`boolean`): 如果两个值深度相等，则返回 `true`，否则返回 `false`。

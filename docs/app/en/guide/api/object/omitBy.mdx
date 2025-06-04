@@ -1,0 +1,49 @@
+---
+title: omitBy
+description: Creates a new object by omitting properties that match the predicate function.
+---
+
+# `omitBy`
+
+Creates a new object by omitting properties from the original object where the predicate function returns `true`. Supports both string and symbol keys.
+
+## Usage Scenarios
+
+- **Data Cleaning**: Remove properties with null or undefined values.
+- **Conditional Omission**: Exclude properties based on their values or keys.
+- **Immutable Updates**: Create new objects without certain properties.
+
+## Examples
+
+```ts
+import { omitBy } from 'funtool';
+
+// Omit null values
+const user = { name: 'Alice', age: null, isActive: true };
+const cleaned = omitBy(user, (value) => value === null);
+// cleaned: { name: 'Alice', isActive: true }
+
+// Omit properties with symbol keys
+const sym = Symbol('id');
+const obj = { name: 'Bob', [sym]: 123 };
+const withoutSymbol = omitBy(obj, (_, key) => typeof key === 'symbol');
+// withoutSymbol: { name: 'Bob' }
+```
+
+## Signature
+
+```ts
+function omitBy<T extends object>(
+  obj: T,
+  predicate: (value: T[keyof T], key: keyof T) => boolean
+): Partial<T>
+```
+
+## Parameters
+
+- `obj` (`T extends object`): The source object to process.
+- `predicate` (`(value: T[keyof T], key: keyof T) => boolean`): Function that determines which properties to omit.
+
+## Returns
+
+- (`Partial<T>`): A new object without the omitted properties.

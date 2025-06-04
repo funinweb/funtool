@@ -1,0 +1,50 @@
+---
+title: mergeDeep
+description: 深度合并多个对象的属性。
+---
+
+# `mergeDeep`
+
+递归深度合并多个对象的属性，包括嵌套对象和数组。
+
+## 使用场景
+
+- **深度对象合并**：合并包含嵌套结构的对象。
+- **配置深度合并**：合并多层嵌套的配置对象。
+- **数组合并**：合并数组时保留所有元素。
+
+## 示例
+
+```ts
+import { mergeDeep } from 'funtool';
+
+const obj1 = { 
+  a: 1, 
+  b: { c: 2, d: [3] } 
+};
+const obj2 = { 
+  b: { c: 4, d: [5], e: 6 }, 
+  f: 7 
+};
+
+const result = mergeDeep(obj1, obj2);
+// {
+//   a: 1,
+//   b: { c: 4, d: [3, 5], e: 6 },
+//   f: 7
+// }
+```
+
+## 签名
+
+```ts
+function mergeDeep<T extends object, U extends object[]>(...args: [T, ...U]): T & U[number]
+```
+
+## 参数
+
+- `...args` (`[T, ...U]`): 要深度合并的对象列表，第一个对象是目标对象。
+
+## 返回值
+
+- (`T & U[number]`): 深度合并后的新对象。

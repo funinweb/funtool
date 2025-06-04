@@ -1,0 +1,46 @@
+---
+title: hasOwn
+description: 检查对象是否具有特定属性。
+---
+
+# `hasOwn`
+
+检查`obj`对象是否具有特定的`key`属性，包括不可枚举属性和Symbol键。
+
+## 使用场景
+
+- **属性存在检查**：在访问对象属性前验证其是否存在。
+- **类型安全**：通过先检查属性存在性来确保安全访问。
+- **Symbol键支持**：检查对象中的Symbol属性。
+
+## 示例
+
+```ts
+import { hasOwn } from 'funtool';
+
+const obj = { a: 1, b: 2 };
+hasOwn(obj, 'a'); // ✅ true
+hasOwn(obj, 'c'); // ❌ false
+
+const sym = Symbol('id');
+const objWithSymbol = { [sym]: 123 };
+hasOwn(objWithSymbol, sym); // ✅ true
+```
+
+## 签名
+
+```ts
+function hasOwn<T extends object>(
+  obj: T,
+  key: keyof T | (string & {}) | symbol | number
+): boolean
+```
+
+## 参数
+
+- `obj` (`T extends object`): 要检查的对象。
+- `key` (`keyof T | (string & {}) | symbol | number`): 要检查的键，可以是字符串、Symbol或数字。
+
+## 返回值
+
+- (`boolean`): 如果对象具有该属性则返回`true`，否则返回`false`。

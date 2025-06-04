@@ -1,0 +1,39 @@
+---
+title: isSymbol
+描述: 检查给定的值是否为 Symbol。
+---
+
+# `isSymbol`
+
+检查给定的 `value` 是否为 `Symbol`。
+
+## 使用场景
+
+- 唯一键验证：在将值用作对象键之前，检查是否为 Symbol。
+- 类型安全：在处理 Symbol 时确保类型安全。
+- 元编程：在执行反射操作之前验证 Symbol 类型。
+
+## 示例
+
+```ts
+import { isSymbol } from 'funtool';
+
+isSymbol(Symbol()); // ✅ true
+isSymbol(Symbol('description')); // ✅ true
+isSymbol('symbol'); // ❌ false
+isSymbol({}); // ❌ false
+```
+
+## 函数签名
+
+```ts
+function isSymbol(v: any): v is symbol
+```
+
+## 参数
+
+- `v` (`any`): 要测试是否为 Symbol 的值。
+
+## 返回值
+
+- (`v is symbol`): 如果值是 Symbol，则返回 `true`，否则返回 `false`。

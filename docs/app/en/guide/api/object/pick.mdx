@@ -1,0 +1,45 @@
+---
+title: pick
+description: Creates a new object composed of picked properties.
+---
+
+# `pick`
+
+Creates a new object composed of picked properties from the original object.
+
+## Usage Scenarios
+
+- **Partial Object Creation**: Create subsets of objects by including only specific properties.
+- **Data Projection**: Select only the fields needed for a particular operation.
+- **Conditional Selection**: Include properties based on their values.
+
+## Examples
+
+```ts
+import { pick } from 'funtool';
+
+// Pick by keys
+const user = { name: 'Alice', age: 25, password: 'secret' };
+const partialUser = pick(user, ['name', 'age']);
+// partialUser: { name: 'Alice', age: 25 }
+```
+
+## Signature
+
+```ts
+type ExistingKeys<T> = keyof T & string;
+function pick<T extends object, K extends string>(
+  obj: T,
+  keysToPick: readonly K[]
+): Pick<T, Extract<K, ExistingKeys<T>>>
+
+```
+
+## Parameters
+
+- `obj` (`T extends object`): The source object.
+- `keysToPick` (`readonly K[]`): An array of keys to pick.
+
+## Returns
+
+- (`Pick<T, Extract<K, ExistingKeys<T>>>`): A new object containing only the picked keys.

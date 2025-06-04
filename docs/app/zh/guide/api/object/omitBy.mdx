@@ -1,0 +1,49 @@
+---
+title: omitBy
+description: 创建一个新对象，排除满足条件的属性。
+---
+
+# `omitBy`
+
+创建一个新对象，包含原对象中不满足谓词函数条件的属性。
+
+## 使用场景
+
+- **条件过滤**：根据属性值或键名过滤对象属性。
+- **数据清理**：移除空值或无效属性。
+- **不可变操作**：不修改原对象的情况下创建过滤后的副本。
+
+## 示例
+
+```ts
+import { omitBy } from 'funtool';
+
+const obj = { a: 1, b: 2, c: 3, d: undefined };
+
+// 排除值为undefined的属性
+omitBy(obj, val => val === undefined); // { a: 1, b: 2, c: 3 }
+
+// 排除值为偶数的属性
+omitBy(obj, val => val % 2 === 0); // { a: 1, c: 3, d: undefined }
+
+// 排除键名长度为1的属性
+omitBy(obj, (val, key) => key.length === 1); // {}
+```
+
+## 签名
+
+```ts
+function omitBy<T extends object>(
+  obj: T,
+  predicate: (value: T[keyof T], key: keyof T) => boolean
+): Partial<T>
+```
+
+## 参数
+
+- `obj` (`T extends object`): 源对象。
+- `predicate` (`(value: T[keyof T], key: keyof T) => boolean`): 判断是否排除属性的函数。
+
+## 返回值
+
+- (`Partial<T>`): 过滤后的新对象。

@@ -1,0 +1,39 @@
+---
+title: isNumber
+description: 检查给定的值是否为数字。
+---
+
+# `isNumber`
+
+检查给定的 `value` 是否为 `number`。
+
+## 使用场景
+
+- 类型检查：在进行数学运算之前验证值是否为数字。
+- 输入验证：验证用户输入的数字或 API 响应。
+- 类型缩小：在 TypeScript 中缩小变量类型。
+
+## 示例
+
+```ts
+import { isNumber } from 'funtool';
+
+isNumber(123); // ✅ true
+isNumber('123'); // ❌ false
+isNumber(NaN); // ✅ true
+isNumber(Infinity); // ✅ true
+```
+
+## 函数签名
+
+```ts
+function isNumber(v: any): boolean
+```
+
+## 参数
+
+- `v` (`any`): 要测试是否为数字的值。
+
+## 返回值
+
+- (`boolean`): 如果值为数字，则返回 `true`，否则返回 `false`。

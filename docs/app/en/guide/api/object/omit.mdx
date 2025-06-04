@@ -1,0 +1,45 @@
+---
+title: omit
+description: Creates a new object by omitting specified keys.
+---
+
+# `omit`
+
+Creates a new object by omitting specified keys from the original object.
+
+## Usage Scenarios
+
+- **Data Sanitization**: Remove sensitive fields before sending data to client.
+- **Partial Object Creation**: Create subsets of objects by excluding certain properties.
+- **Conditional Omission**: Remove properties based on their values.
+
+## Examples
+
+```ts
+import { omit } from 'funtool';
+
+// Omit by keys
+const user = { name: 'Alice', age: 25, password: 'secret' };
+const safeUser = omit(user, ['password']);
+// safeUser: { name: 'Alice', age: 25 }
+
+```
+
+## Signature
+
+```ts
+type ExistingKeys<T> = keyof T & string;
+function omit<T extends object, K extends string>(
+  obj: T,
+  keysToOmit: K[]
+): Omit<T, Extract<K, ExistingKeys<T>>>
+```
+
+## Parameters
+
+- `obj` (`T extends object`): The source object.
+- `keysToOmit` (`K[]`): An array of keys to omit.
+
+## Returns
+
+- (`Omit<T, Extract<K, ExistingKeys<T>>>`): A new object without the specified keys.

@@ -1,0 +1,39 @@
+---
+title: isRegExp
+描述: 检查给定的值是否为正则表达式。
+---
+
+# `isRegExp`
+
+检查给定的 `value` 是否为 `RegExp`。
+
+## 使用场景
+
+- 模式验证：在使用模式匹配之前，验证值是否为正则表达式。
+- 函数参数验证：在执行操作之前，确保参数是正则表达式对象。
+- 类型安全：在处理正则表达式时保持类型安全。
+
+## 示例
+
+```ts
+import { isRegExp } from 'funtool';
+
+isRegExp(/abc/); // ✅ true
+isRegExp(new RegExp('abc')); // ✅ true
+isRegExp('abc'); // ❌ false
+isRegExp({}); // ❌ false
+```
+
+## 函数签名
+
+```ts
+function isRegExp(v: any): v is RegExp
+```
+
+## 参数
+
+- `v` (`any`): 要测试是否为正则表达式的值。
+
+## 返回值
+
+- (`v is RegExp`): 如果值是正则表达式，则返回 `true`，否则返回 `false`。

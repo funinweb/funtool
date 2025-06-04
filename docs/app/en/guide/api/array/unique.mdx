@@ -1,0 +1,37 @@
+---
+title: unique
+description: Remove duplicate values from an array.
+---
+
+# `unique`
+
+Remove duplicate values from an `arr` array and return a new array with unique values.
+
+## Usage Scenarios
+
+- **Data Cleaning**: When you need to clean up duplicate data in an array.
+- **Set Representation**: Representing an array as a set, where each element is unique.
+- **Eliminating Redundancy**: Eliminating redundant elements in an array for better performance or readability.
+
+## Examples
+
+```ts
+import { unique } from 'funtool';
+
+unique([1, 2, 2, 3]); // ✅ [1, 2, 3]
+unique(['a', 'b', 'a']); // ✅ ['a', 'b']
+```
+
+## Signature
+
+```ts
+function unique<T>(arr: T[]): T[]
+```
+
+## Parameters
+
+- `arr` (`T[]`): The array to process.
+
+## Returns
+
+- (`T[]`): A new array with unique values.

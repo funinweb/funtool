@@ -1,0 +1,62 @@
+---
+title: keys
+description: 检索对象自身的属性键，可通过可选谓词进行过滤。
+---
+
+# `keys`
+
+检索`obj`对象自身的属性键，支持字符串和Symbol键。包含可选谓词函数，可根据键名和属性描述符过滤键。
+
+## 使用场景
+
+- **对象检查**：获取对象的所有键用于检查或迭代。
+- **属性过滤**：根据可枚举性或其他描述符属性过滤键。
+- **Symbol支持**：同时访问Symbol属性和字符串键。
+
+## 示例
+
+```ts
+import { keys } from 'funtool';
+
+const obj = {
+  a: 1,
+  b: 2,
+  get c() { return 3; }
+};
+Object.defineProperty(obj, 'd', {
+  value: 4,
+  enumerable: false
+});
+const sym = Symbol('e');
+obj[sym] = 5;
+
+// 获取仅可枚举键(默认)
+keys(obj); // ['a', 'b', 'c', Symbol(e)]
+
+// 获取所有键，包括不可枚举
+keys(obj, () => true); // ['a', 'b', 'c', 'd', Symbol(e)]
+
+// 获取仅不可枚举键
+keys(obj, (key, desc) => !desc.enumerable); // ['d']
+
+// 获取仅Symbol键
+keys(obj, (key) => typeof key === 'symbol'); // [Symbol(e)]
+```
+
+## 签名
+
+```ts
+function keys<T extends object>(
+  obj: T,
+  predicate?: (key?: string | symbol, descriptor?: PropertyDescriptor) => boolean
+): (keyof T)[]
+```
+
+## 参数
+
+- `obj` (`T extends object`): 要检索键的对象。
+- `predicate` (`(key?: string | symbol, descriptor?: PropertyDescriptor) => boolean`): 可选函数用于过滤键。
+
+## 返回值
+
+- (`(keyof T)[]`): 经过谓词过滤的对象自身键数组。

@@ -1,0 +1,42 @@
+---
+title: typeOf
+描述: 以字符串形式获取给定值的类型。
+---
+
+# `typeOf`
+
+以字符串形式获取给定 `value` 的类型。
+
+## 使用场景
+
+- 运行时类型检查：在运行时确定值的类型。
+- 调试：在调试期间记录值的类型。
+- 类型区分：以不同方式处理不同类型。
+
+## 示例
+
+```ts
+import { typeOf } from 'funtool';
+
+typeOf('hello'); // 'string'
+typeOf(42); // 'number'
+typeOf(true); // 'boolean'
+typeOf({}); // 'object'
+typeOf([]); // 'array'
+typeOf(null); // 'null'
+typeOf(undefined); // 'undefined'
+```
+
+## 函数签名
+
+```ts
+function typeOf(v: any): string
+```
+
+## 参数
+
+- `v` (`any`)：要获取类型的值。
+
+## 返回值
+
+- (`string`)：以字符串形式返回该值的类型。

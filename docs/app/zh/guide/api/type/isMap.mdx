@@ -1,0 +1,38 @@
+---
+title: isMap
+description: 检查给定的值是否为 Map。
+---
+
+# `isMap`
+
+检查给定的 `value` 是否为 `Map`。
+
+## 使用场景
+
+- 数据结构验证：在执行 Map 特定操作之前验证值是否为 Map。
+- API 响应处理：检查 API 响应是否包含 Map 数据。
+- 类型安全：在使用 Map 时确保类型安全。
+
+## 示例
+
+```ts
+import { isMap } from 'funtool';
+
+isMap(new Map()); // ✅ true
+isMap(new WeakMap()); // ❌ false
+isMap({}); // ❌ false
+```
+
+## 函数签名
+
+```ts
+function isMap<K = any, V = any>(v: any): v is Map<K, V>
+```
+
+## 参数
+
+- `v` (`any`): 要测试是否为 Map 的值。
+
+## 返回值
+
+- (`v is Map<K, V>`): 如果值为 Map，则返回 `true`，否则返回 `false`。

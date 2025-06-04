@@ -1,0 +1,39 @@
+---
+title: isPrimitive
+描述: 检查给定的值是否为原始类型。
+---
+
+# `isPrimitive`
+
+检查给定的 `value` 是否为 `primitive` 类型。
+
+## 使用场景
+
+- 类型检查：在执行仅适用于原始类型的操作之前，验证值是否为原始类型。
+- 性能优化：在处理原始类型时，跳过复杂的对象操作。
+- 类型收窄：在 TypeScript 中收窄变量类型。
+
+## 示例
+
+```ts
+import { isPrimitive } from 'funtool';
+
+isPrimitive(123); // ✅ true
+isPrimitive('hello'); // ✅ true
+isPrimitive(null); // ✅ true
+isPrimitive({}); // ❌ false
+```
+
+## 函数签名
+
+```ts
+function isPrimitive(v: any): boolean
+```
+
+## 参数
+
+- `v` (`any`): 要测试是否为原始类型的值。
+
+## 返回值
+
+- (`boolean`): 如果值是原始类型，则返回 `true`，否则返回 `false`。

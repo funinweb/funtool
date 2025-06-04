@@ -1,0 +1,38 @@
+---
+title: isWeakMap
+描述: 检查给定的值是否为 WeakMap。
+---
+
+# `isWeakMap`
+
+检查给定的 `value` 是否为 `WeakMap`。
+
+## 使用场景
+
+- 内存管理：在将值用于对内存敏感的操作之前，验证它是否为 WeakMap。
+- API 响应处理：在使用 WeakMap 方法之前，检查 API 是否返回了 WeakMap。
+- 类型安全：在处理 WeakMap 集合时确保类型安全。
+
+## 示例
+
+```ts
+import { isWeakMap } from 'funtool';
+
+isWeakMap(new WeakMap()); // ✅ true
+isWeakMap(new Map()); // ❌ false
+isWeakMap({}); // ❌ false
+```
+
+## 函数签名
+
+```ts
+function isWeakMap<T = any>(v: any): v is WeakMap<WeakKey, T>
+```
+
+## 参数
+
+- `v` (`any`)：要测试是否为 WeakMap 的值。
+
+## 返回值
+
+- (`v is WeakMap<WeakKey, T>`)：如果该值是 WeakMap，则返回 `true`，否则返回 `false`。

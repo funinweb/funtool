@@ -1,0 +1,62 @@
+---
+title: keys
+description: Retrieves the own property keys of an object, filtered by an optional predicate.
+---
+
+# `keys`
+
+Retrieves the own property keys of an `obj` object, supporting both string and symbol keys. Includes an optional predicate to filter keys based on their name and property descriptor.
+
+## Usage Scenarios
+
+- **Object Inspection**: Get all keys of an object for inspection or iteration.
+- **Property Filtering**: Filter keys based on enumerability or other descriptor properties.
+- **Symbol Support**: Access symbol properties alongside string keys.
+
+## Examples
+
+```ts
+import { keys } from 'funtool';
+
+const obj = {
+  a: 1,
+  b: 2,
+  get c() { return 3; }
+};
+Object.defineProperty(obj, 'd', {
+  value: 4,
+  enumerable: false
+});
+const sym = Symbol('e');
+obj[sym] = 5;
+
+// Get only enumerable keys (default)
+keys(obj); // ['a', 'b', 'c', Symbol(e)]
+
+// Get all keys, including non-enumerable
+keys(obj, () => true); // ['a', 'b', 'c', 'd', Symbol(e)]
+
+// Get only non-enumerable keys
+keys(obj, (key, desc) => !desc.enumerable); // ['d']
+
+// Get only symbol keys
+keys(obj, (key) => typeof key === 'symbol'); // [Symbol(e)]
+```
+
+## Signature
+
+```ts
+function keys<T extends object>(
+  obj: T,
+  predicate?: (key?: string | symbol, descriptor?: PropertyDescriptor) => boolean
+): (keyof T)[]
+```
+
+## Parameters
+
+- `obj` (`T extends object`): The object whose keys are to be retrieved.
+- `predicate` (`(key?: string | symbol, descriptor?: PropertyDescriptor) => boolean`): Optional function to filter keys.
+
+## Returns
+
+- (`(keyof T)[]`): An array of the object's own keys filtered by the predicate.

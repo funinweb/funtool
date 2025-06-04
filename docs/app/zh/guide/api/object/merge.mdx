@@ -1,0 +1,41 @@
+---
+title: merge
+description: 浅合并多个对象的属性。
+---
+
+# `merge`
+
+将多个对象的属性浅合并到目标对象中。
+
+## 使用场景
+
+- **对象扩展**：将多个对象的属性合并到一个对象中。
+- **配置合并**：合并多个配置对象。
+- **属性覆盖**：后续对象的属性会覆盖之前对象的同名属性。
+
+## 示例
+
+```ts
+import { merge } from 'funtool';
+
+const obj1 = { a: 1, b: 2 };
+const obj2 = { b: 3, c: 4 };
+const obj3 = { d: 5 };
+
+const result = merge(obj1, obj2, obj3);
+// { a: 1, b: 3, c: 4, d: 5 }
+```
+
+## 签名
+
+```ts
+function merge<T extends object, U extends object[]>(...args: [T, ...U]): T & U[number]
+```
+
+## 参数
+
+- `...args` (`[T, ...U]`): 要合并的对象列表，第一个对象是目标对象。
+
+## 返回值
+
+- (`T & U[number]`): 合并后的新对象。

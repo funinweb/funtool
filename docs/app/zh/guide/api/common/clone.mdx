@@ -1,0 +1,59 @@
+---
+title: clone
+description: 创建给定值的浅拷贝。
+---
+
+# `clone`
+
+创建给定值的浅拷贝。支持多种内置JavaScript类型，包括原始值、数组、Date对象、RegExp对象、Map、Set、TypedArrays、DataView和普通对象。
+
+## 使用场景
+
+- **浅拷贝**：当需要对象的新实例但不需要深拷贝嵌套属性时。
+- **保留原型**：当需要克隆对象同时保留其原型链时。
+- **性能优化**：当深拷贝不必要且浅拷贝提供足够隔离时。
+
+## 示例
+
+```ts
+import { clone } from 'funtool';
+
+// 克隆数组
+const arr = [1, 2, 3];
+const clonedArr = clone(arr);
+console.log(clonedArr); // [1, 2, 3]
+console.log(clonedArr === arr); // false
+
+// 克隆对象
+const obj = { a: 1, b: { c: 2 } };
+const clonedObj = clone(obj);
+console.log(clonedObj); // { a: 1, b: { c: 2 } }
+console.log(clonedObj === obj); // false
+console.log(clonedObj.b === obj.b); // true (浅拷贝)
+
+// 克隆Date
+const date = new Date();
+const clonedDate = clone(date);
+console.log(clonedDate); // 与原日期相同
+console.log(clonedDate === date); // false
+
+// 克隆Map
+const map = new Map([['key', 'value']]);
+const clonedMap = clone(map);
+console.log(clonedMap.get('key')); // 'value'
+console.log(clonedMap === map); // false
+```
+
+## 签名
+
+```ts
+function clone<T>(value: T): T
+```
+
+## 参数
+
+- `value` (`T`): 要克隆的值。
+
+## 返回值
+
+- (`T`): 原始值的浅拷贝。

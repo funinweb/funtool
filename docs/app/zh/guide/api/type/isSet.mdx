@@ -1,0 +1,39 @@
+---
+title: isSet
+描述: 检查给定的值是否为 Set。
+---
+
+# `isSet`
+
+检查给定的 `value` 是否为 `Set`。
+
+## 使用场景
+
+- 数据结构验证：在执行 Set 操作之前，验证值是否为 Set。
+- API 响应处理：在使用 Set 方法之前，检查 API 是否返回 Set。
+- 类型安全：在处理 Set 集合时确保类型安全。
+
+## 示例
+
+```ts
+import { isSet } from 'funtool';
+
+isSet(new Set()); // ✅ true
+isSet(new WeakSet()); // ❌ false
+isSet([]); // ❌ false
+isSet({}); // ❌ false
+```
+
+## 函数签名
+
+```ts
+function isSet<T = any>(v: any): v is Set<T>
+```
+
+## 参数
+
+- `v` (`any`): 要测试是否为 Set 的值。
+
+## 返回值
+
+- (`v is Set<T>`): 如果值是 Set，则返回 `true`，否则返回 `false`。

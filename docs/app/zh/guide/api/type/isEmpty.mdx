@@ -1,0 +1,49 @@
+---
+title: isEmpty
+description: 检查给定的值是否为空。
+---
+
+# `isEmpty`
+
+检查给定的 `value` 是否为空。
+
+## 使用场景
+
+- 数据验证：在处理用户输入或 API 响应时，在进一步处理之前验证值是否为空。
+- 表单处理：在提交之前检查表单字段是否为空。
+- 条件渲染：根据空状态确定是否渲染内容。
+
+## 示例
+
+```ts
+import { isEmpty } from 'funtool';
+
+isEmpty(null); // ✅ true
+isEmpty(undefined); // ✅ true
+isEmpty(''); // ✅ true
+isEmpty('   '); // ✅ true
+isEmpty(NaN); // ✅ true
+isEmpty([]); // ✅ true
+isEmpty({}); // ✅ true
+isEmpty(new Date('invalid date')); // ✅ true
+
+isEmpty('hello'); // ❌ false
+isEmpty(123); // ❌ false
+isEmpty([1, 2, 3]); // ❌ false
+isEmpty({ key: 'value' }); // ❌ false
+isEmpty(new Date()); // ❌ false
+```
+
+## 函数签名
+
+```ts
+function isEmpty(v: any): boolean
+```
+
+## 参数
+
+- `v` (`any`): 要检查是否为空的值。
+
+## 返回值
+
+- (`boolean`): 如果值为空，则返回 `true`，否则返回 `false`。

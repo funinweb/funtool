@@ -1,0 +1,94 @@
+---
+title: cloneDeepWith
+description: Deep copy with custom transformation logic for specific values.
+---
+
+# `cloneDeepWith`
+
+Performs a deep clone of an object while allowing custom transformation of specific values through a customizer function. If the customizer returns a defined value, it will be used instead of the default deep cloning logic.
+
+## Usage Scenarios
+
+- **Custom Value Transformation**: When you need to transform certain values during deep cloning.
+- **Selective Deep Cloning**: When some properties require special handling during deep cloning.
+- **Data Normalization**: When cloned values need to be normalized or transformed in a specific way.
+
+## Examples
+
+```ts
+import { cloneDeepWith } from 'funtool';
+
+// Transform dates to ISO strings during cloning
+const obj = { created: new Date(), data: { value: 1 } };
+const result = cloneDeepWith(obj, (val) => {
+  if (val instanceof Date) return val.toISOString();
+});
+// result => { created: "2023-07-20T12:34:56.789Z", data: { value: 1 } }
+
+// Skip deep cloning for specific properties
+const config = { deep: { nested: true }, skip: { complex: true } };
+const cloned = cloneDeepWith(config, (val, key) => {
+  if (key === 'skip') return val; // Return original without deep cloning
+});
+// cloned.skip === config.skip (true)
+// cloned.deep !== config.deep (true)
+
+// Transform numbers to strings
+const data = { id: 123, name: "Test" };
+const transformed = cloneDeepWith(data, (val) => {
+  if (typeof val === 'number') return String(val);
+});
+// transformed => { id: "123", name: "Test" }
+```
+
+## Signature
+
+```ts
+type CloneDeep<T> =
+  // Leave primitive types and functions unchanged
+  T extends Primitive | ((...args: any[]) => any)
+    ? T
+    : // If it's a Tuple, preserve exact index types
+    IsTuple<T> extends true
+    ? { [K in keyof T]: CloneDeep<T[K]> }
+    : // If it's an array (not a Tuple), deeply copy elements
+    T extends ReadonlyArray<infer U>
+    ? Array<CloneDeep<U>>
+    : // Deep copy Map values
+    T extends Map<infer K, infer V>
+    ? Map<K, CloneDeep<V>>
+    : // Deep copy Set values
+    T extends Set<infer U>
+    ? Set<CloneDeep<U>>
+    : // Retain specific built-in object types
+    T extends Date
+    ? Date
+    : T extends RegExp
+    ? RegExp
+    : // Deep copy plain object, removing `readonly` and preserving symbol keys
+    T extends object
+    ? {
+        -readonly [K in keyof T]: CloneDeep<T[K]>;
+      } & {
+        [K in keyof T as K extends symbol ? K : never]: CloneDeep<T[K]>;
+      }
+    : T;
+
+type CloneDeepCustomizer = (value: any, key?: PropertyKey, object?: any) => any;
+
+function cloneDeepWith<T>(
+  obj: T,
+  customizer: CloneDeepCustomizer,
+  seen?: WeakMap<object, any>
+): CloneDeep<T>
+```
+
+## Parameters
+
+- `obj` (`T`): The object to deep clone.
+- `customizer` (`CloneDeepCustomizer`): Function that transforms specific values during cloning.
+- `seen` (`WeakMap<object, any>`): Optional WeakMap cache for circular references.
+
+## Returns
+
+- (`CloneDeep<T>`): Deep cloned object with custom transformations applied.

@@ -1,0 +1,62 @@
+---
+title: values
+description: Retrieves the values of an object's own properties, filtered by an optional predicate.
+---
+
+# `values`
+
+Retrieves the values of an object's own properties, supporting both string and symbol keys. Includes an optional predicate to filter values based on the key and property descriptor.
+
+## Usage Scenarios
+
+- **Value Extraction**: Get all values from an object for processing or analysis.
+- **Property Filtering**: Filter values based on enumerability or other descriptor properties.
+- **Symbol Support**: Access symbol property values alongside string key values.
+
+## Examples
+
+```ts
+import { values } from 'funtool';
+
+const obj = {
+  a: 1,
+  b: 2,
+  get c() { return 3; }
+};
+Object.defineProperty(obj, 'd', {
+  value: 4,
+  enumerable: false
+});
+const sym = Symbol('e');
+obj[sym] = 5;
+
+// Get only enumerable values (default)
+values(obj); // [1, 2, 3, 5]
+
+// Get all values, including non-enumerable
+values(obj, () => true); // [1, 2, 3, 4, 5]
+
+// Get only non-enumerable values
+values(obj, (key, desc) => !desc.enumerable); // [4]
+
+// Get only symbol values
+values(obj, (key) => typeof key === 'symbol'); // [5]
+```
+
+## Signature
+
+```ts
+function values<T extends object>(
+  obj: T,
+  predicate?: (key?: string | symbol, descriptor?: PropertyDescriptor) => boolean
+): T[keyof T][]
+```
+
+## Parameters
+
+- `obj` (`T extends object`): The object whose values are to be retrieved.
+- `predicate` (`(key?: string | symbol, descriptor?: PropertyDescriptor) => boolean`): Optional function to filter properties.
+
+## Returns
+
+- (`T[keyof T][]`): An array of the object's own property values, filtered by the predicate.

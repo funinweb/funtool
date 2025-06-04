@@ -1,0 +1,39 @@
+---
+title: isObjectLike
+description: 检查给定的值是否为类对象值。
+---
+
+# `isObjectLike`
+
+检查给定的 `value` 是否为类对象值。
+
+## 使用场景
+
+- 类型检查：在访问属性之前验证值是否为类对象。
+- 数据验证：确保 API 响应包含类对象结构。
+- 类型缩小：在 TypeScript 中缩小变量类型。
+
+## 示例
+
+```ts
+import { isObjectLike } from 'funtool';
+
+isObjectLike({}); // ✅ true
+isObjectLike([]); // ✅ true
+isObjectLike(() => {}); // ❌ false
+isObjectLike(null); // ❌ false
+```
+
+## 函数签名
+
+```ts
+function isObjectLike(v: any): boolean
+```
+
+## 参数
+
+- `v` (`any`): 要测试是否为类对象的值。
+
+## 返回值
+
+- (`boolean`): 如果值为类对象，则返回 `true`，否则返回 `false`。

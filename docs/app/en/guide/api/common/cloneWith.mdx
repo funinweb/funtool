@@ -1,0 +1,56 @@
+---
+title: cloneWith
+description: Performs a shallow clone with custom transformation logic.
+---
+
+# `cloneWith`
+
+Performs a shallow clone of a value, invoking a customizer function to transform cloned values. If the customizer returns a defined value, it will be used instead of the default clone logic.
+
+## Usage Scenarios
+
+- **Custom Transformation**: When you need to modify values during cloning.
+- **Selective Cloning**: When certain properties need special handling during cloning.
+- **Data Normalization**: When cloned values need to be normalized or transformed.
+
+## Examples
+
+```ts
+import { cloneWith } from 'funtool';
+
+// Increment numbers during clone
+const obj = { a: 1, b: 2 };
+const result = cloneWith(obj, (val) => typeof val === 'number' ? val + 1 : undefined);
+// result => { a: 2, b: 3 }
+
+// Transform dates to ISO strings
+const withDate = { created: new Date() };
+const dateClone = cloneWith(withDate, (val) => val instanceof Date ? val.toISOString() : undefined);
+// dateClone => { created: "2023-07-20T12:34:56.789Z" }
+
+// Filter out undefined values
+const data = { a: 1, b: undefined, c: 3 };
+const filtered = cloneWith(data, (val) => val !== undefined ? val : undefined);
+// filtered => { a: 1, c: 3 }
+```
+
+## Signature
+
+```ts
+type Customizer<T> = T extends any[]
+  ? (val: T[number], index: number) => T[number] | undefined
+  : T extends object
+  ? (val: T[keyof T], key: keyof T) => T[keyof T] | undefined
+  : never;
+  
+function cloneWith<T>(value: T, customizer: Customizer<T>): T
+```
+
+## Parameters
+
+- `value` (`T`): The value to clone.
+- `customizer` (`Customizer<T>`): Function that transforms cloned values.
+
+## Returns
+
+- (`T`): The cloned value with custom transformations applied.

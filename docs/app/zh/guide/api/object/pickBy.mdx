@@ -1,0 +1,49 @@
+---
+title: pickBy
+description: 创建一个新对象，仅包含满足条件的属性。
+---
+
+# `pickBy`
+
+创建一个新对象，仅包含原对象中满足谓词函数条件的属性。
+
+## 使用场景
+
+- **条件选择**：根据属性值或键名选择对象属性。
+- **数据过滤**：提取有效或有意义的属性。
+- **不可变操作**：不修改原对象的情况下创建过滤后的副本。
+
+## 示例
+
+```ts
+import { pickBy } from 'funtool';
+
+const obj = { a: 1, b: 2, c: 3, d: undefined };
+
+// 选择值不为undefined的属性
+pickBy(obj, val => val !== undefined); // { a: 1, b: 2, c: 3 }
+
+// 选择值为奇数的属性
+pickBy(obj, val => val % 2 !== 0); // { a: 1, c: 3 }
+
+// 选择键名长度为1的属性
+pickBy(obj, (val, key) => key.length === 1); // { a: 1, b: 2, c: 3, d: undefined }
+```
+
+## 签名
+
+```ts
+function pickBy<T extends object>(
+  obj: T,
+  predicate: (value: T[keyof T], key: keyof T) => boolean
+): Partial<T>
+```
+
+## 参数
+
+- `obj` (`T extends object`): 源对象。
+- `predicate` (`(value: T[keyof T], key: keyof T) => boolean`): 判断是否包含属性的函数。
+
+## 返回值
+
+- (`Partial<T>`): 过滤后的新对象。

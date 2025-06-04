@@ -1,0 +1,39 @@
+---
+title: isUndefined
+描述: 检查给定的值是否为 undefined。
+---
+
+# `isUndefined`
+
+检查给定的 `value` 是否为 `undefined`。
+
+## 使用场景
+
+- 默认参数处理：在应用默认值之前检查是否为 undefined。
+- 可选属性检查：验证对象属性是否存在。
+- 错误预防：避免 undefined 引用错误。
+
+## 示例
+
+```ts
+import { isUndefined } from 'funtool';
+
+isUndefined(undefined); // ✅ true
+isUndefined(null); // ❌ false
+isUndefined(0); // ❌ false
+isUndefined(''); // ❌ false
+```
+
+## 函数签名
+
+```ts
+function isUndefined(v: any): boolean
+```
+
+## 参数
+
+- `v` (`any`)：要测试是否为 undefined 的值。
+
+## 返回值
+
+- (`boolean`)：如果该值是 undefined，则返回 `true`，否则返回 `false`。

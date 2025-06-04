@@ -1,0 +1,51 @@
+---
+title: omit
+description: 创建一个新对象，排除指定键的属性。
+---
+
+# `omit`
+
+创建一个新对象，包含原对象中除指定键之外的所有属性。
+
+## 使用场景
+
+- **属性排除**：从对象中移除特定属性。
+- **数据过滤**：创建不包含敏感信息的新对象。
+- **不可变操作**：不修改原对象的情况下创建过滤后的副本。
+
+## 示例
+
+```ts
+import { omit } from 'funtool';
+
+const obj = { a: 1, b: 2, c: 3, d: 4 };
+
+// 排除单个键
+omit(obj, 'a'); // { b: 2, c: 3, d: 4 }
+
+// 排除多个键
+omit(obj, ['a', 'c']); // { b: 2, d: 4 }
+
+// 排除Symbol键
+const sym = Symbol('id');
+const objWithSymbol = { [sym]: 123, e: 5 };
+omit(objWithSymbol, sym); // { e: 5 }
+```
+
+## 签名
+
+```ts
+function omit<T extends object, K extends keyof T>(
+  obj: T,
+  keys: K | K[]
+): Omit<T, K>
+```
+
+## 参数
+
+- `obj` (`T extends object`): 源对象。
+- `keys` (`K | K[]`): 要排除的键或键数组。
+
+## 返回值
+
+- (`Omit<T, K>`): 不包含指定键的新对象。

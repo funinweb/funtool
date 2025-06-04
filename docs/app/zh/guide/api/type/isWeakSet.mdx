@@ -1,0 +1,38 @@
+---
+title: isWeakSet
+描述: 检查给定的值是否为 WeakSet。
+---
+
+# `isWeakSet`
+
+检查给定的 `value` 是否为 `WeakSet`。
+
+## 使用场景
+
+- 内存管理：在将值用于对内存敏感的操作之前，验证它是否为 WeakSet。
+- API 响应处理：在使用 WeakSet 方法之前，检查 API 是否返回了 WeakSet。
+- 类型安全：在处理 WeakSet 集合时确保类型安全。
+
+## 示例
+
+```ts
+import { isWeakSet } from 'funtool';
+
+isWeakSet(new WeakSet()); // ✅ true
+isWeakSet(new Set()); // ❌ false
+isWeakSet({}); // ❌ false
+```
+
+## 函数签名
+
+```ts
+function isWeakSet(v: any): v is WeakSet<WeakKey>
+```
+
+## 参数
+
+- `v` (`any`)：要测试是否为 WeakSet 的值。
+
+## 返回值
+
+- (`v is WeakSet<WeakKey>`)：如果该值是 WeakSet，则返回 `true`，否则返回 `false`。

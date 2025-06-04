@@ -1,0 +1,41 @@
+---
+title: isFunction
+description: 检查给定的值是否为函数。
+---
+
+# `isFunction`
+
+检查给定的 `value` 是否为 `function`。
+
+## 使用场景
+
+- 回调验证：在调用回调函数之前验证其是否为函数。
+- 高阶函数：在组合函数之前检查参数是否为函数。
+- 事件处理程序：确保事件处理程序已正确设置。
+
+## 示例
+
+```ts
+import { isFunction } from 'funtool';
+
+isFunction(() => {}); // ✅ true
+isFunction(function() {}); // ✅ true
+isFunction(class {}); // ✅ true
+
+isFunction({}); // ❌ false
+isFunction('function'); // ❌ false
+```
+
+## 函数签名
+
+```ts
+function isFunction(v: any): v is Function
+```
+
+## 参数
+
+- `v` (`any`): 要测试是否为函数的值。
+
+## 返回值
+
+- (`v is Function`): 如果值为函数，则返回 `true`，否则返回 `false`。
