@@ -1,0 +1,36 @@
+---
+title: isWeakMap
+description: Check if the given value is a WeakMap.
+---
+
+# `isWeakMap`
+
+Check if the given `value` is a `WeakMap`.
+
+## Usage Scenarios
+
+- Memory Management: Verify if a value is a WeakMap before using it for memory-sensitive operations.
+- API Response Handling: Check if API returns a WeakMap before using WeakMap methods.
+- Type Safety: Ensure type safety when working with WeakMap collections.
+
+## Examples
+
+```ts
+import { isWeakMap } from 'funtool';
+
+isWeakMap(new WeakMap()); // ✅ true
+isWeakMap(new Map()); // ❌ false
+isWeakMap({}); // ❌ false
+```
+
+## Signature
+```ts
+function isWeakMap<T = any>(v: any): v is WeakMap<WeakKey, T>
+```
+
+## Parameters
+- `v` (`any`): The value to test if it is a WeakMap.
+
+## Returns
+
+- (`v is WeakMap<WeakKey, T>`): Returns `true` if the value is a WeakMap, otherwise returns `false`.

@@ -1,0 +1,36 @@
+---
+title: isWeakSet
+description: Check if the given value is a WeakSet.
+---
+
+# `isWeakSet`
+
+Check if the given `value` is a `WeakSet`.
+
+## Usage Scenarios
+
+- Memory Management: Verify if a value is a WeakSet before using it for memory-sensitive operations.
+- API Response Handling: Check if API returns a WeakSet before using WeakSet methods.
+- Type Safety: Ensure type safety when working with WeakSet collections.
+
+## Examples
+
+```ts
+import { isWeakSet } from 'funtool';
+
+isWeakSet(new WeakSet()); // ✅ true
+isWeakSet(new Set()); // ❌ false
+isWeakSet({}); // ❌ false
+```
+
+## Signature
+```ts
+function isWeakSet(v: any): v is WeakSet<WeakKey>
+```
+
+## Parameters
+- `v` (`any`): The value to test if it is a WeakSet.
+
+## Returns
+
+- (`v is WeakSet<WeakKey>`): Returns `true` if the value is a WeakSet, otherwise returns `false`.

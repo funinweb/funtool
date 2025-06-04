@@ -1,0 +1,37 @@
+---
+title: isRegExp
+description: Check if the given value is a regular expression.
+---
+
+# `isRegExp`
+
+Check if the given `value` is a `RegExp`.
+
+## Usage Scenarios
+
+- Pattern Validation: Verify if a value is a RegExp before using pattern matching.
+- Function Parameter Validation: Ensure parameters are RegExp objects before operations.
+- Type Safety: Maintain type safety when working with regular expressions.
+
+## Examples
+
+```ts
+import { isRegExp } from 'funtool';
+
+isRegExp(/abc/); // ✅ true
+isRegExp(new RegExp('abc')); // ✅ true
+isRegExp('abc'); // ❌ false
+isRegExp({}); // ❌ false
+```
+
+## Signature
+```ts
+function isRegExp(v: any): v is RegExp
+```
+
+## Parameters
+- `v` (`any`): The value to test if it is a RegExp.
+
+## Returns
+
+- (`v is RegExp`): Returns `true` if the value is a RegExp, otherwise returns `false`.

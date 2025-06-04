@@ -1,0 +1,35 @@
+---
+title: isNodeJS
+description: Check if the current environment is Node.js.
+---
+
+# `isNodeJS`
+
+Check if the current environment is Node.js.
+
+## Usage Scenarios
+
+- Environment Detection: Determine if code is running in Node.js vs browser.
+- Module Loading: Conditionally load Node.js specific modules.
+- Feature Detection: Enable/disable Node.js specific features.
+
+## Examples
+
+```ts
+import { isNodeJS } from 'funtool';
+
+isNodeJS(); // ✅ true (in Node.js)
+isNodeJS(); // ❌ false (in browser)
+```
+
+## Signature
+```ts
+function isNodeJS(): boolean
+```
+
+## Parameters
+None
+
+## Returns
+
+- (`boolean`): Returns `true` if the environment is Node.js, otherwise returns `false`.

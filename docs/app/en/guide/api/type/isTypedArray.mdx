@@ -1,0 +1,50 @@
+---
+title: isTypedArray
+description: Check if the given value is a TypedArray.
+---
+
+# `isTypedArray`
+
+Check if the given `value` is a `TypedArray`.
+
+## Usage Scenarios
+
+- Binary Data Handling: Verify data type before binary operations.
+- Performance Optimization: Use TypedArrays for high-performance computing.
+- Data Validation: Ensure input is TypedArray before processing.
+
+## Examples
+
+```ts
+import { isTypedArray } from 'funtool';
+
+isTypedArray(new Uint8Array()); // ✅ true
+isTypedArray(new Float32Array()); // ✅ true
+isTypedArray([]); // ❌ false
+isTypedArray({}); // ❌ false
+```
+
+## Signature
+```ts
+type TypedArrayTypes =
+	| Uint8Array
+	| Uint8ClampedArray
+	| Uint16Array
+	| Uint32Array
+	| BigUint64Array
+	| Int8Array
+	| Int16Array
+	| Int32Array
+	| BigInt64Array
+	| Float32Array
+	| Float64Array
+
+function isTypedArray(v: any): v is TypedArrayTypes
+```
+
+## Parameters
+- `v` (`any`): The value to test if it is a TypedArray.
+
+## Returns
+
+- (`v is TypedArrayTypes`): Returns `true` if the value is a TypedArray, otherwise returns `false`.

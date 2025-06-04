@@ -1,0 +1,37 @@
+---
+title: isSymbol
+description: Check if the given value is a Symbol.
+---
+
+# `isSymbol`
+
+Check if the given `value` is a `Symbol`.
+
+## Usage Scenarios
+
+- Unique Key Verification: Check if a value is a Symbol before using as object key.
+- Type Safety: Ensure type safety when working with Symbols.
+- Meta-programming: Verify Symbol type before reflective operations.
+
+## Examples
+
+```ts
+import { isSymbol } from 'funtool';
+
+isSymbol(Symbol()); // ✅ true
+isSymbol(Symbol('description')); // ✅ true
+isSymbol('symbol'); // ❌ false
+isSymbol({}); // ❌ false
+```
+
+## Signature
+```ts
+function isSymbol(v: any): v is symbol
+```
+
+## Parameters
+- `v` (`any`): The value to test if it is a Symbol.
+
+## Returns
+
+- (`v is symbol`): Returns `true` if the value is a Symbol, otherwise returns `false`.

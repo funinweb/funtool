@@ -1,0 +1,36 @@
+---
+title: isMap
+description: Check if the given value is a Map.
+---
+
+# `isMap`
+
+Check if the given `value` is a `Map`.
+
+## Usage Scenarios
+
+- Data Structure Validation: Verify if a value is a Map before performing Map-specific operations.
+- API Response Handling: Check if API response contains Map data.
+- Type Safety: Ensure type safety when working with Maps.
+
+## Examples
+
+```ts
+import { isMap } from 'funtool';
+
+isMap(new Map()); // ✅ true
+isMap(new WeakMap()); // ❌ false
+isMap({}); // ❌ false
+```
+
+## Signature
+```ts
+function isMap<K = any, V = any>(v: any): v is Map<K, V>
+```
+
+## Parameters
+- `v` (`any`): The value to test if it is a Map.
+
+## Returns
+
+- (`v is Map<K, V>`): Returns `true` if the value is a Map, otherwise returns `false`.

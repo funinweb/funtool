@@ -1,0 +1,40 @@
+---
+title: typeOf
+description: Get the type of the given value as a string.
+---
+
+# `typeOf`
+
+Get the type of the given `value` as a string.
+
+## Usage Scenarios
+
+- Runtime Type Checking: Determine value type at runtime.
+- Debugging: Log value types during debugging.
+- Type Discrimination: Handle different types differently.
+
+## Examples
+
+```ts
+import { typeOf } from 'funtool';
+
+typeOf('hello'); // 'string'
+typeOf(42); // 'number'
+typeOf(true); // 'boolean'
+typeOf({}); // 'object'
+typeOf([]); // 'array'
+typeOf(null); // 'null'
+typeOf(undefined); // 'undefined'
+```
+
+## Signature
+```ts
+function typeOf(v: any): string
+```
+
+## Parameters
+- `v` (`any`): The value to get type of.
+
+## Returns
+
+- (`string`): Returns the type of the value as a string.

@@ -1,0 +1,59 @@
+---
+title: isEqual
+description: Deeply compares two values for equality.
+---
+
+# `isEqual`
+
+Deeply compares two values for equality, handling objects, arrays, dates, regex, maps, sets, symbols, and BigInt.
+
+## Usage Scenarios
+
+- Data Comparison: Compare complex objects or arrays for deep equality.
+- State Management: Check if state has changed before triggering updates.
+- Testing: Verify expected and actual values match in tests.
+
+## Examples
+
+```ts
+import { isEqual } from 'funtool';
+
+// Comparing primitive values
+isEqual(5, 5); // ✅ true
+isEqual(5, '5'); // ❌ false
+
+// Comparing arrays (ordered)
+isEqual([1, 2, 3], [1, 2, 3]); // ✅ true
+isEqual([1, 2, 3], [3, 2, 1]); // ❌ false (default ordered=true)
+
+// Comparing arrays (unordered)
+isEqual([1, 2, 3], [3, 2, 1], { ordered: false }); // ✅ true
+
+// Comparing objects
+isEqual({ a: 1, b: 2 }, { b: 2, a: 1 }); // ✅ true
+isEqual({ a: 1, b: 2 }, { a: 1, b: 3 }); // ❌ false
+
+// Comparing Dates
+isEqual(new Date('2025-05-01'), new Date('2025-05-01')); // ✅ true
+isEqual(new Date('2025-05-01'), new Date('2025-05-02')); // ❌ false
+```
+
+## Signature
+```ts
+function isEqual(
+  a: any,
+  b: any,
+  options: boolean | { ordered: boolean } = true,
+  seen: WeakMap<object, object> = new WeakMap()
+): boolean
+```
+
+## Parameters
+- `a` (`any`): The first value to compare.
+- `b` (`any`): The second value to compare.
+- `options` (`boolean | { ordered: boolean }`): If true, arrays are compared in order, otherwise unordered. Default: true.
+- `seen` (`WeakMap<object, object>`): A map used to track circular references during comparison.
+
+## Returns
+
+- (`boolean`): Returns `true` if the values are deeply equal, false otherwise.

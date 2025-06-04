@@ -1,0 +1,37 @@
+---
+title: isSet
+description: Check if the given value is a Set.
+---
+
+# `isSet`
+
+Check if the given `value` is a `Set`.
+
+## Usage Scenarios
+
+- Data Structure Validation: Verify if a value is a Set before performing Set operations.
+- API Response Handling: Check if API returns a Set before using Set methods.
+- Type Safety: Ensure type safety when working with Set collections.
+
+## Examples
+
+```ts
+import { isSet } from 'funtool';
+
+isSet(new Set()); // ✅ true
+isSet(new WeakSet()); // ❌ false
+isSet([]); // ❌ false
+isSet({}); // ❌ false
+```
+
+## Signature
+```ts
+function isSet<T = any>(v: any): v is Set<T>
+```
+
+## Parameters
+- `v` (`any`): The value to test if it is a Set.
+
+## Returns
+
+- (`v is Set<T>`): Returns `true` if the value is a Set, otherwise returns `false`.

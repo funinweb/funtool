@@ -1,0 +1,37 @@
+---
+title: isUndefined
+description: Check if the given value is undefined.
+---
+
+# `isUndefined`
+
+Check if the given `value` is `undefined`.
+
+## Usage Scenarios
+
+- Default Parameter Handling: Check for undefined before applying defaults.
+- Optional Property Checking: Verify if object properties exist.
+- Error Prevention: Avoid undefined reference errors.
+
+## Examples
+
+```ts
+import { isUndefined } from 'funtool';
+
+isUndefined(undefined); // ✅ true
+isUndefined(null); // ❌ false
+isUndefined(0); // ❌ false
+isUndefined(''); // ❌ false
+```
+
+## Signature
+```ts
+function isUndefined(v: any): boolean
+```
+
+## Parameters
+- `v` (`any`): The value to test if it is undefined.
+
+## Returns
+
+- (`boolean`): Returns `true` if the value is undefined, otherwise returns `false`.

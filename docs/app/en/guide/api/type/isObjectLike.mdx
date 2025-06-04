@@ -1,0 +1,37 @@
+---
+title: isObjectLike
+description: Check if the given value is an object-like value.
+---
+
+# `isObjectLike`
+
+Check if the given `value` is an object-like value.
+
+## Usage Scenarios
+
+- Type Checking: Verify if a value is object-like before property access.
+- Data Validation: Ensure API responses contain object-like structures.
+- Type Narrowing: Narrow variable types in TypeScript.
+
+## Examples
+
+```ts
+import { isObjectLike } from 'funtool';
+
+isObjectLike({}); // ✅ true
+isObjectLike([]); // ✅ true
+isObjectLike(() => {}); // ❌ false
+isObjectLike(null); // ❌ false
+```
+
+## Signature
+```ts
+function isObjectLike(v: any): boolean
+```
+
+## Parameters
+- `v` (`any`): The value to test if it is object-like.
+
+## Returns
+
+- (`boolean`): Returns `true` if the value is object-like, otherwise returns `false`.

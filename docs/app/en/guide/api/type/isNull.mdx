@@ -1,0 +1,37 @@
+---
+title: isNull
+description: Check if the given value is null.
+---
+
+# `isNull`
+
+Check if the given `value` is `null`.
+
+## Usage Scenarios
+
+- Null Check: Verify if a value is specifically null (not undefined or other falsy values).
+- Data Validation: Validate API responses or user input.
+- Type Safety: Ensure type safety when null is a valid case.
+
+## Examples
+
+```ts
+import { isNull } from 'funtool';
+
+isNull(null); // ✅ true
+isNull(undefined); // ❌ false
+isNull(0); // ❌ false
+isNull(''); // ❌ false
+```
+
+## Signature
+```ts
+function isNull(v: any): boolean
+```
+
+## Parameters
+- `v` (`any`): The value to test if it is null.
+
+## Returns
+
+- (`boolean`): Returns `true` if the value is null, otherwise returns `false`.

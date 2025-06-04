@@ -1,0 +1,37 @@
+---
+title: isNumber
+description: Check if the given value is a number.
+---
+
+# `isNumber`
+
+Check if the given `value` is a `number`.
+
+## Usage Scenarios
+
+- Type Checking: Verify if a value is a number before mathematical operations.
+- Input Validation: Validate numeric user input or API responses.
+- Type Narrowing: Narrow variable types in TypeScript.
+
+## Examples
+
+```ts
+import { isNumber } from 'funtool';
+
+isNumber(123); // ✅ true
+isNumber('123'); // ❌ false
+isNumber(NaN); // ✅ true
+isNumber(Infinity); // ✅ true
+```
+
+## Signature
+```ts
+function isNumber(v: any): boolean
+```
+
+## Parameters
+- `v` (`any`): The value to test if it is a number.
+
+## Returns
+
+- (`boolean`): Returns `true` if the value is a number, otherwise returns `false`.

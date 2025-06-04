@@ -1,0 +1,37 @@
+---
+title: isPromise
+description: Check if the given value is a Promise.
+---
+
+# `isPromise`
+
+Check if the given `value` is a `Promise`.
+
+## Usage Scenarios
+
+- Async Handling: Verify if a value is a Promise before using await or .then().
+- API Response Handling: Check if API returns a Promise before chaining operations.
+- Error Prevention: Avoid runtime errors by checking Promise type.
+
+## Examples
+
+```ts
+import { isPromise } from 'funtool';
+
+isPromise(Promise.resolve()); // ✅ true
+isPromise(new Promise(() => {})); // ✅ true
+isPromise({}); // ❌ false
+isPromise('promise'); // ❌ false
+```
+
+## Signature
+```ts
+function isPromise(v: any): boolean
+```
+
+## Parameters
+- `v` (`any`): The value to test if it is a Promise.
+
+## Returns
+
+- (`boolean`): Returns `true` if the value is a Promise, otherwise returns `false`.

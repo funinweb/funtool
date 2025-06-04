@@ -1,0 +1,37 @@
+---
+title: isString
+description: Check if the given value is a string.
+---
+
+# `isString`
+
+Check if the given `value` is a `string`.
+
+## Usage Scenarios
+
+- Input Validation: Validate string input before processing.
+- Type Checking: Ensure value is a string before string operations.
+- Type Narrowing: Narrow variable types in TypeScript.
+
+## Examples
+
+```ts
+import { isString } from 'funtool';
+
+isString('hello'); // ✅ true
+isString(123); // ❌ false
+isString(null); // ❌ false
+isString(undefined); // ❌ false
+```
+
+## Signature
+```ts
+function isString(v: any): v is string
+```
+
+## Parameters
+- `v` (`any`): The value to test if it is a string.
+
+## Returns
+
+- (`v is string`): Returns `true` if the value is a string, otherwise returns `false`.

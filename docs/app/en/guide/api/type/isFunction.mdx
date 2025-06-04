@@ -1,0 +1,39 @@
+---
+title: isFunction
+description: Check if the given value is a function.
+---
+
+# `isFunction`
+
+Check if the given `value` is a `function`.
+
+## Usage Scenarios
+
+- Callback Validation: Verify a callback is a function before invoking it.
+- Higher-Order Functions: Check if a parameter is a function before composition.
+- Event Handlers: Ensure event handlers are properly set.
+
+## Examples
+
+```ts
+import { isFunction } from 'funtool';
+
+isFunction(() => {}); // ✅ true
+isFunction(function() {}); // ✅ true
+isFunction(class {}); // ✅ true
+
+isFunction({}); // ❌ false
+isFunction('function'); // ❌ false
+```
+
+## Signature
+```ts
+function isFunction(v: any): v is Function
+```
+
+## Parameters
+- `v` (`any`): The value to test if it is a function.
+
+## Returns
+
+- (`v is Function`): Returns `true` if the value is a function, otherwise returns `false`.

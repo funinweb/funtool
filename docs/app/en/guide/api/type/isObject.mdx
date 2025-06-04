@@ -1,0 +1,38 @@
+---
+title: isObject
+description: Check if the given value is an object.
+---
+
+# `isObject`
+
+Check if the given `value` is an `object`.
+
+## Usage Scenarios
+
+- Type Checking: Verify if a value is an object before property access.
+- Data Validation: Validate API responses or configuration objects.
+- Type Narrowing: Narrow variable types in TypeScript.
+
+## Examples
+
+```ts
+import { isObject } from 'funtool';
+
+isObject({}); // ✅ true
+isObject([]); // ✅ true
+isObject(() => {}); // ✅ true
+isObject(null); // ❌ false
+isObject(123); // ❌ false
+```
+
+## Signature
+```ts
+function isObject(v: any): boolean
+```
+
+## Parameters
+- `v` (`any`): The value to test if it is an object.
+
+## Returns
+
+- (`boolean`): Returns `true` if the value is an object, otherwise returns `false`.

@@ -1,0 +1,37 @@
+---
+title: isPlainObject
+description: Check if the given value is a plain object.
+---
+
+# `isPlainObject`
+
+Check if the given `value` is a plain object (created by the Object constructor or with a null prototype).
+
+## Usage Scenarios
+
+- Data Validation: Verify if an object is a plain object before serialization.
+- Deep Cloning: Ensure objects are plain before performing deep cloning operations.
+- Type Safety: Maintain type safety when working with plain objects.
+
+## Examples
+
+```ts
+import { isPlainObject } from 'funtool';
+
+isPlainObject({}); // ✅ true
+isPlainObject(Object.create(null)); // ✅ true
+isPlainObject(new Date()); // ❌ false
+isPlainObject([]); // ❌ false
+```
+
+## Signature
+```ts
+function isPlainObject(v: any): boolean
+```
+
+## Parameters
+- `v` (`any`): The value to test if it is a plain object.
+
+## Returns
+
+- (`boolean`): Returns `true` if the value is a plain object, otherwise returns `false`.
