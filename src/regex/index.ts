@@ -1,9 +1,9 @@
 import { Checker } from './checker';
 import { Replacer } from './replacer';
 import {store} from './store'
-import {RulePlugin} from './definePlugin'
+import {DefineRegexPlugin} from './definePlugin'
 
-export {RulePlugin} from './definePlugin'
+export {DefineRegexPlugin} from './definePlugin'
 
 /**
  * Checker and Replacer tools.
@@ -49,7 +49,7 @@ class Regex {
    * @returns {RulePlugin<Name>} The registered plugin.
    * @throws {Error} If plugin name is reserved/internal.
    */
-  public definePlugin<Name extends string>(plugin: RulePlugin<Name>):RulePlugin<Name> {
+  public definePlugin<RuleName extends string>(plugin: DefineRegexPlugin<RuleName>):DefineRegexPlugin<RuleName> {
     if(store.isInternal(plugin.name)) {
       throw new Error(`Cannot register plugin with reserved name: '${plugin.name}'`);
     }

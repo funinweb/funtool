@@ -1,8 +1,13 @@
 import {store} from './store';
-export interface RulePlugin<T extends string> {
+export type RegexValidateContext<T extends string> = {
   name: T;
   pattern: RegExp;
-  validate: (input: string) => boolean;
+  input: string;
+}
+export interface DefineRegexPlugin<T extends string> {
+  name: T;
+  pattern: RegExp;
+  validate: (ctx: RegexValidateContext<T>) => boolean;
 }
 
 // export function definePlugin<Name extends string>(plugin: RulePlugin<Name>): RulePlugin<Name> {
@@ -13,7 +18,7 @@ export interface RulePlugin<T extends string> {
 //   return plugin;
 // }
 
-export function definePlugin<Name extends string>(plugin: RulePlugin<Name>): RulePlugin<Name> {
+export function definePlugin<Name extends string>(plugin: DefineRegexPlugin<Name>): DefineRegexPlugin<Name> {
   store.register(plugin, true);
   return plugin;
 }

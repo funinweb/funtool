@@ -28,7 +28,7 @@ export class Replacer {
    * @returns The Replacer instance for method chaining.
    * @throws Will throw an error if the rule name is not registered.
    */
-  use(rule: RuleName | RegExp): this {
+  use(rule: RuleName | RegExp | (string & {})): this {
     if (rule instanceof RegExp) {
       this.pattern = rule;
     } else {

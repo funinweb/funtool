@@ -5,7 +5,7 @@ import { RuleName } from "./plugins";
  * Listener function type. It takes an object of plugins and returns void.
  * @param plugins - An object where keys are plugin names and values are plugin instances.
  */
-type Listener = (plugins: Record<string, ReturnType<typeof definePlugin>>) => void;
+type Listener = (plugins: Record<RuleName, ReturnType<typeof definePlugin<RuleName>>>) => void;
 /**
  * @description A singleton class that manages the registration and retrieval of regex rules.
  * @author xiaoqiujun
@@ -72,7 +72,7 @@ class Store {
    * @param internal - A flag indicating whether the rules are internal. Defaults to false.
    * @throws {Error} If a rule with the same name is already registered or if an attempt is made to override an internal rule.
    */
-  register(rules: ReturnType<typeof definePlugin> | ReturnType<typeof definePlugin>[], internal = false) {
+  register<RuleName extends string>(rules: ReturnType<typeof definePlugin<RuleName>> | ReturnType<typeof definePlugin<RuleName>>[], internal = false) {
     const ruleList = Array.isArray(rules) ? rules : [rules];
 
     ruleList.forEach(r => {
@@ -92,7 +92,7 @@ class Store {
           throw new Error(`Rule name '${r.name}' is reserved and cannot be overridden.`);
         }
       }
-      this.plugins.set(r.name, r);
+      this.plugins.set(r.name, r as any);
     });
     this.notify();
   }
@@ -104,7 +104,7 @@ class Store {
    */
   get<RuleName extends string>(name: RuleName): ReturnType<typeof definePlugin<RuleName>> | undefined {
     if(!this.plugins.has(name)) return undefined;
-    return this.plugins.get(name) as ReturnType<typeof definePlugin<RuleName>>;
+    return this.plugins.get(name) as unknown as ReturnType<typeof definePlugin<RuleName>>;
   }
 
   /**
