@@ -18,11 +18,13 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install dependencies
-        run: npm i
+      - name: Install docs dependencies
+        run: npm install --legacy-peer-deps
+        working-directory: docs
 
       - name: Build docs
-        run: npm run docs:build
+        run: npm run build
+        working-directory: docs
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
