@@ -1,0 +1,43 @@
+---
+title: number
+description: Built-in regex plugin for validating single-digit numbers.
+---
+
+# `number`
+
+Built-in regex plugin for validating single-digit numbers.
+
+## Usage Scenarios
+
+- **Form Validation**: Validate single-digit number input fields.
+- **Data Sanitization**: Ensure input is a single digit.
+- **Simple Calculations**: Verify input for basic arithmetic operations.
+
+## Examples
+
+```ts
+import { regex } from 'funtool';
+
+// Basic validation
+const isValid = regex.checker('5').use('number').isValid();
+
+// With error handling
+const result = regex.checker('12').use('number');
+if (!result.isValid()) {
+  console.log('Input must be a single digit.');
+}
+```
+
+## Pattern
+
+```ts
+/^[0-9]$/
+```
+
+## Validation Rules
+
+- Input must be a single digit from 0 to 9.
+
+## Error Message
+
+Returns `false` for invalid inputs without a specific message.

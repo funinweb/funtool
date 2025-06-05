@@ -1,0 +1,44 @@
+---
+title: username
+description: Built-in regex plugin for validating usernames.
+---
+
+# `username`
+
+Built-in regex plugin for validating usernames.
+
+## Usage Scenarios
+
+- **User Registration**: Validate username input during the signup process.
+- **Profile Editing**: Ensure the new username meets the format requirements.
+- **Account Verification**: Verify the username when logging in or performing sensitive operations.
+
+## Examples
+
+```ts
+import { regex } from 'funtool';
+
+// Basic validation
+const isValid = regex.checker('john_doe123').use('username').isValid();
+
+// With error handling
+const result = regex.checker('123john').use('username');
+if (!result.isValid()) {
+  console.log('Invalid username');
+}
+```
+
+## Pattern
+
+```ts
+/^[a-zA-Z][a-zA-Z0-9_]{4,15}$/
+```
+
+## Validation Rules
+
+- Must start with a letter (either uppercase or lowercase).
+- Followed by 4 to 15 characters, which can be letters, numbers, or underscores.
+
+## Error Message
+
+Returns `false` for invalid usernames without a specific message.

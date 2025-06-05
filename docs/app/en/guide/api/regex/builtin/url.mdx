@@ -1,0 +1,44 @@
+---
+title: url
+description: Built-in regex plugin for validating URLs.
+---
+
+# `url`
+
+Built-in regex plugin for validating URLs.
+
+## Usage Scenarios
+
+- **Form Validation**: Validate URL input fields.
+- **Link Verification**: Ensure valid URLs before adding links.
+- **Web Crawling**: Verify URLs before accessing web pages.
+
+## Examples
+
+```ts
+import { regex } from 'funtool';
+
+// Basic validation
+const isValid = regex.checker('https://example.com').use('url').isValid();
+
+// With error handling
+const result = regex.checker('invalid').use('url');
+if (!result.isValid()) {
+  console.log('Invalid URL');
+}
+```
+
+## Pattern
+
+```ts
+/^((https|http|ftp|rtsp|mms)?:\/\/)[^\s]+/
+```
+
+## Validation Rules
+
+- Must start with a valid protocol (https, http, ftp, rtsp, or mms).
+- Followed by a non - whitespace string.
+
+## Error Message
+
+Returns `false` for invalid URLs without a specific message.

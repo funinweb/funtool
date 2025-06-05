@@ -1,0 +1,45 @@
+---
+title: chinese
+描述: 用于验证中文字符的内置正则表达式插件。
+---
+
+# `chinese`
+
+用于验证中文字符的内置正则表达式插件。
+
+## 使用场景
+
+- **表单验证**：验证中文文本输入
+- **本地化**：确保内容仅包含中文字符
+- **姓名验证**：验证中文姓名是否包含有效字符
+
+## 示例
+
+```ts
+import { regex } from 'funtool';
+
+// 基本验证
+const isValid = regex.checker('中文').use('chinese').isValid();
+
+// 带错误处理
+const result = regex.checker('abc123').use('chinese');
+if (!result.isValid()) {
+  console.log('输入必须仅包含中文字符');
+}
+```
+
+## 正则规则
+
+```ts
+/^\p{Script=Han}+$/u
+```
+
+## 验证规则
+
+- 必须仅包含中文字符（汉字脚本）
+- 不允许包含字母、数字或特殊字符
+- 支持所有 Unicode 中文字符
+
+## 错误消息
+
+对于无效输入返回 `false`，无特定错误消息。

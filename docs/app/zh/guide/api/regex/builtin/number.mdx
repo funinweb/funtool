@@ -1,0 +1,43 @@
+---
+title: number
+描述: 用于验证一位数字的内置正则表达式插件。
+---
+
+# `number`
+
+用于验证一位数字的内置正则表达式插件。
+
+## 使用场景
+
+- **表单验证**：验证一位数字输入字段。
+- **数据清理**：确保输入是一位数字。
+- **简单计算**：验证基本算术运算的输入。
+
+## 示例
+
+```ts
+import { regex } from 'funtool';
+
+// 基本验证
+const isValid = regex.checker('5').use('number').isValid();
+
+// 带错误处理
+const result = regex.checker('12').use('number');
+if (!result.isValid()) {
+  console.log('输入必须是一位数字。');
+}
+```
+
+## 正则规则
+
+```ts
+/^[0-9]$/
+```
+
+## 验证规则
+
+- 输入必须是 0 到 9 的一位数字。
+
+## 错误消息
+
+对于无效输入返回 `false`，无特定错误消息。

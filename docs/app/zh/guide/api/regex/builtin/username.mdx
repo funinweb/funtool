@@ -1,0 +1,44 @@
+---
+title: username
+描述: 用于验证用户名的内置正则表达式插件。
+---
+
+# `username`
+
+用于验证用户名的内置正则表达式插件。
+
+## 使用场景
+
+- **用户注册**：在注册过程中验证用户名输入。
+- **资料编辑**：确保新用户名符合格式要求。
+- **账户验证**：在登录或执行敏感操作时验证用户名。
+
+## 示例
+
+```ts
+import { regex } from 'funtool';
+
+// 基本验证
+const isValid = regex.checker('john_doe123').use('username').isValid();
+
+// 带错误处理
+const result = regex.checker('123john').use('username');
+if (!result.isValid()) {
+  console.log('无效用户名');
+}
+```
+
+## 正则规则
+
+```ts
+/^[a-zA-Z][a-zA-Z0-9_]{4,15}$/
+```
+
+## 验证规则
+
+- 必须以字母（大写或小写）开头。
+- 后面跟随 4 到 15 个字符，可以是字母、数字或下划线。
+
+## 错误消息
+
+对于无效的用户名，返回 `false`，不提供具体消息。

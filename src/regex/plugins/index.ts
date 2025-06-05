@@ -37,4 +37,4 @@ export const plugins = [
   html,
 ] as const
 
-export type RuleName = typeof plugins[number]['name'] & string;
+export type RuleName = typeof plugins[number]['name'];

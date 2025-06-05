@@ -1,0 +1,45 @@
+---
+title: ipv4
+description: Built-in regex plugin for validating IPv4 addresses.
+---
+
+# `ipv4`
+
+Built-in regex plugin for validating IPv4 addresses.
+
+## Usage Scenarios
+
+- **Network Configuration**: Validate IP address input
+- **Security**: Verify IP addresses in firewall rules
+- **System Administration**: Check server IP configurations
+
+## Examples
+
+```ts
+import { regex } from 'funtool';
+
+// Basic validation
+const isValid = regex.checker('192.168.1.1').use('ipv4').isValid();
+
+// With error handling
+const result = regex.checker('invalid').use('ipv4');
+if (!result.isValid()) {
+  console.log('Invalid IPv4 address');
+}
+```
+
+## Pattern
+
+```ts
+/^(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)){3}$/
+```
+
+## Validation Rules
+
+- Validates standard IPv4 format (0.0.0.0 to 255.255.255.255)
+- Each octet must be between 0-255
+- No leading zeros allowed (except for 0 itself)
+
+## Error Message
+
+Returns `false` for invalid IPv4 addresses without a specific message.

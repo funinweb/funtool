@@ -3,7 +3,10 @@ import { defineConfig } from 'rspress/config';
 
 export default defineConfig({
   root: path.join(__dirname, 'app'),
-  lang: 'en',
+  base: '/funtool/',
+  logo:'',
+  icon: '/rspress-icon.png',
+  lang: 'zh',
   title: 'funtool',
   locales: [
     {

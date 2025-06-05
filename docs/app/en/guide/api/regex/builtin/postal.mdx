@@ -1,0 +1,43 @@
+---
+title: postal
+description: Built-in regex plugin for validating postal codes.
+---
+
+# `postal`
+
+Built-in regex plugin for validating postal codes.
+
+## Usage Scenarios
+
+- **Form Validation**: Validate postal code input fields.
+- **Address Verification**: Ensure valid postal codes during address entry.
+- **Shipping**: Verify postal codes before processing shipments.
+
+## Examples
+
+```ts
+import { regex } from 'funtool';
+
+// Basic validation
+const isValid = regex.checker('123456').use('postal').isValid();
+
+// With error handling
+const result = regex.checker('invalid').use('postal');
+if (!result.isValid()) {
+  console.log('Invalid postal code');
+}
+```
+
+## Pattern
+
+```ts
+/\d{6}/
+```
+
+## Validation Rules
+
+- Input must be a 6-digit number.
+
+## Error Message
+
+Returns `false` for invalid postal codes without a specific message.

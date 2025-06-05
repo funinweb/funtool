@@ -1,0 +1,45 @@
+---
+title: html
+description: Built-in regex plugin for validating HTML tags.
+---
+
+# `html`
+
+Built-in regex plugin for validating HTML tags.
+
+## Usage Scenarios
+
+- **Form Validation**: Detect HTML in user input
+- **Security**: Prevent HTML injection in forms
+- **Content Filtering**: Identify HTML in text content
+
+## Examples
+
+```ts
+import { regex } from 'funtool';
+
+// Basic validation
+const isValid = regex.checker('<div>content</div>').use('html').isValid();
+
+// With error handling
+const result = regex.checker('plain text').use('html');
+if (!result.isValid()) {
+  console.log('No HTML tags detected');
+}
+```
+
+## Pattern
+
+```ts
+/<("[^"]*"|'[^']*'|[^'">])*>/
+```
+
+## Validation Rules
+
+- Matches any HTML tag
+- Detects both opening and closing tags
+- Works with attributes and quoted values
+
+## Error Message
+
+Returns `false` when no HTML tags are found.

@@ -1,0 +1,45 @@
+---
+title: ipv6
+description: Built-in regex plugin for validating IPv6 addresses.
+---
+
+# `ipv6`
+
+Built-in regex plugin for validating IPv6 addresses.
+
+## Usage Scenarios
+
+- **Network Configuration**: Validate IPv6 address input
+- **Modern Applications**: Support for IPv6-only environments
+- **Cloud Services**: Verify IPv6 addresses in cloud configurations
+
+## Examples
+
+```ts
+import { regex } from 'funtool';
+
+// Basic validation
+const isValid = regex.checker('2001:0db8:85a3:0000:0000:8a2e:0370:7334').use('ipv6').isValid();
+
+// With error handling
+const result = regex.checker('invalid').use('ipv6');
+if (!result.isValid()) {
+  console.log('Invalid IPv6 address');
+}
+```
+
+## Pattern
+
+```ts
+/^(?:[a-fA-F0-9]{1,4}:){7}[a-fA-F0-9]{1,4}$|^(?:[a-fA-F0-9]{1,4}:){1,7}:$|^(?:[a-fA-F0-9]{1,4}:){1,6}:[a-fA-F0-9]{1,4}$|^(?:[a-fA-F0-9]{1,4}:){1,5}(?::[a-fA-F0-9]{1,4}){1,2}$|^(?:[a-fA-F0-9]{1,4}:){1,4}(?::[a-fA-F0-9]{1,4}){1,3}$|^(?:[a-fA-F0-9]{1,4}:){1,3}(?::[a-fA-F0-9]{1,4}){1,4}$|^(?:[a-fA-F0-9]{1,4}:){1,2}(?::[a-fA-F0-9]{1,4}){1,5}$|^[a-fA-F0-9]{1,4}:(?:(?::[a-fA-F0-9]{1,4}){1,6})$|^:(?:(?::[a-fA-F0-9]{1,4}){1,7}|:)$/
+```
+
+## Validation Rules
+
+- Validates full and compressed IPv6 formats
+- Supports all valid IPv6 address representations
+- Follows RFC 4291 IPv6 addressing standards
+
+## Error Message
+
+Returns `false` for invalid IPv6 addresses without a specific message.

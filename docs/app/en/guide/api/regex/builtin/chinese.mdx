@@ -1,0 +1,45 @@
+---
+title: chinese
+description: Built-in regex plugin for validating Chinese characters.
+---
+
+# `chinese`
+
+Built-in regex plugin for validating Chinese characters.
+
+## Usage Scenarios
+
+- **Form Validation**: Validate Chinese text input
+- **Localization**: Ensure content contains only Chinese characters
+- **Name Validation**: Verify Chinese names contain valid characters
+
+## Examples
+
+```ts
+import { regex } from 'funtool';
+
+// Basic validation
+const isValid = regex.checker('中文').use('chinese').isValid();
+
+// With error handling
+const result = regex.checker('abc123').use('chinese');
+if (!result.isValid()) {
+  console.log('Input must contain only Chinese characters');
+}
+```
+
+## Pattern
+
+```ts
+/^\p{Script=Han}+$/u
+```
+
+## Validation Rules
+
+- Must contain only Chinese characters (Han script)
+- No letters, numbers, or special characters allowed
+- Supports all Unicode Chinese characters
+
+## Error Message
+
+Returns `false` for invalid inputs without a specific message.

@@ -1,0 +1,45 @@
+---
+title: alpha
+description: Built-in regex plugin for validating alphabetic characters.
+---
+
+# `alpha`
+
+Built-in regex plugin for validating alphabetic characters.
+
+## Usage Scenarios
+
+- **Form Validation**: Validate text input contains only letters
+- **Data Sanitization**: Ensure strings contain no numbers or special characters
+- **Username Validation**: Verify usernames contain only alphabetic characters
+
+## Examples
+
+```ts
+import { regex } from 'funtool';
+
+// Basic validation
+const isValid = regex.checker('abc').use('alpha').isValid();
+
+// With error handling
+const result = regex.checker('123').use('alpha');
+if (!result.isValid()) {
+  console.log('Input must contain only letters');
+}
+```
+
+## Pattern
+
+```ts
+/^[a-zA-Z]+$/
+```
+
+## Validation Rules
+
+- Must contain only letters (a-z, A-Z)
+- No numbers, spaces, or special characters allowed
+- Case insensitive (both upper and lower case accepted)
+
+## Error Message
+
+Returns `false` for invalid inputs without a specific message.

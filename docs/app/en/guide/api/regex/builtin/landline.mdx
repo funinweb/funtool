@@ -1,0 +1,46 @@
+---
+title: landline
+description: Built-in regex plugin for validating landline numbers.
+---
+
+# `landline`
+
+Built-in regex plugin for validating landline numbers.
+
+## Usage Scenarios
+
+- **Form Validation**: Validate landline number input fields.
+- **User Registration**: Verify landline numbers during signup.
+- **Contact Verification**: Ensure valid numbers before sending important notifications.
+
+## Examples
+
+```ts
+import { regex } from 'funtool';
+
+// Basic validation
+const isValid = regex.checker('010-12345678').use('landline').isValid();
+
+// With error handling
+const result = regex.checker('invalid').use('landline');
+if (!result.isValid()) {
+  console.log('Invalid landline number');
+}
+```
+
+## Pattern
+
+```ts
+/^0\d{2,3}-?\d{7,8}$/
+```
+
+## Validation Rules
+
+- Must start with 0.
+- Followed by 2 to 3 digits.
+- An optional hyphen can be included.
+- End with 7 to 8 digits.
+
+## Error Message
+
+Returns `false` for invalid landline numbers without a specific message.

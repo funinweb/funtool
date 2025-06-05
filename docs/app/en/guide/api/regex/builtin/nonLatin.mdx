@@ -1,0 +1,43 @@
+---
+title: nonLatin
+description: Built-in regex plugin for validating non-Latin characters.
+---
+
+# `nonLatin`
+
+Built-in regex plugin for validating all characters that do not belong to the Latin character set, such as Chinese, Japanese, Arabic, and other non-Latin scripts.
+
+## Usage Scenarios
+
+- **Localization**: Validate text input in non-Latin languages.
+- **Content Filtering**: Identify text containing non-Latin characters.
+- **Multilingual Support**: Ensure that input text contains specific non-Latin scripts.
+
+## Examples
+
+```ts
+import { regex } from 'funtool';
+
+// Basic validation
+const isValid = regex.checker('中文').use('nonLatin').isValid();
+
+// With error handling
+const result = regex.checker('abc').use('nonLatin');
+if (!result.isValid()) {
+  console.log('Input does not contain non-Latin characters');
+}
+```
+
+## Pattern
+
+```ts
+/[^\u0000-\u024F]/
+```
+
+## Validation Rules
+
+- Checks if the input contains any non-Latin characters.
+
+## Error Message
+
+Returns `false` for inputs without non-Latin characters without a specific message.

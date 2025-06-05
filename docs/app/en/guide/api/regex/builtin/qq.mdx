@@ -1,0 +1,44 @@
+---
+title: qq
+description: Built-in regex plugin for validating QQ numbers.
+---
+
+# `qq`
+
+Built-in regex plugin for validating QQ numbers.
+
+## Usage Scenarios
+
+- **Form Validation**: Validate QQ number input fields.
+- **User Registration**: Verify QQ numbers during signup.
+- **Contact Verification**: Ensure valid QQ numbers before adding contacts.
+
+## Examples
+
+```ts
+import { regex } from 'funtool';
+
+// Basic validation
+const isValid = regex.checker('123456789').use('qq').isValid();
+
+// With error handling
+const result = regex.checker('01234').use('qq');
+if (!result.isValid()) {
+  console.log('Invalid QQ number');
+}
+```
+
+## Pattern
+
+```ts
+/^[1-9][0-9]{4,9}$/
+```
+
+## Validation Rules
+
+- Must start with a non-zero digit.
+- Followed by 4 to 9 digits.
+
+## Error Message
+
+Returns `false` for invalid QQ numbers without a specific message.

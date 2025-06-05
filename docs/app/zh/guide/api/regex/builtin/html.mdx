@@ -1,0 +1,45 @@
+---
+title: html
+描述: 用于验证 HTML 标签的内置正则表达式插件。
+---
+
+# `html`
+
+用于验证 HTML 标签的内置正则表达式插件。
+
+## 使用场景
+
+- **表单验证**：检测用户输入中的 HTML
+- **安全性**：防止表单中的 HTML 注入
+- **内容过滤**：识别文本内容中的 HTML
+
+## 示例
+
+```ts
+import { regex } from 'funtool';
+
+// 基本验证
+const isValid = regex.checker('<div>content</div>').use('html').isValid();
+
+// 带错误处理
+const result = regex.checker('plain text').use('html');
+if (!result.isValid()) {
+  console.log('未检测到 HTML 标签');
+}
+```
+
+## 正则规则
+
+```ts
+/<("[^"]*"|'[^']*'|[^'">])*>/
+```
+
+## 验证规则
+
+- 匹配任何 HTML 标签
+- 检测开始和结束标签
+- 支持属性和带引号的值
+
+## 错误消息
+
+当未找到 HTML 标签时返回 `false`。

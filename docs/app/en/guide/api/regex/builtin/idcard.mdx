@@ -1,0 +1,45 @@
+---
+title: IDCard
+description: Built-in regex plugin for validating Chinese ID card numbers.
+---
+
+# `IDCard`
+
+Built-in regex plugin for validating Chinese ID card numbers.
+
+## Usage Scenarios
+
+- **Form Validation**: Validate ID card input fields
+- **User Registration**: Verify ID card numbers during signup
+- **Government Forms**: Ensure valid ID numbers in official documents
+
+## Examples
+
+```ts
+import { regex } from 'funtool';
+
+// Basic validation
+const isValid = regex.checker('11010119900307567X').use('IDCard').isValid();
+
+// With error handling
+const result = regex.checker('invalid').use('IDCard');
+if (!result.isValid()) {
+  console.log('Invalid ID card number');
+}
+```
+
+## Pattern
+
+```ts
+/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/
+```
+
+## Validation Rules
+
+- Validates 15-digit or 18-digit ID numbers
+- For 18-digit numbers, checks last digit can be X/x
+- Follows Chinese ID card numbering standards
+
+## Error Message
+
+Returns `false` for invalid ID numbers without a specific message.

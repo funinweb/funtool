@@ -1,0 +1,43 @@
+---
+title: nonAscii
+description: Built-in regex plugin for validating non-ASCII characters.
+---
+
+# `nonAscii`
+
+Built-in regex plugin for validating non-ASCII characters, which may include special symbols and emojis.
+
+## Usage Scenarios
+
+- **Text Filtering**: Identify text containing non-ASCII characters.
+- **Localization**: Ensure that input text contains specific non-ASCII characters.
+- **Security**: Detect potentially malicious non-ASCII characters in user input.
+
+## Examples
+
+```ts
+import { regex } from 'funtool';
+
+// Basic validation
+const isValid = regex.checker('你好').use('nonAscii').isValid();
+
+// With error handling
+const result = regex.checker('abc').use('nonAscii');
+if (!result.isValid()) {
+  console.log('Input does not contain non-ASCII characters');
+}
+```
+
+## Pattern
+
+```ts
+/[^\x00-\xff]/
+```
+
+## Validation Rules
+
+- Checks if the input contains any non-ASCII characters.
+
+## Error Message
+
+Returns `false` for inputs without non-ASCII characters without a specific message.

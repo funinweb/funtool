@@ -1,0 +1,44 @@
+---
+title: url
+描述: 用于验证 URL 的内置正则表达式插件。
+---
+
+# `url`
+
+用于验证 URL 的内置正则表达式插件。
+
+## 使用场景
+
+- **表单验证**：验证 URL 输入字段。
+- **链接验证**：在添加链接前确保 URL 有效。
+- **网页爬虫**：在访问网页前验证 URL。
+
+## 示例
+
+```ts
+import { regex } from 'funtool';
+
+// 基本验证
+const isValid = regex.checker('https://example.com').use('url').isValid();
+
+// 带错误处理
+const result = regex.checker('invalid').use('url');
+if (!result.isValid()) {
+  console.log('无效 URL');
+}
+```
+
+## 正则规则
+
+```ts
+/^((https|http|ftp|rtsp|mms)?:\/\/)[^\s]+/
+```
+
+## 验证规则
+
+- 必须以有效的协议（https、http、ftp、rtsp 或 mms）开头。
+- 后面跟随一个非空白字符串。
+
+## 错误消息
+
+对于无效的 URL，返回 `false`，不提供具体消息。

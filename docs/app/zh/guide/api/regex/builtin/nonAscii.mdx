@@ -1,0 +1,43 @@
+---
+title: nonAscii
+描述: 用于验证非 ASCII 字符的内置正则表达式插件。
+---
+
+# `nonAscii`
+
+用于验证非 ASCII 字符的内置正则表达式插件，这些字符可能包括特殊符号和表情符号。
+
+## 使用场景
+
+- **文本过滤**：识别包含非 ASCII 字符的文本。
+- **本地化**：确保输入文本包含特定的非 ASCII 字符。
+- **安全性**：检测用户输入中可能存在恶意的非 ASCII 字符。
+
+## 示例
+
+```ts
+import { regex } from 'funtool';
+
+// 基本验证
+const isValid = regex.checker('你好').use('nonAscii').isValid();
+
+// 带错误处理
+const result = regex.checker('abc').use('nonAscii');
+if (!result.isValid()) {
+  console.log('输入不包含非 ASCII 字符');
+}
+```
+
+## 正则规则
+
+```ts
+/[^\x00-\xff]/
+```
+
+## 验证规则
+
+- 检查输入是否包含任何非 ASCII 字符。
+
+## 错误消息
+
+对于不包含非 ASCII 字符的输入返回 `false`，无特定错误消息。
