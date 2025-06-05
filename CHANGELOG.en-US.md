@@ -10,6 +10,23 @@
 
 ---
 
+## 1.0.0
+
+*2025-06-05*
+
+### ✨ Features
+
+- Initial setup of complete documentation site
+- Added full Chinese and English versions of the documentation
+- Configured deployment settings for documentation site
+- Added documentation for built-in regex plugins (e.g., email, phone, etc.)
+- Documented regex module with complete API references
+
+### ♻️ Refactors
+
+- Refactored regex validation logic and plugin structure
+
+
 ## 1.0.0-rc.0
 
 *2025-05-26*
