@@ -70,11 +70,11 @@ function generateAutoContent(moduleDir, existingNames) {
 	const imports = []
 	const exports = []
 	const allNames = []
-
+	
 	for (const file of files) {
 		const fileName = path.basename(file, ".ts")
 		const fullPath = path.join(absPath, file)
-		const functionNames = getFunctionNames(fullPath).filter((fn) => !existingNames.has(fn))
+		const functionNames = getFunctionNames(fullPath) //.filter((fn) => !existingNames.has(fn))
 
 		if (functionNames.length > 0) {
 			imports.push(`import { ${functionNames.join(", ")} } from './${fileName}';`)
