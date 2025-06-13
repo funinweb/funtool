@@ -1,0 +1,38 @@
+---
+title: isValid
+description: 验证字符串是否为正确格式的ObjectId十六进制字符串。
+---
+
+# `isValid()`
+
+静态方法，验证字符串是否为正确格式的ObjectId十六进制字符串。
+
+## 用法
+
+```ts
+import { ObjectId } from 'funtool';
+
+ObjectId.isValid('5f1d7f3b1c9d440000000000'); // true
+ObjectId.isValid('invalid'); // false
+```
+
+## 签名
+
+```ts
+static isValid(hex: string): boolean
+```
+
+## 参数
+
+- `hex`: 要验证的字符串
+
+## 返回值
+
+如果字符串是有效的24字符十六进制字符串则返回true，否则返回false。
+
+## 注意事项
+
+- 检查长度和十六进制字符有效性
+- 不验证唯一性
+- 对输入验证很有用
+- 匹配MongoDB验证规则

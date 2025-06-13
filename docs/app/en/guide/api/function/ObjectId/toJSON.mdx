@@ -1,0 +1,34 @@
+---
+title: toJSON
+description: Returns the 24-character hex string for JSON serialization.
+---
+
+# `toJSON()`
+
+Returns the 24-character hex string representation of the ObjectId for JSON serialization.
+
+## Usage
+
+```ts
+import { ObjectId } from 'funtool';
+
+const id = new ObjectId();
+const json = JSON.stringify({ id }); // {"id":"5f1d7f3b1c9d440000000000"}
+```
+
+## Signature
+
+```ts
+toJSON(): string
+```
+
+## Return Value
+
+Returns the 24-character hex string in lowercase.
+
+## Notes
+
+- Used automatically by JSON.stringify()
+- Returns same value as toString()
+- Ensures clean serialization
+- Matches MongoDB serialization behavior

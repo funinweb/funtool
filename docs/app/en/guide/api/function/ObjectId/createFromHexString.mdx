@@ -1,0 +1,37 @@
+---
+title: createFromHexString
+description: Creates an ObjectId instance from a valid hex string.
+---
+
+# `createFromHexString()`
+
+Static method that creates an ObjectId instance from a valid 24-character hex string.
+
+## Usage
+
+```ts
+import { ObjectId } from 'funtool';
+
+const id = ObjectId.createFromHexString('5f1d7f3b1c9d440000000000');
+```
+
+## Signature
+
+```ts
+static createFromHexString(hex: string): ObjectId
+```
+
+## Parameters
+
+- `hex`: A valid 24-character hex string
+
+## Return Value
+
+Returns a new ObjectId instance.
+
+## Notes
+
+- Throws error if hex string is invalid
+- More explicit than constructor
+- Useful for validation
+- Matches MongoDB behavior

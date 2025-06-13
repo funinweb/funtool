@@ -1,0 +1,53 @@
+---
+title: parseQuery
+描述: 将一个扁平对象序列化为 URL 编码的查询字符串。
+---
+
+# `parseQuery`
+
+将一个扁平对象转换为 URL 编码的查询字符串，处理简单的键值对。
+
+## 使用场景
+
+- **URL 构建**：为 API 请求构建查询字符串。
+- **表单数据**：序列化表单输入以进行提交。
+- **状态管理**：将状态对象转换为 URL 参数。
+
+## 示例
+
+```ts
+import { parseQuery } from 'funtool';
+
+// 基本用法
+parseQuery({ name: 'Tom', age: 20 });
+// => "name=Tom&age=20"
+
+// 带 URL 编码
+parseQuery({ city: '北京', lang: 'zh-CN' });
+// => "city=%E5%8C%97%E4%BA%AC&lang=zh-CN"
+
+// 空值将被跳过
+parseQuery({ a: 1, b: null, c: 'test' });
+// => "a=1&c=test"
+```
+
+## 函数签名
+
+```ts
+function parseQuery(obj: Record<string | number, any>): string
+```
+
+## 参数
+
+- `obj`：一个具有字符串或数字键和原始值的扁平对象。
+
+## 返回值
+
+返回一个由 `&` 连接的 URL 编码的查询字符串。
+
+## 注意事项
+
+- 仅适用于扁平对象（无嵌套）。
+- 空值或未定义的值将被跳过。
+- 值将被转换为字符串并进行 URL 编码。
+- 对于嵌套对象，请使用 `parseQueryDeep`。

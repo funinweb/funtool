@@ -1,0 +1,62 @@
+---
+title: base64ToFormData
+description: 将 Base64 字符串转换为包含文件字段的 FormData 对象的实用工具。
+---
+
+# `base64ToFormData`
+
+将 Base64 字符串转换为包含文件字段的 FormData 对象，支持可选配置。
+
+## 使用场景
+
+- **文件上传**：准备 Base64 数据以进行 `multipart/form-data` 格式的上传。
+- **表单提交**：在表单提交中包含 Base64 格式的文件。
+- **API 请求**：将 Base64 数据格式化为 API 端点所需的 FormData 格式。
+
+## 示例
+
+```ts
+import { base64ToFormData } from 'funtool';
+
+// 基本用法
+const base64 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...';
+const formData = base64ToFormData(base64);
+
+// 带选项
+const formData2 = base64ToFormData(base64, {
+  key: 'avatar',
+  filename: 'profile-pic'
+});
+
+// 添加额外字段
+formData.append('userId', '123');
+```
+
+## 函数签名
+
+```ts
+function base64ToFormData(
+  base64: string,
+  options?: {
+    key?: string;
+    filename?: string;
+  }
+): FormData
+```
+
+## 参数
+
+- `base64`：带有数据 URL 格式的 Base64 字符串。
+- `options`：可选配置
+  - `key`：FormData 字段名（默认值：`'file'`）
+  - `filename`：文件名（如果缺失则自动补全扩展名）。
+
+## 返回值
+
+返回一个包含一个文件字段的 FormData 实例，该字段包含转换后的数据。
+
+## 注意事项
+
+- 自动根据 MIME 类型确定文件扩展名。
+- 如果未提供文件名，则生成基于时间戳的文件名。
+- 内部使用 `base64ToBlob` 进行转换。

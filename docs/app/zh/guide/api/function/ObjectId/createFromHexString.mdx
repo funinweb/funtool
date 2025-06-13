@@ -1,0 +1,37 @@
+---
+title: createFromHexString
+description: 从有效的十六进制字符串创建ObjectId实例。
+---
+
+# `createFromHexString()`
+
+静态方法，从有效的24字符十六进制字符串创建ObjectId实例。
+
+## 用法
+
+```ts
+import { ObjectId } from 'funtool';
+
+const id = ObjectId.createFromHexString('5f1d7f3b1c9d440000000000');
+```
+
+## 签名
+
+```ts
+static createFromHexString(hex: string): ObjectId
+```
+
+## 参数
+
+- `hex`: 有效的24字符十六进制字符串
+
+## 返回值
+
+返回一个新的ObjectId实例。
+
+## 注意事项
+
+- 如果十六进制字符串无效会抛出错误
+- 比构造函数更明确
+- 对验证很有用
+- 与MongoDB行为匹配

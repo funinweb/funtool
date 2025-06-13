@@ -1,0 +1,34 @@
+---
+title: getTimestamp
+description: 从ObjectId中提取时间戳。
+---
+
+# `getTimestamp()`
+
+返回ObjectId中嵌入的创建时间戳作为Date对象。
+
+## 用法
+
+```ts
+import { ObjectId } from 'funtool';
+
+const id = new ObjectId();
+const timestamp = id.getTimestamp(); // Date对象
+```
+
+## 签名
+
+```ts
+getTimestamp(): Date
+```
+
+## 返回值
+
+返回一个Date对象，表示ObjectId创建的时间。
+
+## 注意事项
+
+- ObjectId的前4个字节包含时间戳
+- 精度是秒(不是毫秒)
+- 对按创建时间排序很有用
+- 与MongoDB时间戳提取匹配

@@ -1,0 +1,61 @@
+---
+title: generateVerificationCode
+description: Generates random verification codes with customizable options.
+---
+
+# `generateVerificationCode`
+
+Generates a random verification code string of specified length, with optional custom charset and ability to exclude ambiguous characters.
+
+## Usage Scenarios
+
+- **User Registration**: Generate verification codes for signup
+- **Password Reset**: Create temporary access codes
+- **2FA**: Generate one-time passwords
+- **Testing**: Create test data with controlled randomness
+
+## Examples
+
+```ts
+import { generateVerificationCode } from 'funtool';
+
+// Default 4-digit code
+generateVerificationCode(); // e.g., 'a8Z3'
+
+// 6-digit code
+generateVerificationCode(6); // e.g., 'X2a9Lb'
+
+// Custom charset
+generateVerificationCode(6, { charset: 'ABC123' }); // e.g., '1CBAC3'
+
+// Exclude confusing chars (0,O,1,l)
+generateVerificationCode(6, { excludeConfusing: true }); // e.g., 'x7KpT9'
+```
+
+## Signature
+
+```ts
+function generateVerificationCode(
+  len?: number,
+  options?: {
+    charset?: string;
+    excludeConfusing?: boolean;
+  }
+): string
+```
+
+## Parameters
+
+- `len`: Length of code (default: 4)
+- `options`: Optional configuration
+  - `charset`: Custom character set (default: a-zA-Z0-9)
+  - `excludeConfusing`: Whether to exclude 0,O,1,l (default: true)
+
+## Return Value
+
+Returns randomly generated verification code string.
+
+## Error Handling
+
+- Throws error if character set becomes empty after filtering
+- Returns empty string if length < 0

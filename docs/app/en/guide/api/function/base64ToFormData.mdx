@@ -1,0 +1,62 @@
+---
+title: base64ToFormData
+description: Utility to convert base64 string to FormData with file field.
+---
+
+# `base64ToFormData`
+
+Converts a base64 string to a FormData object containing a file field, with optional configuration.
+
+## Usage Scenarios
+
+- **File Uploads**: Prepare base64 data for multipart/form-data uploads
+- **Form Submissions**: Include base64 files in form submissions
+- **API Requests**: Format base64 data for API endpoints expecting FormData
+
+## Examples
+
+```ts
+import { base64ToFormData } from 'funtool';
+
+// Basic usage
+const base64 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...';
+const formData = base64ToFormData(base64);
+
+// With options
+const formData2 = base64ToFormData(base64, {
+  key: 'avatar',
+  filename: 'profile-pic'
+});
+
+// Add additional fields
+formData.append('userId', '123');
+```
+
+## Signature
+
+```ts
+function base64ToFormData(
+  base64: string,
+  options?: {
+    key?: string;
+    filename?: string;
+  }
+): FormData
+```
+
+## Parameters
+
+- `base64`: Base64 string with data URL format
+- `options`: Optional configuration
+  - `key`: FormData field name (default: 'file')
+  - `filename`: File name (auto-completes extension if missing)
+
+## Return Value
+
+Returns a FormData instance with one file field containing the converted data.
+
+## Notes
+
+- Automatically determines file extension from MIME type
+- Generates timestamp-based filename if none provided
+- Uses base64ToBlob internally for the conversion

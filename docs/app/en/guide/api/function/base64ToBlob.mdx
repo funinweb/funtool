@@ -1,0 +1,53 @@
+---
+title: base64ToBlob
+description: Utility to convert base64 string to Blob object with MIME type and file extension.
+---
+
+# `base64ToBlob`
+
+Converts a base64 string (with data URL format) to a Blob object with MIME type and file extension.
+
+## Usage Scenarios
+
+- **File Uploads**: Prepare base64 images/files for upload
+- **Data Processing**: Convert client-side base64 data to Blobs
+- **Image Manipulation**: Process base64 image data before display
+
+## Examples
+
+```ts
+import { base64ToBlob } from 'funtool';
+
+// Convert base64 image
+const base64 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...';
+const { blob, mime, ext } = base64ToBlob(base64);
+
+// Use the Blob
+const url = URL.createObjectURL(blob);
+imgElement.src = url;
+```
+
+## Signature
+
+```ts
+function base64ToBlob(
+  base64: string
+): { blob: Blob; mime: string; ext: string }
+```
+
+## Parameters
+
+- `base64`: Base64 string with data URL format (must include MIME prefix)
+
+## Return Value
+
+Returns an object with:
+- `blob`: The converted Blob object
+- `mime`: The MIME type extracted from the base64 string
+- `ext`: The file extension derived from the MIME type
+
+## Error Handling
+
+- Throws error if base64 format is invalid
+- Defaults to 'application/octet-stream' if MIME type cannot be determined
+- Defaults to 'bin' extension if MIME type cannot be parsed

@@ -1,0 +1,34 @@
+---
+title: clone
+description: Creates a new ObjectId instance with the same value.
+---
+
+# `clone()`
+
+Creates a new ObjectId instance with the same value as this one.
+
+## Usage
+
+```ts
+import { ObjectId } from 'funtool';
+
+const id1 = new ObjectId();
+const id2 = id1.clone(); // New instance with same value
+```
+
+## Signature
+
+```ts
+clone(): ObjectId
+```
+
+## Return Value
+
+Returns a new ObjectId instance with identical value.
+
+## Notes
+
+- Creates a completely independent copy
+- Useful when you need to modify one copy
+- More explicit than using the constructor
+- Maintains same timestamp and random values

@@ -1,0 +1,34 @@
+---
+title: short
+description: 返回无填充的URL友好base64编码字符串。
+---
+
+# `short()`
+
+返回无填充字符的URL友好base64编码字符串表示的ObjectId。
+
+## 用法
+
+```ts
+import { ObjectId } from 'funtool';
+
+const id = new ObjectId();
+const shortId = id.short(); // 例如 "Xx1_OxyZRAAAAAA"
+```
+
+## 签名
+
+```ts
+short(): string
+```
+
+## 返回值
+
+返回一个无填充的base64编码字符串。
+
+## 注意事项
+
+- 比标准base64更紧凑
+- URL安全(将'+'替换为'_'，'/'替换为'-')
+- 长度在16-18个字符之间变化
+- 适合在URL和文件名中使用

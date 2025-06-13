@@ -1,0 +1,47 @@
+---
+title: noop
+描述: 一个不执行任何操作并返回 undefined 的空函数。
+---
+
+# `noop`
+
+一个不执行任何操作并返回 undefined 的空函数。适用于作为默认或占位函数。
+
+## 使用场景
+
+- **默认回调**：作为可选回调函数的安全默认值。
+- **占位符**：开发过程中的临时占位符。
+- **测试**：用于测试场景的模拟函数。
+
+## 示例
+
+```ts
+import { noop } from 'funtool';
+
+// 作为默认回调
+function fetchData(callback = noop) {
+  // ...
+  callback(); // 即使未提供回调也可安全调用
+}
+
+// 作为占位符
+const tempHandler = noop;
+// 稍后替换为实际实现
+ tempHandler = realHandler;
+```
+
+## 函数签名
+
+```ts
+function noop(): void
+```
+
+## 返回值
+
+始终返回 `undefined`。
+
+## 注意事项
+
+- 极其轻量级的函数。
+- 有助于避免对可选回调进行空值检查。
+- 可作为默认参数值使用。

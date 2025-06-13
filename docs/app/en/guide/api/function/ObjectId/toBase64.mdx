@@ -1,0 +1,34 @@
+---
+title: toBase64
+description: Returns a base64 encoded string representation of the ObjectId.
+---
+
+# `toBase64()`
+
+Returns a base64 encoded string representation of the ObjectId.
+
+## Usage
+
+```ts
+import { ObjectId } from 'funtool';
+
+const id = new ObjectId();
+const base64 = id.toBase64(); // e.g. "Xx1/OxyZRAAAAAA"
+```
+
+## Signature
+
+```ts
+toBase64(): string
+```
+
+## Return Value
+
+Returns a base64 encoded string of the ObjectId bytes.
+
+## Notes
+
+- More compact than hex representation
+- Uses standard base64 encoding
+- Length is always 16 characters
+- URL-safe variant available via `short()` method

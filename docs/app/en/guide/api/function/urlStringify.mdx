@@ -1,0 +1,76 @@
+---
+title: urlStringify
+description: Converts structured URL objects into URL strings.
+---
+
+# `urlStringify`
+
+Converts a structured URL object into a properly formatted URL string, handling all components including protocol, host, path, query parameters, and hash.
+
+## Usage Scenarios
+
+- **URL Construction**: Build URLs from components
+- **API Requests**: Generate request URLs with query parameters
+- **Routing**: Create URLs for navigation
+- **URL Manipulation**: Modify and reconstruct URLs
+
+## Examples
+
+```ts
+import { urlStringify } from 'funtool';
+
+// Construct full URL
+const url = urlStringify({
+  protocol: 'https',
+  hostname: 'example.com',
+  port: '8080',
+  pathname: '/path',
+  query: { a: 1, b: true, c: '', d: ['x', 'y'] },
+  hash: 'section'
+});
+// Output: "https://example.com:8080/path?a=1&b=true&c=&d=x&d=y#section"
+
+// Construct relative URL
+const relative = urlStringify({
+  pathname: '/search',
+  query: { q: 'hello' },
+  hash: 'results'
+});
+// Output:  "/search?q=hello#results"
+```
+
+## Signature
+
+```ts
+interface StringifyURLOptions {
+  protocol?: string;
+  hostname: string;
+  port?: string;
+  pathname?: string;
+  query?: Record<string, any>;
+  hash?: string;
+}
+function urlStringify(options: StringifyURLOptions): string
+```
+
+## Parameters
+
+- `options`: URL components object with:
+  - `protocol`: URL protocol (e.g. 'https')
+  - `hostname`: Domain name
+  - `port`: Port number
+  - `pathname`: URL path (default: '/')
+  - `query`: Key-value pairs for query parameters
+  - `hash`: URL fragment identifier
+
+## Return Value
+
+Returns a properly formatted URL string with all components.
+
+## Notes
+
+- Automatically URL-encodes query parameters
+- Handles array parameters (e.g. `{d: ['x', 'y']}` becomes `?d=x&d=y`)
+- Preserves boolean values (true/false)
+- Empty strings are preserved in query parameters
+- Works with both absolute and relative URLs

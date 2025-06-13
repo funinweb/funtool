@@ -1,0 +1,68 @@
+---
+title: throttleSync
+description: Creates synchronous throttled versions of functions to limit execution rate.
+---
+
+# `throttleSync`
+
+Creates a throttled version of a synchronous function that ensures it's executed at most once per specified interval.
+
+## Usage Scenarios
+
+- **Event Handling**: Limit frequent event callbacks
+- **DOM Manipulation**: Control rapid DOM updates
+- **User Input**: Handle rapid synchronous user interactions
+- **Logging**: Throttle console logging
+
+## Examples
+
+```ts
+import { throttleSync } from 'funtool';
+
+// Basic sync throttling
+const throttledLog = throttleSync((msg) => {
+  console.log(msg);
+}, 1000);
+
+// With control methods
+const fn = throttleSync(() => console.log('Executed'), 500);
+fn();
+fn.cancel(); // Cancel pending execution
+fn.flush(); // Execute immediately
+fn.pending(); // Check if pending
+```
+
+## Signature
+
+```ts
+function throttleSync<T extends (...args: any[]) => void, This = any>(
+  fn: T,
+  interval?: number
+): ThrottledSync<T, This>
+
+interface ThrottledSync<T extends (...args: any[]) => void, This = any> {
+  (this: This, ...args: Parameters<T>): void;
+  cancel: () => void;
+  flush: () => void;
+  pending: () => boolean;
+}
+```
+
+## Parameters
+
+- `fn`: The synchronous function to throttle
+- `interval`: Throttle interval in milliseconds (default: 500)
+
+## Return Value
+
+Returns a throttled function with additional control methods:
+- `cancel()`: Cancel pending execution
+- `flush()`: Execute immediately
+- `pending()`: Check if execution is pending
+
+## Notes
+
+- Maintains proper `this` context
+- Designed for synchronous functions only
+- Returns void (unlike `throttle` which returns Promise)
+- Similar to `debounceSync` but with different timing behavior

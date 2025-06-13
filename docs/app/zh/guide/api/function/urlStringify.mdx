@@ -1,0 +1,76 @@
+---
+title: urlStringify
+描述: 将结构化URL对象转换为URL字符串。
+---
+
+# `urlStringify`
+
+将结构化URL对象转换为格式正确的URL字符串，处理所有组件包括协议、主机、路径、查询参数和哈希。
+
+## 使用场景
+
+- **URL构建**：从组件构建URL
+- **API请求**：生成带查询参数的请求URL
+- **路由**：创建导航URL
+- **URL操作**：修改和重建URL
+
+## 示例
+
+```ts
+import { urlStringify } from 'funtool';
+
+// 构建完整URL
+const url = urlStringify({
+  protocol: 'https',
+  hostname: 'example.com',
+  port: '8080',
+  pathname: '/path',
+  query: { a: 1, b: true, c: '', d: ['x', 'y'] },
+  hash: 'section'
+});
+//  "https://example.com:8080/path?a=1&b=true&c=&d=x&d=y#section"
+
+// 构建相对URL
+const relative = urlStringify({
+  pathname: '/search',
+  query: { q: 'hello' },
+  hash: 'results'
+});
+//  "/search?q=hello#results"
+```
+
+## 函数签名
+
+```ts
+interface StringifyURLOptions {
+  protocol?: string;
+  hostname: string;
+  port?: string;
+  pathname?: string;
+  query?: Record<string, any>;
+  hash?: string;
+}
+function urlStringify(options: StringifyURLOptions): string
+```
+
+## 参数
+
+- `options`: URL组件对象，包含：
+  - `protocol`: URL协议(如'https')
+  - `hostname`: 域名
+  - `port`: 端口号
+  - `pathname`: URL路径(默认: '/')
+  - `query`: 查询参数的键值对
+  - `hash`: URL片段标识符
+
+## 返回值
+
+返回一个格式正确的包含所有组件的URL字符串。
+
+## 注意事项
+
+- 自动URL编码查询参数
+- 处理数组参数(如`{d: ['x', 'y']}`变为`?d=x&d=y`)
+- 保留布尔值(true/false)
+- 查询参数中的空字符串被保留
+- 适用于绝对和相对URL

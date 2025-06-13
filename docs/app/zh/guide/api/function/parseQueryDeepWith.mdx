@@ -1,0 +1,59 @@
+---
+title: parseQueryDeepWith
+描述: 使用自定义序列化函数将嵌套对象和数组转换为 URL 编码的查询字符串。
+---
+
+# `parseQueryDeepWith`
+
+允许使用自定义函数对嵌套对象和数组进行序列化，生成 URL 编码的查询字符串。
+
+## 使用场景
+
+- **自定义格式**：当需要不同于标准方括号表示法的格式时。
+- **特殊处理**：对特定类型的值进行特殊序列化。
+- **兼容性**：为旧版 API 生成兼容的查询字符串。
+
+## 示例
+
+```ts
+import { parseQueryDeepWith } from 'funtool';
+
+// 自定义序列化函数
+const customSerializer = (key, value) => {
+  if (Array.isArray(value)) {
+    return value.map(v => `${key}[]=${encodeURIComponent(v)}`).join('&');
+  }
+  return `${key}=${encodeURIComponent(value)}`;
+};
+
+// 使用自定义函数
+parseQueryDeepWith({
+  user: { name: 'Tom', age: 20 },
+  tags: ['ts', 'js']
+}, customSerializer);
+// 输出取决于自定义函数的实现
+```
+
+## 函数签名
+
+```ts
+function parseQueryDeepWith(
+  obj: Record<string, any>,
+  serializer: (key: string, value: any) => string
+): string
+```
+
+## 参数
+
+- `obj`：要序列化的嵌套对象或数组。
+- `serializer`：自定义序列化函数，接收键和值，返回序列化后的字符串。
+
+## 返回值
+
+返回使用自定义序列化函数生成的 URL 编码的查询字符串。
+
+## 注意事项
+
+- 完全自定义序列化逻辑。
+- 确保自定义函数正确处理各种数据类型。
+- 需手动处理 URL 编码。

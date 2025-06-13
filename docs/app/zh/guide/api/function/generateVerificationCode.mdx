@@ -1,0 +1,61 @@
+---
+title: generateVerificationCode
+description: 生成具有可定制选项的随机验证码。
+---
+
+# `generateVerificationCode`
+
+生成指定长度的随机验证码字符串，支持可选的自定义字符集和排除易混淆字符的功能。
+
+## 使用场景
+
+- **用户注册**：为注册过程生成验证码。
+- **密码重置**：创建临时访问码。
+- **两步验证**：生成一次性密码。
+- **测试**：创建具有可控随机性的测试数据。
+
+## 示例
+
+```ts
+import { generateVerificationCode } from 'funtool';
+
+// 默认 4 位验证码
+generateVerificationCode(); // 例如: 'a8Z3'
+
+// 6 位验证码
+generateVerificationCode(6); // 例如: 'X2a9Lb'
+
+// 自定义字符集
+generateVerificationCode(6, { charset: 'ABC123' }); // 例如: '1CBAC3'
+
+// 排除易混淆字符 (0, O, 1, l)
+generateVerificationCode(6, { excludeConfusing: true }); // 例如: 'x7KpT9'
+```
+
+## 函数签名
+
+```ts
+function generateVerificationCode(
+  len?: number,
+  options?: {
+    charset?: string;
+    excludeConfusing?: boolean;
+  }
+): string
+```
+
+## 参数
+
+- `len`：验证码的长度（默认值：4）。
+- `options`：可选配置
+  - `charset`：自定义字符集（默认值：`a-zA-Z0-9`）。
+  - `excludeConfusing`：是否排除易混淆字符 0、O、1、l（默认值：`true`）。
+
+## 返回值
+
+返回随机生成的验证码字符串。
+
+## 错误处理
+
+- 如果过滤后字符集为空，则抛出错误。
+- 如果长度小于等于 0，则返回空字符串。

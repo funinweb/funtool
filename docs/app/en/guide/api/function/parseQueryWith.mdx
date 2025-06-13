@@ -1,0 +1,67 @@
+---
+title: parseQueryWith
+description: Serializes an object into a query string using a custom serializer function.
+---
+
+# `parseQueryWith`
+
+Serializes an object into a query string with full control over the serialization process via a custom function.
+
+## Usage Scenarios
+
+- **Custom Encoding**: When standard URL encoding isn't sufficient
+- **Selective Inclusion**: Conditionally include/exclude values
+- **Special Formats**: Custom formatting of keys or values
+
+## Examples
+
+```ts
+import { parseQueryWith } from 'funtool';
+
+// Custom serialization
+parseQueryWith(
+  { a: 1, b: null, c: 'test' },
+  (key, value) => {
+    if (value == null) return null;
+    return `${key}=${value}`; // No URL encoding
+  }
+);
+// => "a=1&c=test"
+
+// Selective inclusion
+parseQueryWith(
+  { user: 'admin', token: 'secret', debug: true },
+  (key, value) => {
+    if (key === 'token') return null; // Exclude sensitive data
+    return `${key}=${value}`;
+  }
+);
+// => "user=admin&debug=true"
+```
+
+## Signature
+
+```ts
+function parseQueryWith(
+  obj: Record<string, any>,
+  serializer: (key: string, value: any) => string | null
+): string
+```
+
+## Parameters
+
+- `obj`: The object to serialize
+- `serializer`: Function that takes (key, value) and returns:
+  - string: Serialized key-value pair
+  - null: Skip this pair
+
+## Return Value
+
+Returns a query string with serialized key-value pairs joined by `&`.
+
+## Notes
+
+- Provides full control over serialization
+- Caller must handle any needed encoding
+- Null return from serializer skips the pair
+- Works with flat objects only

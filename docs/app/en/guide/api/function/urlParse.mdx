@@ -1,0 +1,76 @@
+---
+title: urlParse
+description: Parses URL strings into structured objects.
+---
+
+# `urlParse`
+
+Parses a URL string into a structured object containing all URL components (protocol, host, path, query parameters, and hash).
+
+## Usage Scenarios
+
+- **URL Processing**: Extract and analyze URL components
+- **Routing**: Parse and handle application routes
+- **Query Parameter Handling**: Access and manipulate query parameters
+- **URL Normalization**: Standardize URL formats
+
+## Examples
+
+```ts
+import { urlParse } from 'funtool';
+
+// Parse full URL
+const parsed = urlParse('https://example.com:8080/path?a=1&b=true&c=');
+console.log(parsed.hostname); // 'example.com'
+console.log(parsed.query.a);  // 1
+
+// Parse relative URL
+const relative = urlParse('/search?q=hello#results');
+console.log(parsed.pathname); // '/search'
+console.log(parsed.hash);     // '#results'
+```
+
+## Signature
+
+```ts
+interface ParsedURL {
+  host: string;
+  hostname: string;
+  pathname: string;
+  port: string;
+  protocol: string;
+  origin: string;
+  href: string;
+  search: string;
+  hash: string;
+  query: Record<string, any>;
+}
+
+function urlParse(url: string): ParsedURL
+```
+
+## Parameters
+
+- `url`: The URL string to parse (can be absolute or relative)
+
+## Return Value
+
+Returns a `ParsedURL` object with:
+- `protocol`: URL protocol (e.g. 'https:')
+- `host`: Host with port (e.g. 'example.com:8080')
+- `hostname`: Host without port
+- `port`: Port number
+- `pathname`: URL path
+- `origin`: Protocol + host
+- `href`: Full original URL
+- `search`: Query string with '?'
+- `hash`: Hash fragment with '#'
+- `query`: Parsed query parameters as key-value pairs
+
+## Notes
+
+- Handles both absolute and relative URLs
+- Query parameters are automatically decoded
+- Numeric and boolean values are converted to proper types
+- Array parameters are supported (e.g. ?a=1&a=2)
+- Empty parameters become empty strings

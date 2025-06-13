@@ -1,0 +1,34 @@
+---
+title: toJSON
+description: 返回24字符十六进制字符串用于JSON序列化。
+---
+
+# `toJSON()`
+
+返回ObjectId的24字符十六进制字符串表示用于JSON序列化。
+
+## 用法
+
+```ts
+import { ObjectId } from 'funtool';
+
+const id = new ObjectId();
+const json = JSON.stringify({ id }); // {"id":"5f1d7f3b1c9d440000000000"}
+```
+
+## 签名
+
+```ts
+toJSON(): string
+```
+
+## 返回值
+
+返回24字符的小写十六进制字符串。
+
+## 注意事项
+
+- 由JSON.stringify()自动使用
+- 返回与toString()相同的值
+- 确保干净的序列化
+- 匹配MongoDB序列化行为

@@ -1,0 +1,42 @@
+---
+title: compare
+description: 将此ObjectId与另一个比较并返回它们的排序顺序。
+---
+
+# `compare()`
+
+将此ObjectId与另一个比较，并返回一个数字表示它们的相对排序顺序。
+
+## 用法
+
+```ts
+import { ObjectId } from 'funtool';
+
+const id1 = new ObjectId();
+const id2 = new ObjectId();
+
+const result = id1.compare(id2); // -1, 0 或 1
+```
+
+## 签名
+
+```ts
+compare(other: ObjectId): number
+```
+
+## 参数
+
+- `other`: 要比较的ObjectId
+
+## 返回值
+
+返回:
+- `-1` 如果此ObjectId排在另一个之前
+- `0` 如果它们相等
+- `1` 如果此ObjectId排在另一个之后
+
+## 注意事项
+
+- 比较基于十六进制字符串值
+- 对ObjectId数组排序很有用
+- 与MongoDB比较行为一致

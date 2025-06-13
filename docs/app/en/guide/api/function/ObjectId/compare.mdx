@@ -1,0 +1,42 @@
+---
+title: compare
+description: Compares this ObjectId with another and returns their sort order.
+---
+
+# `compare()`
+
+Compares this ObjectId with another and returns a number indicating their relative sort order.
+
+## Usage
+
+```ts
+import { ObjectId } from 'funtool';
+
+const id1 = new ObjectId();
+const id2 = new ObjectId();
+
+const result = id1.compare(id2); // -1, 0, or 1
+```
+
+## Signature
+
+```ts
+compare(other: ObjectId): number
+```
+
+## Parameters
+
+- `other`: The ObjectId to compare with
+
+## Return Value
+
+Returns:
+- `-1` if this ObjectId sorts before the other
+- `0` if they are equal
+- `1` if this ObjectId sorts after the other
+
+## Notes
+
+- Comparison is based on hex string value
+- Useful for sorting arrays of ObjectIds
+- Consistent with MongoDB comparison behavior

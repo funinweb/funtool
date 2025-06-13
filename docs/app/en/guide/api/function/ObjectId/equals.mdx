@@ -1,0 +1,40 @@
+---
+title: equals
+description: Checks if this ObjectId equals another ObjectId.
+---
+
+# `equals()`
+
+Compares this ObjectId with another and returns true if they represent the same value.
+
+## Usage
+
+```ts
+import { ObjectId } from 'funtool';
+
+const id1 = new ObjectId();
+const id2 = id1.clone();
+
+const isEqual = id1.equals(id2); // true
+```
+
+## Signature
+
+```ts
+equals(other: ObjectId): boolean
+```
+
+## Parameters
+
+- `other`: The ObjectId to compare with
+
+## Return Value
+
+Returns true if the ObjectIds have the same value, false otherwise.
+
+## Notes
+
+- More semantic than direct comparison
+- Handles null/undefined safely
+- Consistent with MongoDB equality behavior
+- Uses byte-by-byte comparison

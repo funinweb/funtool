@@ -1,0 +1,34 @@
+---
+title: toUUIDString
+description: 将ObjectId转换为UUID风格的字符串格式。
+---
+
+# `toUUIDString()`
+
+将ObjectId转换为带连字符的UUID风格字符串表示。
+
+## 用法
+
+```ts
+import { ObjectId } from 'funtool';
+
+const id = new ObjectId('5f1d7f3b1c9d440000000000');
+const uuidString = id.toUUIDString(); // "5f1d7f3b-1c9d-4400-0000-000000000000"
+```
+
+## 签名
+
+```ts
+toUUIDString(): string
+```
+
+## 返回值
+
+返回一个带连字符的36字符UUID格式字符串。
+
+## 注意事项
+
+- 对期望UUID格式的系统很有用
+- 保持与十六进制格式相同的唯一性保证
+- 不生成符合RFC的UUID
+- 格式: 8-4-4-4-12字符组

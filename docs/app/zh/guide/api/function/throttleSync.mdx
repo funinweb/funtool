@@ -1,0 +1,68 @@
+---
+title: throttleSync
+描述: 创建限制执行频率的同步函数节流版本。
+---
+
+# `throttleSync`
+
+创建一个节流版本的同步函数，确保在指定时间间隔内最多执行一次。
+
+## 使用场景
+
+- **事件处理**：限制频繁的事件回调
+- **DOM操作**：控制快速的DOM更新
+- **用户输入**：处理快速的同步用户交互
+- **日志记录**：节流控制台日志
+
+## 示例
+
+```ts
+import { throttleSync } from 'funtool';
+
+// 基本同步节流
+const throttledLog = throttleSync((msg) => {
+  console.log(msg);
+}, 1000);
+
+// 使用控制方法
+const fn = throttleSync(() => console.log('执行'), 500);
+fn();
+fn.cancel(); // 取消待执行
+fn.flush(); // 立即执行
+fn.pending(); // 检查是否有待执行
+```
+
+## 函数签名
+
+```ts
+function throttleSync<T extends (...args: any[]) => void, This = any>(
+  fn: T,
+  interval?: number
+): ThrottledSync<T, This>
+
+interface ThrottledSync<T extends (...args: any[]) => void, This = any> {
+  (this: This, ...args: Parameters<T>): void;
+  cancel: () => void;
+  flush: () => void;
+  pending: () => boolean;
+}
+```
+
+## 参数
+
+- `fn`: 需要节流的同步函数
+- `interval`: 节流间隔，毫秒(默认: 500)
+
+## 返回值
+
+返回一个带有额外控制方法的节流函数：
+- `cancel()`: 取消待执行
+- `flush()`: 立即执行
+- `pending()`: 检查是否有待执行
+
+## 注意事项
+
+- 保持正确的`this`上下文
+- 专为同步函数设计
+- 返回void(与返回Promise的`throttle`不同)
+- 与`debounceSync`类似但时间行为不同

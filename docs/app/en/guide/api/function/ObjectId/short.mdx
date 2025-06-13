@@ -1,0 +1,34 @@
+---
+title: short
+description: Returns a URL-friendly base64 encoded string without padding.
+---
+
+# `short()`
+
+Returns a URL-friendly base64 encoded string representation of the ObjectId without padding characters.
+
+## Usage
+
+```ts
+import { ObjectId } from 'funtool';
+
+const id = new ObjectId();
+const shortId = id.short(); // e.g. "Xx1_OxyZRAAAAAA"
+```
+
+## Signature
+
+```ts
+short(): string
+```
+
+## Return Value
+
+Returns a base64 encoded string with padding removed.
+
+## Notes
+
+- More compact than standard base64
+- URL-safe (replaces '+' with '_' and '/' with '-')
+- Length varies between 16-18 characters
+- Suitable for use in URLs and filenames

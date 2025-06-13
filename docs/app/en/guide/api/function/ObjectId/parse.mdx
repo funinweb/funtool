@@ -1,0 +1,42 @@
+---
+title: parse
+description: Parses various string formats into an ObjectId instance.
+---
+
+# `parse()`
+
+Static method that parses various string formats into an ObjectId instance.
+
+## Usage
+
+```ts
+import { ObjectId } from 'funtool';
+
+// Parse from hex string
+const id1 = ObjectId.parse('5f1d7f3b1c9d440000000000');
+
+// Parse from UUID format
+const id2 = ObjectId.parse('5f1d7f3b-1c9d-4400-0000-000000000000');
+```
+
+## Signature
+
+```ts
+static parse(str: string, strict?: boolean): ObjectId
+```
+
+## Parameters
+
+- `str`: The string to parse (hex, UUID, or base64 format)
+- `strict`: If true, only accepts exact 24-character hex (default: false)
+
+## Return Value
+
+Returns a new ObjectId instance.
+
+## Notes
+
+- Handles multiple input formats
+- Throws error on invalid input
+- Useful for deserialization
+- Loose parsing by default

@@ -1,0 +1,53 @@
+---
+title: parseQuery
+description: Serializes a flat object into a URL-encoded query string.
+---
+
+# `parseQuery`
+
+Converts a flat object into a URL-encoded query string, handling simple key-value pairs.
+
+## Usage Scenarios
+
+- **URL Construction**: Build query strings for API requests
+- **Form Data**: Serialize form inputs for submission
+- **State Management**: Convert state objects to URL parameters
+
+## Examples
+
+```ts
+import { parseQuery } from 'funtool';
+
+// Basic usage
+parseQuery({ name: 'Tom', age: 20 });
+// => "name=Tom&age=20"
+
+// With URL encoding
+parseQuery({ city: '北京', lang: 'zh-CN' });
+// => "city=%E5%8C%97%E4%BA%AC&lang=zh-CN"
+
+// Null values are skipped
+parseQuery({ a: 1, b: null, c: 'test' });
+// => "a=1&c=test"
+```
+
+## Signature
+
+```ts
+function parseQuery(obj: Record<string | number, any>): string
+```
+
+## Parameters
+
+- `obj`: A flat object with string/number keys and primitive values
+
+## Return Value
+
+Returns a URL-encoded query string with key-value pairs joined by `&`.
+
+## Notes
+
+- Only works with flat objects (no nesting)
+- Null/undefined values are skipped
+- Values are converted to strings and URL-encoded
+- For nested objects, use `parseQueryDeep` instead

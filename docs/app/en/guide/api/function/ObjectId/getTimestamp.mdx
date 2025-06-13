@@ -1,0 +1,34 @@
+---
+title: getTimestamp
+description: Extracts the timestamp from the ObjectId.
+---
+
+# `getTimestamp()`
+
+Returns the creation timestamp embedded in the ObjectId as a Date object.
+
+## Usage
+
+```ts
+import { ObjectId } from 'funtool';
+
+const id = new ObjectId();
+const timestamp = id.getTimestamp(); // Date object
+```
+
+## Signature
+
+```ts
+getTimestamp(): Date
+```
+
+## Return Value
+
+Returns a Date object representing when the ObjectId was created.
+
+## Notes
+
+- First 4 bytes of ObjectId contain timestamp
+- Precision is seconds (not milliseconds)
+- Useful for sorting by creation time
+- Matches MongoDB timestamp extraction

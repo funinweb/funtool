@@ -1,0 +1,34 @@
+---
+title: toHexString
+description: Returns the 24-character hex string representation of the ObjectId.
+---
+
+# `toHexString()`
+
+Returns the 24-character hexadecimal string representation of the ObjectId.
+
+## Usage
+
+```ts
+import { ObjectId } from 'funtool';
+
+const id = new ObjectId();
+const hexString = id.toHexString(); // e.g. "5f1d7f3b1c9d440000000000"
+```
+
+## Signature
+
+```ts
+toHexString(): string
+```
+
+## Return Value
+
+Returns the 24-character hex string in lowercase.
+
+## Notes
+
+- This is the native string representation of ObjectId
+- Equivalent to calling `toString()`
+- Always returns lowercase hex characters
+- Format matches MongoDB ObjectId standard

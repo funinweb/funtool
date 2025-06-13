@@ -1,0 +1,38 @@
+---
+title: createWithPrefix
+description: Creates a prefixed ObjectId string with the given prefix.
+---
+
+# `createWithPrefix()`
+
+Static method that creates a prefixed ObjectId string with the given prefix.
+
+## Usage
+
+```ts
+import { ObjectId } from 'funtool';
+
+const prefixedId = ObjectId.createWithPrefix('user_');
+// e.g. "user_5f1d7f3b1c9d440000000000"
+```
+
+## Signature
+
+```ts
+static createWithPrefix(prefix: string): string
+```
+
+## Parameters
+
+- `prefix`: The string to prepend to the ObjectId
+
+## Return Value
+
+Returns the prefixed ObjectId string.
+
+## Notes
+
+- Useful for namespacing IDs
+- Prefix is not validated
+- Returns string (not ObjectId instance)
+- Maintains same uniqueness guarantees

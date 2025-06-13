@@ -1,0 +1,80 @@
+---
+title: parseUA
+description: Parses UserAgent string into detailed browser, OS, device, and engine information.
+---
+
+# `parseUA`
+
+Utility function that analyzes UserAgent strings to extract detailed browser, operating system, device, and rendering engine information.
+
+## Usage Scenarios
+
+- **Browser Detection**: Identify specific browsers and versions
+- **Device Detection**: Determine device type (mobile, tablet, desktop)
+- **Feature Detection**: Enable/disable features based on browser capabilities
+- **Analytics**: Collect detailed client environment information
+
+## Examples
+
+```ts
+import { parseUA } from 'funtool';
+
+// Get current browser info
+const uaInfo = parseUA();
+console.log(uaInfo.browser.name); // e.g. 'Chrome'
+console.log(uaInfo.os.name);      // e.g. 'Windows'
+console.log(uaInfo.device.type);  // e.g. 'Desktop'
+
+// Parse custom UA string
+const mobileUA = parseUA('Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X)');
+console.log(mobileUA.device.type); // 'Mobile'
+```
+
+## Signature
+
+```ts
+interface ParsedUA {
+  browser: {
+    name: string | null;
+    version: string | null;
+    majorVersion?: string | null;
+  };
+  os: {
+    name: string | null;
+    version: string | null;
+    majorVersion?: string | null;
+  };
+  device: {
+    type: "Mobile" | "Tablet" | "Desktop" | "SmartTV" | "Console" | "Wearable" | "Unknown";
+    model: string | null;
+    vendor?: string | null;
+  };
+  engine: {
+    name: string | null;
+    version: string | null;
+  };
+  originalUA: string;
+}
+
+function parseUA(ua?: string): ParsedUA
+```
+
+## Parameters
+
+- `ua`: Optional UserAgent string (defaults to navigator.userAgent in browser environments)
+
+## Return Value
+
+Returns a `ParsedUA` object with:
+- `browser`: Name, version and major version
+- `os`: Operating system name and version
+- `device`: Type (Mobile/Tablet/Desktop), model and vendor
+- `engine`: Rendering engine name and version
+- `originalUA`: The original UserAgent string
+
+## Notes
+
+- Returns empty/null values for unknown properties
+- Defaults to 'Desktop' device type when unable to detect
+- Supports major browsers including Chrome, Firefox, Safari, Edge, IE
+- Detects mobile/tablet devices including iPhone, iPad, Android

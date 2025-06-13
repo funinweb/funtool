@@ -1,0 +1,62 @@
+---
+title: parseQueryDeep
+description: Serializes nested objects and arrays into URL-encoded query strings.
+---
+
+# `parseQueryDeep`
+
+Converts nested objects and arrays into a URL-encoded query string using bracket notation.
+
+## Usage Scenarios
+
+- **Complex Data**: Serialize nested objects for APIs
+- **Array Data**: Handle arrays of values in query strings
+- **Form Data**: Convert complex form structures to URL parameters
+
+## Examples
+
+```ts
+import { parseQueryDeep } from 'funtool';
+
+// Nested objects
+parseQueryDeep({
+  user: { name: 'Tom', age: 20 },
+  q: 'hello'
+});
+// => "user[name]=Tom&user[age]=20&q=hello"
+
+// Arrays
+parseQueryDeep({
+  tags: ['ts', 'js'],
+  filters: { active: true }
+});
+// => "tags[]=ts&tags[]=js&filters[active]=true"
+
+// Mixed types
+parseQueryDeep({
+  ids: [1, 2, 3],
+  options: { sort: 'name', order: 'asc' }
+});
+// => "ids[]=1&ids[]=2&ids[]=3&options[sort]=name&options[order]=asc"
+```
+
+## Signature
+
+```ts
+function parseQueryDeep(obj: Record<string, any>): string
+```
+
+## Parameters
+
+- `obj`: A nested object or array to serialize
+
+## Return Value
+
+Returns a URL-encoded query string with nested structures represented in bracket notation.
+
+## Notes
+
+- Handles nested objects and arrays
+- Uses standard bracket notation for nesting
+- Values are URL-encoded
+- For custom formatting, use `parseQueryDeepWith`

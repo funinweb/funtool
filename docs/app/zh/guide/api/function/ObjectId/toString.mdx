@@ -1,0 +1,34 @@
+---
+title: toString
+description: 返回ObjectId的24字符十六进制字符串表示。
+---
+
+# `toString()`
+
+返回ObjectId的24字符十六进制字符串表示(与toHexString相同)。
+
+## 用法
+
+```ts
+import { ObjectId } from 'funtool';
+
+const id = new ObjectId();
+const hexString = id.toString(); // 例如 "5f1d7f3b1c9d440000000000"
+```
+
+## 签名
+
+```ts
+toString(): string
+```
+
+## 返回值
+
+返回24字符的小写十六进制字符串。
+
+## 注意事项
+
+- toHexString()的别名
+- 在字符串连接中自动使用
+- 格式匹配MongoDB ObjectId标准
+- 始终返回小写十六进制字符

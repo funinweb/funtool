@@ -1,0 +1,34 @@
+---
+title: toUUIDString
+description: Converts the ObjectId to a UUID-style string format.
+---
+
+# `toUUIDString()`
+
+Converts the ObjectId to a UUID-style string representation with hyphens.
+
+## Usage
+
+```ts
+import { ObjectId } from 'funtool';
+
+const id = new ObjectId('5f1d7f3b1c9d440000000000');
+const uuidString = id.toUUIDString(); // "5f1d7f3b-1c9d-4400-0000-000000000000"
+```
+
+## Signature
+
+```ts
+toUUIDString(): string
+```
+
+## Return Value
+
+Returns a 36-character string in UUID format with hyphens.
+
+## Notes
+
+- Useful for systems expecting UUID format
+- Maintains same uniqueness guarantees as hex format
+- Does not generate RFC-compliant UUIDs
+- Format: 8-4-4-4-12 character groups

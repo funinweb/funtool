@@ -1,0 +1,66 @@
+---
+title: ObjectId
+description: Lightweight MongoDB-style ObjectId implementation with multiple format support.
+---
+
+# `ObjectId`
+
+A lightweight implementation of MongoDB-style ObjectId with support for hex strings, UUID format, base64 encoding, and prefix handling.
+
+## Overview
+
+The ObjectId class provides:
+- MongoDB-compatible 24-character hex string IDs
+- Multiple format conversions (hex, UUID, base64)
+- Timestamp extraction
+- Comparison and equality checking
+- Parsing from various string formats
+
+## Basic Usage
+
+```ts
+import { ObjectId } from 'funtool';
+
+// Create new ObjectId
+const id1 = new ObjectId();
+
+// Create from existing hex string
+const id2 = new ObjectId('5f1d7f3b1c9d440000000000');
+
+// Compare two IDs
+id1.equals(id2); // false
+
+// Get timestamp
+id1.getTimestamp(); // Unix timestamp in ms
+```
+
+## Features
+
+- **Hex Format**: Native 24-character hex representation
+- **UUID Format**: Convert to UUID-style string
+- **Base64**: Compact base64 encoded version
+- **Short IDs**: URL-friendly base64 without padding
+- **Timestamp**: Extract creation time
+- **Parsing**: From mixed-format strings
+- **Validation**: Check hex string validity
+
+## Static Methods
+
+- `isValid(hex)`: Validate hex string format
+- `parse(str)`: Parse from mixed-format strings
+- `createFromHexString(hex)`: Create from valid hex
+- `createWithPrefix(prefix)`: Generate prefixed ID
+
+## Instance Methods
+
+- `toHexString()`: Get 24-char hex string
+- `toUUIDString()`: Convert to UUID format
+- `toBuffer()`: Get binary representation
+- `toBase64()`: Base64 encoded version
+- `short()`: Compact base64 without padding
+- `getTimestamp()`: Get creation time
+- `equals(other)`: Check equality
+- `compare(other)`: Compare IDs
+- `clone()`: Create copy
+- `toString()`: Alias for toHexString
+- `toJSON()`: For JSON serialization

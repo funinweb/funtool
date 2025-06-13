@@ -1,0 +1,62 @@
+---
+title: parseQueryDeep
+描述: 将嵌套对象和数组序列化为 URL 编码的查询字符串。
+---
+
+# `parseQueryDeep`
+
+使用方括号表示法将嵌套对象和数组转换为 URL 编码的查询字符串。
+
+## 使用场景
+
+- **复杂数据**：为 API 序列化嵌套对象。
+- **数组数据**：处理查询字符串中的数组值。
+- **表单数据**：将复杂的表单结构转换为 URL 参数。
+
+## 示例
+
+```ts
+import { parseQueryDeep } from 'funtool';
+
+// 嵌套对象
+parseQueryDeep({
+  user: { name: 'Tom', age: 20 },
+  q: 'hello'
+});
+// => "user[name]=Tom&user[age]=20&q=hello"
+
+// 数组
+parseQueryDeep({
+  tags: ['ts', 'js'],
+  filters: { active: true }
+});
+// => "tags[]=ts&tags[]=js&filters[active]=true"
+
+// 混合类型
+parseQueryDeep({
+  ids: [1, 2, 3],
+  options: { sort: 'name', order: 'asc' }
+});
+// => "ids[]=1&ids[]=2&ids[]=3&options[sort]=name&options[order]=asc"
+```
+
+## 函数签名
+
+```ts
+function parseQueryDeep(obj: Record<string, any>): string
+```
+
+## 参数
+
+- `obj`：要序列化的嵌套对象或数组。
+
+## 返回值
+
+返回一个使用方括号表示法表示嵌套结构的 URL 编码的查询字符串。
+
+## 注意事项
+
+- 处理嵌套对象和数组。
+- 使用标准的方括号表示法进行嵌套。
+- 值进行 URL 编码。
+- 如需自定义格式，请使用 `parseQueryDeepWith`。

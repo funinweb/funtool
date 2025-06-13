@@ -1,0 +1,69 @@
+---
+title: throttle
+description: Creates throttled versions of functions to limit execution rate.
+---
+
+# `throttle`
+
+Creates a throttled version of an async function that ensures it's executed at most once per specified interval.
+
+## Usage Scenarios
+
+- **Event Handling**: Limit frequent event callbacks
+- **API Calls**: Prevent excessive API requests
+- **User Input**: Handle rapid user interactions
+- **Animation**: Control frame rate of animations
+
+## Examples
+
+```ts
+import { throttle } from 'funtool';
+
+// Basic async throttling
+const throttledFetch = throttle(async (url) => {
+  const res = await fetch(url);
+  return res.json();
+}, 1000);
+
+// With control methods
+const fn = throttle(() => console.log('Executed'), 500);
+fn();
+fn.cancel(); // Cancel pending execution
+fn.flush(); // Execute immediately
+fn.pending(); // Check if pending
+```
+
+## Signature
+
+```ts
+function throttle<T extends (...args: any[]) => any, This = any>(
+  fn: T,
+  interval?: number
+): Throttled<T, This>
+
+interface Throttled<T extends (...args: any[]) => any, This = any> {
+  (this: This, ...args: Parameters<T>): Promise<ReturnType<T> | undefined>;
+  cancel: () => void;
+  flush: () => Promise<ReturnType<T> | undefined>;
+  pending: () => boolean;
+}
+```
+
+## Parameters
+
+- `fn`: The async function to throttle
+- `interval`: Throttle interval in milliseconds (default: 500)
+
+## Return Value
+
+Returns a throttled function with additional control methods:
+- `cancel()`: Cancel pending execution
+- `flush()`: Execute immediately
+- `pending()`: Check if execution is pending
+
+## Notes
+
+- Maintains proper `this` context
+- Returns a Promise that resolves with the original function's return value
+- Similar to `debounce` but with different timing behavior
+- For synchronous functions, use `throttleSync` instead

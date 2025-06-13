@@ -1,0 +1,61 @@
+---
+title: random
+description: Utility functions for generating random numbers.
+---
+
+# `random`
+
+Provides utility functions for generating random integers and floating-point numbers within specified ranges.
+
+## Usage Scenarios
+
+- **Random Sampling**: Generate random test data
+- **Game Development**: Create random game elements
+- **Simulations**: Model random events
+- **Testing**: Generate random inputs for test cases
+
+## Examples
+
+```ts
+import { randomInt, randomFloat } from 'funtool';
+
+// Random integer between 1 and 10
+const diceRoll = randomInt(1, 11);
+
+// Random float between 0 and 1
+const probability = randomFloat();
+
+// Random float between -5.5 and 5.5
+const coordinate = randomFloat(-5.5, 5.5);
+```
+
+## Functions
+
+### `randomInt`
+
+```ts
+function randomInt(lower?: number, upper?: number): number
+```
+
+Generates a random integer between `lower` (inclusive) and `upper` (exclusive).
+
+- `lower`: Minimum value (default: 0)
+- `upper`: Maximum value (default: 1)
+
+### `randomFloat`
+
+```ts
+function randomFloat(lower?: number, upper?: number): number
+```
+
+Generates a random floating-point number between `lower` (inclusive) and `upper` (exclusive).
+
+- `lower`: Minimum value (default: 0)
+- `upper`: Maximum value (default: 1)
+
+## Notes
+
+- Both functions use `Math.random()` internally
+- Upper bound is exclusive (not included in possible results)
+- Lower bound is inclusive (included in possible results)
+- Returns NaN if parameters are invalid

@@ -1,0 +1,47 @@
+---
+title: noop
+description: A no-operation function that does nothing and returns undefined.
+---
+
+# `noop`
+
+A no-operation function that does nothing and returns undefined. Useful as a default or placeholder function.
+
+## Usage Scenarios
+
+- **Default Callbacks**: As a safe default for optional callback functions
+- **Placeholder**: Temporary placeholder during development
+- **Testing**: Mock function for testing scenarios
+
+## Examples
+
+```ts
+import { noop } from 'funtool';
+
+// As default callback
+function fetchData(callback = noop) {
+  // ...
+  callback(); // Safe to call even if no callback provided
+}
+
+// As placeholder
+const tempHandler = noop;
+// Later replaced with actual implementation
+tempHandler = realHandler;
+```
+
+## Signature
+
+```ts
+function noop(): void
+```
+
+## Return Value
+
+Always returns `undefined`.
+
+## Notes
+
+- Extremely lightweight function
+- Useful for avoiding null checks on optional callbacks
+- Can be used as a default parameter value

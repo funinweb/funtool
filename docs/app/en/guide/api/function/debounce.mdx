@@ -1,0 +1,77 @@
+---
+title: debounce
+description: Creates debounced versions of functions to limit execution rate.
+---
+
+# `debounce`
+
+Creates a debounced function that delays invocation until after a specified wait time has elapsed since the last call.
+
+## Usage Scenarios
+
+- **Input Handling**: Delay processing of rapid input (e.g., search as you type)
+- **Event Handling**: Limit expensive operations triggered by frequent events
+- **API Calls**: Prevent excessive API requests from rapid user actions
+
+## Examples
+
+```ts
+import { debounce } from 'funtool';
+
+// Basic usage
+const debouncedLog = debounce((message) => {
+  console.log(message);
+}, 300);
+
+debouncedLog('Hello'); // Only logs after 300ms of inactivity
+
+// With this context
+const obj = {
+  prefix: 'Log: ',
+  log: debounce(function(msg) {
+    console.log(this.prefix + msg);
+  }, 200)
+};
+obj.log('Test'); // Logs: Log: Test
+
+// Control methods
+const fn = debounce(() => console.log('Done'), 500);
+fn();
+fn.cancel(); // Cancel pending execution
+fn.flush(); // Execute immediately
+fn.pending(); // Check if pending
+```
+
+## Signature
+
+```ts
+type Debounced<T extends (...args: any[]) => any, This = any> = {
+	(this: This, ...args: Parameters<T>): Promise<ReturnType<T> | undefined>
+	cancel: () => void
+	flush: () => Promise<ReturnType<T> | undefined>
+	pending: () => boolean
+}
+
+function debounce<T extends (...args: any[]) => any, This = any>(
+  fn: T,
+  delay?: number
+): Debounced<T, This>
+```
+
+## Parameters
+
+- `fn`: The function to debounce
+- `delay`: Debounce delay in milliseconds (default: 500)
+
+## Return Value
+
+Returns a debounced function with additional control methods:
+- `cancel()`: Cancel pending execution
+- `flush()`: Execute immediately
+- `pending()`: Check if execution is pending
+
+## Notes
+
+- Maintains proper `this` context
+- Returns a Promise that resolves with the function's return value
+- Also provides `debounceSync` for synchronous functions

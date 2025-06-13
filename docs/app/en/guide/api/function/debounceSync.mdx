@@ -1,0 +1,78 @@
+---
+title: debounceSync
+description: Creates synchronous debounced versions of functions to limit execution rate.
+---
+
+# `debounceSync`
+
+Creates a synchronous debounced function that delays invocation until after a specified wait time has elapsed since the last call.
+
+## Usage Scenarios
+
+- **Input Handling**: Delay processing of rapid input (e.g., search as you type)
+- **Event Handling**: Limit expensive operations triggered by frequent events
+- **API Calls**: Prevent excessive API requests from rapid user actions
+
+## Examples
+
+```ts
+import { debounceSync } from 'funtool';
+
+// Basic usage
+const debouncedLog = debounceSync((message) => {
+  console.log(message);
+}, 300);
+
+debouncedLog('Hello'); // Only logs after 300ms of inactivity
+
+// With this context
+const obj = {
+  prefix: 'Log: ',
+  log: debounceSync(function(msg) {
+    console.log(this.prefix + msg);
+  }, 200)
+};
+obj.log('Test'); // Logs: Log: Test
+
+// Control methods
+const fn = debounceSync(() => console.log('Done'), 500);
+fn();
+fn.cancel(); // Cancel pending execution
+fn.flush(); // Execute immediately
+fn.pending(); // Check if pending
+```
+
+## Signature
+
+```ts
+type DebouncedSync<T extends (...args: any[]) => any, This = any> = {
+	(this: This, ...args: Parameters<T>): ReturnType<T> | void
+	cancel: () => void
+	flush: () => ReturnType<T> | void
+	pending: () => boolean
+}
+
+function debounceSync<T extends (...args: any[]) => any, This = any>(
+  fn: T,
+  delay?: number
+): DebouncedSync<T, This>
+```
+
+## Parameters
+
+- `fn`: The synchronous function to debounce
+- `delay`: Debounce delay in milliseconds (default: 500)
+
+## Return Value
+
+Returns a debounced function with additional control methods:
+- `cancel()`: Cancel pending execution
+- `flush()`: Execute immediately
+- `pending()`: Check if execution is pending
+
+## Notes
+
+- Maintains proper `this` context
+- Returns void (unlike debounce which returns Promise)
+- Designed for synchronous functions only
+- Similar to debounce but without Promise return

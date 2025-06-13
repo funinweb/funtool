@@ -1,0 +1,42 @@
+---
+title: parse
+description: 从各种字符串格式解析为ObjectId实例。
+---
+
+# `parse()`
+
+静态方法，从各种字符串格式解析为ObjectId实例。
+
+## 用法
+
+```ts
+import { ObjectId } from 'funtool';
+
+// 从十六进制字符串解析
+const id1 = ObjectId.parse('5f1d7f3b1c9d440000000000');
+
+// 从UUID格式解析
+const id2 = ObjectId.parse('5f1d7f3b-1c9d-4400-0000-000000000000');
+```
+
+## 签名
+
+```ts
+static parse(str: string, strict?: boolean): ObjectId
+```
+
+## 参数
+
+- `str`: 要解析的字符串(十六进制、UUID或base64格式)
+- `strict`: 如果为true，只接受精确的24字符十六进制(默认: false)
+
+## 返回值
+
+返回一个新的ObjectId实例。
+
+## 注意事项
+
+- 处理多种输入格式
+- 无效输入时抛出错误
+- 对反序列化很有用
+- 默认使用宽松解析

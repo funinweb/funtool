@@ -1,0 +1,78 @@
+---
+title: debounceSync
+description: 创建函数的同步防抖版本，以限制执行频率。
+---
+
+# `debounceSync`
+
+创建一个同步防抖函数，该函数会延迟调用，直到自上次调用后经过指定的等待时间。
+
+## 使用场景
+
+- **输入处理**：延迟处理快速输入（例如，边输入边搜索）。
+- **事件处理**：限制频繁事件触发的昂贵操作。
+- **API 调用**：防止用户快速操作导致的过多 API 请求。
+
+## 示例
+
+```ts
+import { debounceSync } from 'funtool';
+
+// 基本用法
+const debouncedLog = debounceSync((message) => {
+  console.log(message);
+}, 300);
+
+debouncedLog('Hello'); // 仅在 300 毫秒无操作后才会记录日志
+
+// 带 this 上下文
+const obj = {
+  prefix: 'Log: ',
+  log: debounceSync(function(msg) {
+    console.log(this.prefix + msg);
+  }, 200)
+};
+obj.log('Test'); // 输出: Log: Test
+
+// 控制方法
+const fn = debounceSync(() => console.log('Done'), 500);
+fn();
+fn.cancel(); // 取消待执行的调用
+fn.flush(); // 立即执行
+fn.pending(); // 检查是否有待执行的调用
+```
+
+## 函数签名
+
+```ts
+type DebouncedSync<T extends (...args: any[]) => any, This = any> = {
+	(this: This, ...args: Parameters<T>): ReturnType<T> | void
+	cancel: () => void
+	flush: () => ReturnType<T> | void
+	pending: () => boolean
+}
+
+function debounceSync<T extends (...args: any[]) => any, This = any>(
+  fn: T,
+  delay?: number
+): DebouncedSync<T, This>
+```
+
+## 参数
+
+- `fn`：需要进行防抖处理的同步函数。
+- `delay`：防抖延迟时间，单位为毫秒（默认值：500）。
+
+## 返回值
+
+返回一个带有额外控制方法的防抖函数：
+- `cancel()`：取消待执行的调用。
+- `flush()`：立即执行。
+- `pending()`：检查是否有待执行的调用。
+
+## 注意事项
+
+- 保持正确的 `this` 上下文。
+- 返回 `void`（与 `debounce` 不同，后者返回 Promise）。
+- 仅适用于同步函数。
+- 与 `debounce` 类似，但不返回 Promise。

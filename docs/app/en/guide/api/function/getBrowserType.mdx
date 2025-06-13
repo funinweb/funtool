@@ -1,0 +1,52 @@
+---
+title: getBrowserType
+description: Detects browser type based on user agent string.
+---
+
+# `getBrowserType`
+
+Detects and returns the current browser type based on parsed user agent information.
+
+## Usage Scenarios
+
+- **Browser Detection**: Identify specific browsers for compatibility workarounds
+- **Analytics**: Track browser usage statistics
+- **Feature Detection**: Enable/disable features based on browser capabilities
+- **Debugging**: Log browser info for troubleshooting
+
+## Examples
+
+```ts
+import { getBrowserType } from 'funtool';
+
+// Get current browser type
+const browser = getBrowserType();
+// Possible returns: 'Chrome', 'FireFox', 'Edge', 'Safari', 'IE11', etc.
+
+// Browser-specific logic
+if (getBrowserType() === 'IE11') {
+  // Apply IE11-specific fixes
+}
+```
+
+## Signature
+
+```ts
+function getBrowserType(): BrowserType
+
+type BrowserType =
+  | 'IE7' | 'IE8' | 'IE9' | 'IE10' | 'IE11'
+  | 'Edge' | 'FireFox' | 'Opera' | 'Chrome' | 'Safari'
+  | null;
+```
+
+## Return Value
+
+Returns one of the browser types or null if detection fails.
+
+## Notes
+
+- Uses parsed UA info from `parseUA` internally
+- Detects IE7 through IE11, Edge (both Chromium and Legacy), Firefox, Opera, Chrome and Safari
+- Returns null for unknown browsers or if UA info is unavailable
+- Case-sensitive return values (e.g., 'FireFox' with capital F)

@@ -1,0 +1,52 @@
+---
+title: getBrowserType
+description: 根据用户代理字符串检测浏览器类型。
+---
+
+# `getBrowserType`
+
+基于解析的用户代理信息，检测并返回当前浏览器的类型。
+
+## 使用场景
+
+- **浏览器检测**：识别特定浏览器，以进行兼容性处理。
+- **分析统计**：跟踪浏览器使用情况统计数据。
+- **功能检测**：根据浏览器功能启用或禁用特定功能。
+- **调试**：记录浏览器信息以进行故障排除。
+
+## 示例
+
+```ts
+import { getBrowserType } from 'funtool';
+
+// 获取当前浏览器类型
+const browser = getBrowserType();
+// 可能的返回值: 'Chrome', 'FireFox', 'Edge', 'Safari', 'IE11' 等。
+
+// 特定浏览器逻辑
+if (getBrowserType() === 'IE11') {
+  // 应用 IE11 特定的修复
+}
+```
+
+## 函数签名
+
+```ts
+function getBrowserType(): BrowserType
+
+type BrowserType =
+  | 'IE7' | 'IE8' | 'IE9' | 'IE10' | 'IE11'
+  | 'Edge' | 'FireFox' | 'Opera' | 'Chrome' | 'Safari'
+  | null;
+```
+
+## 返回值
+
+返回以下浏览器类型之一，如果检测失败则返回 `null`。
+
+## 注意事项
+
+- 内部使用 `parseUA` 解析的用户代理信息。
+- 可检测从 IE7 到 IE11、Edge（Chromium 和旧版）、Firefox、Opera、Chrome 和 Safari。
+- 对于未知浏览器或无法获取用户代理信息的情况，返回 `null`。
+- 返回值区分大小写（例如，`'FireFox'` 首字母大写）。

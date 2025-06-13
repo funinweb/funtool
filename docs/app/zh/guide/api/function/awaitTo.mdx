@@ -1,0 +1,56 @@
+---
+title: awaitTo
+description: 用于包装 Promise 的实用函数，便于错误处理。
+---
+
+# `awaitTo`
+
+实用函数，用于包装 Promise 或普通值，返回一个 `[error, data]` 元组，而非抛出错误。
+
+## 使用场景
+
+- **异步错误处理**：简化 `async/await` 代码中的 `try/catch` 块。
+- **Promise 链式调用**：轻松处理 Promise 链中的错误。
+- **值包装**：统一处理 Promise 和普通值。
+
+## 示例
+
+```ts
+import { awaitTo } from 'funtool';
+
+// 异步函数的基本用法
+const [err, data] = await awaitTo(fetchData());
+if (err) {
+  console.error('错误:', err);
+} else {
+  console.log('数据:', data);
+}
+
+// 处理普通值
+const [err2, value] = await awaitTo(42);
+console.log(value); // 42
+```
+
+## 函数签名
+
+```ts
+function awaitTo<T>(
+  promiseOrValue: Promise<T> | T
+): Promise<[unknown, undefined] | [null, T]>
+```
+
+## 参数
+
+- `promiseOrValue`：要包装的 Promise 或普通值。可以是 Promise 或任何普通值。
+
+## 返回值
+
+返回一个 Promise，解析为一个元组：
+- 第一个元素：错误信息（如果没有错误则为 `null`）
+- 第二个元素：解析后的数据（如果发生错误则为 `undefined`）
+
+## 错误处理
+
+- 捕获 Promise 中的所有错误。
+- 将错误作为元组的第一个元素返回。
+- 从不抛出错误 - 所有错误都会被捕获并返回。

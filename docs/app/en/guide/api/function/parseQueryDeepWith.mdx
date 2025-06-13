@@ -1,0 +1,69 @@
+---
+title: parseQueryDeepWith
+description: Serializes nested objects into query strings with custom path formatting.
+---
+
+# `parseQueryDeepWith`
+
+Converts nested objects into query strings with full control over how nested paths are formatted.
+
+## Usage Scenarios
+
+- **Custom Formats**: When standard bracket notation isn't desired
+- **Legacy Systems**: Matching older API formats
+- **Special Syntax**: Creating non-standard query string formats
+
+## Examples
+
+```ts
+import { parseQueryDeepWith } from 'funtool';
+
+// Dot notation
+parseQueryDeepWith(
+  { user: { name: 'Tom' }, tags: ['ts', 'js'] },
+  path => path.join('.')
+);
+// => "user.name=Tom&tags.0=ts&tags.1=js"
+
+// Underscore notation
+parseQueryDeepWith(
+  { filters: { active: true } },
+  path => path.join('_')
+);
+// => "filters_active=true"
+
+// Custom bracket style
+parseQueryDeepWith(
+  { user: { name: 'Tom' } },
+  ([first, ...rest]) => 
+    first + rest.map(k => `[${k}]`).join('')
+);
+// => "user[name]=Tom"
+```
+
+## Signature
+
+```ts
+function parseQueryDeepWith(
+  obj: Record<string, any>,
+  pathBuilder: (path: string[]) => string
+): string
+```
+
+## Parameters
+
+- `obj`: The nested object to serialize
+- `pathBuilder`: Function that converts path segments to string
+  - Receives array of path segments
+  - Returns formatted key string
+
+## Return Value
+
+Returns a URL-encoded query string with custom path formatting.
+
+## Notes
+
+- Provides complete control over path formatting
+- Caller must handle any needed encoding
+- Works with nested objects and arrays
+- More flexible than standard `parseQueryDeep`

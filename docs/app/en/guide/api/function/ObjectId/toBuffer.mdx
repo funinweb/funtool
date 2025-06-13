@@ -1,0 +1,35 @@
+---
+title: toBuffer
+description: Returns the binary representation of the ObjectId as a Buffer.
+---
+
+# `toBuffer()`
+
+Returns the binary representation of the ObjectId as a Node.js Buffer.
+
+## Usage
+
+```ts
+import { ObjectId } from 'funtool';
+
+const id = new ObjectId();
+const buffer = id.toBuffer(); // <Buffer 5f 1d 7f 3b 1c 9d 44 00 00 00 00>
+```
+
+## Signature
+
+```ts
+toBuffer(): Buffer
+```
+
+## Return Value
+
+Returns a 12-byte Buffer containing the raw ObjectId bytes.
+
+## Notes
+
+- Useful for binary storage or transmission
+- Buffer length is always 12 bytes
+- First 4 bytes represent timestamp
+- Next 5 bytes are random values
+- Last 3 bytes are counter

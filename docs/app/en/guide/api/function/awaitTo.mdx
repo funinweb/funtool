@@ -1,0 +1,56 @@
+---
+title: awaitTo
+description: Utility function to wrap promises for easier error handling.
+---
+
+# `awaitTo`
+
+Utility function that wraps a Promise or value to return a tuple of [error, data] instead of throwing.
+
+## Usage Scenarios
+
+- **Async Error Handling**: Simplify try/catch blocks in async/await code
+- **Promise Chaining**: Easily handle errors in promise chains
+- **Value Wrapping**: Handle both promises and regular values uniformly
+
+## Examples
+
+```ts
+import { awaitTo } from 'funtool';
+
+// Basic usage with async function
+const [err, data] = await awaitTo(fetchData());
+if (err) {
+  console.error('Error:', err);
+} else {
+  console.log('Data:', data);
+}
+
+// With regular value
+const [err2, value] = await awaitTo(42);
+console.log(value); // 42
+```
+
+## Signature
+
+```ts
+function awaitTo<T>(
+  promiseOrValue: Promise<T> | T
+): Promise<[unknown, undefined] | [null, T]>
+```
+
+## Parameters
+
+- `promiseOrValue`: The Promise or value to wrap. Can be either a Promise or any regular value.
+
+## Return Value
+
+Returns a Promise that resolves to a tuple:
+- First element: error (null if no error)
+- Second element: resolved data (undefined if error occurred)
+
+## Error Handling
+
+- Catches all errors from the Promise
+- Returns the error as the first element of the tuple
+- Never throws - all errors are caught and returned

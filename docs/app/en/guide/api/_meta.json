@@ -28,5 +28,10 @@
     "type":"dir",
     "name":"common",
     "label":"commonUtilities"
+  },
+  {
+    "type":"dir",
+    "name":"function",
+    "label":"functionUtilities"
   }
 ]

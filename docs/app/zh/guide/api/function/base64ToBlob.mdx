@@ -1,0 +1,53 @@
+---
+title: base64ToBlob
+description: 将 Base64 字符串转换为带有 MIME 类型和文件扩展名的 Blob 对象的实用工具。
+---
+
+# `base64ToBlob`
+
+将 Base64 字符串（带数据 URL 格式）转换为带有 MIME 类型和文件扩展名的 Blob 对象。
+
+## 使用场景
+
+- **文件上传**：准备 Base64 格式的图片或文件以进行上传。
+- **数据处理**：将客户端的 Base64 数据转换为 Blob 对象。
+- **图片处理**：在显示之前处理 Base64 格式的图片数据。
+
+## 示例
+
+```ts
+import { base64ToBlob } from 'funtool';
+
+// 转换 Base64 图片
+const base64 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...';
+const { blob, mime, ext } = base64ToBlob(base64);
+
+// 使用 Blob 对象
+const url = URL.createObjectURL(blob);
+imgElement.src = url;
+```
+
+## 函数签名
+
+```ts
+function base64ToBlob(
+  base64: string
+): { blob: Blob; mime: string; ext: string }
+```
+
+## 参数
+
+- `base64`：带有数据 URL 格式的 Base64 字符串（必须包含 MIME 前缀）。
+
+## 返回值
+
+返回一个包含以下属性的对象：
+- `blob`：转换后的 Blob 对象。
+- `mime`：从 Base64 字符串中提取的 MIME 类型。
+- `ext`：从 MIME 类型推导得出的文件扩展名。
+
+## 错误处理
+
+- 如果 Base64 格式无效，则抛出错误。
+- 如果无法确定 MIME 类型，则默认为 `application/octet-stream`。
+- 如果无法解析 MIME 类型，则默认为 `bin` 扩展名。

@@ -1,0 +1,38 @@
+---
+title: createWithPrefix
+description: 使用给定前缀创建带前缀的ObjectId字符串。
+---
+
+# `createWithPrefix()`
+
+静态方法，使用给定前缀创建带前缀的ObjectId字符串。
+
+## 用法
+
+```ts
+import { ObjectId } from 'funtool';
+
+const prefixedId = ObjectId.createWithPrefix('user_');
+// 例如 "user_5f1d7f3b1c9d440000000000"
+```
+
+## 签名
+
+```ts
+static createWithPrefix(prefix: string): string
+```
+
+## 参数
+
+- `prefix`: 要添加到ObjectId前面的字符串
+
+## 返回值
+
+返回带前缀的ObjectId字符串。
+
+## 注意事项
+
+- 对命名空间ID很有用
+- 前缀不会被验证
+- 返回字符串(不是ObjectId实例)
+- 保持相同的唯一性保证

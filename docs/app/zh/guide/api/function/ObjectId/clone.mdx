@@ -1,0 +1,34 @@
+---
+title: clone
+description: 创建一个具有相同值的新ObjectId实例。
+---
+
+# `clone()`
+
+创建一个具有与此ObjectId相同值的新实例。
+
+## 用法
+
+```ts
+import { ObjectId } from 'funtool';
+
+const id1 = new ObjectId();
+const id2 = id1.clone(); // 具有相同值的新实例
+```
+
+## 签名
+
+```ts
+clone(): ObjectId
+```
+
+## 返回值
+
+返回一个具有相同值的新ObjectId实例。
+
+## 注意事项
+
+- 创建一个完全独立的副本
+- 当需要修改其中一个副本时很有用
+- 比使用构造函数更明确
+- 保持相同的时间戳和随机值

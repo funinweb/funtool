@@ -1,0 +1,76 @@
+---
+title: urlParse
+描述: 将URL字符串解析为结构化对象。
+---
+
+# `urlParse`
+
+将URL字符串解析为包含所有URL组件(协议、主机、路径、查询参数和哈希)的结构化对象。
+
+## 使用场景
+
+- **URL处理**：提取和分析URL组件
+- **路由**：解析和处理应用路由
+- **查询参数处理**：访问和操作查询参数
+- **URL标准化**：标准化URL格式
+
+## 示例
+
+```ts
+import { urlParse } from 'funtool';
+
+// 解析完整URL
+const parsed = urlParse('https://example.com:8080/path?a=1&b=true&c=');
+console.log(parsed.hostname); // 'example.com'
+console.log(parsed.query.a);  // 1
+
+// 解析相对URL
+const relative = urlParse('/search?q=hello#results');
+console.log(parsed.pathname); // '/search'
+console.log(parsed.hash);     // '#results'
+```
+
+## 函数签名
+
+```ts
+interface ParsedURL {
+  host: string;
+  hostname: string;
+  pathname: string;
+  port: string;
+  protocol: string;
+  origin: string;
+  href: string;
+  search: string;
+  hash: string;
+  query: Record<string, any>;
+}
+
+function urlParse(url: string): ParsedURL
+```
+
+## 参数
+
+- `url`: 要解析的URL字符串(可以是绝对或相对URL)
+
+## 返回值
+
+返回一个`ParsedURL`对象，包含：
+- `protocol`: URL协议(如'https:')
+- `host`: 带端口的主机(如'example.com:8080')
+- `hostname`: 不带端口的主机
+- `port`: 端口号
+- `pathname`: URL路径
+- `origin`: 协议+主机
+- `href`: 完整原始URL
+- `search`: 带'?'的查询字符串
+- `hash`: 带'#'的哈希片段
+- `query`: 解析后的查询参数键值对
+
+## 注意事项
+
+- 处理绝对和相对URL
+- 自动解码查询参数
+- 数值和布尔值转换为适当类型
+- 支持数组参数(如?a=1&a=2)
+- 空参数变为空字符串

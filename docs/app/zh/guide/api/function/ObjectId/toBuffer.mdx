@@ -1,0 +1,35 @@
+---
+title: toBuffer
+description: 返回ObjectId的二进制表示作为Buffer。
+---
+
+# `toBuffer()`
+
+返回ObjectId的二进制表示作为Node.js Buffer。
+
+## 用法
+
+```ts
+import { ObjectId } from 'funtool';
+
+const id = new ObjectId();
+const buffer = id.toBuffer(); // <Buffer 5f 1d 7f 3b 1c 9d 44 00 00 00 00>
+```
+
+## 签名
+
+```ts
+toBuffer(): Buffer
+```
+
+## 返回值
+
+返回一个包含原始ObjectId字节的12字节Buffer。
+
+## 注意事项
+
+- 对二进制存储或传输很有用
+- Buffer长度始终为12字节
+- 前4字节表示时间戳
+- 接下来5字节是随机值
+- 最后3字节是计数器

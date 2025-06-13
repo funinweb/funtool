@@ -1,0 +1,40 @@
+---
+title: equals
+description: 检查此ObjectId是否等于另一个ObjectId。
+---
+
+# `equals()`
+
+将此ObjectId与另一个比较，如果它们表示相同的值则返回true。
+
+## 用法
+
+```ts
+import { ObjectId } from 'funtool';
+
+const id1 = new ObjectId();
+const id2 = id1.clone();
+
+const isEqual = id1.equals(id2); // true
+```
+
+## 签名
+
+```ts
+equals(other: ObjectId): boolean
+```
+
+## 参数
+
+- `other`: 要比较的ObjectId
+
+## 返回值
+
+如果ObjectId具有相同的值则返回true，否则返回false。
+
+## 注意事项
+
+- 比直接比较更有语义
+- 安全处理null/undefined
+- 与MongoDB相等性行为一致
+- 使用逐字节比较

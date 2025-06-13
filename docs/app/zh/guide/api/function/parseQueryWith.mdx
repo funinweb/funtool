@@ -1,0 +1,60 @@
+---
+title: parseQueryWith
+描述: 使用自定义序列化函数将扁平对象转换为 URL 编码的查询字符串。
+---
+
+# `parseQueryWith`
+
+此函数允许你使用自定义的序列化函数，将一个扁平对象转换为 URL 编码的查询字符串。这在你需要对特定类型的值进行特殊处理，或者想要自定义查询字符串的格式时非常有用。
+
+## 使用场景
+
+- **特殊值处理**：当对象中包含需要特殊序列化的特定类型的值时。
+- **自定义格式**：如果你想要生成不同于标准格式的查询字符串。
+- **兼容性**：为了与特定的 API 或系统兼容，需要生成特定格式的查询字符串。
+
+## 示例
+
+```ts
+import { parseQueryWith } from 'funtool';
+
+// 自定义序列化函数
+const customSerializer = (key, value) => {
+  if (typeof value === 'boolean') {
+    return `${key}=${value ? 'yes' : 'no'}`;
+  }
+  return `${key}=${encodeURIComponent(value)}`;
+};
+
+// 使用自定义序列化函数
+const query = parseQueryWith({
+  name: 'John',
+  isActive: true,
+  age: 30
+}, customSerializer);
+// 输出: 'name=John&isActive=yes&age=30'
+```
+
+## 函数签名
+
+```ts
+function parseQueryWith(
+  obj: Record<string | number, any>,
+  serializer: (key: string, value: any) => string
+): string
+```
+
+## 参数
+
+- `obj`: 一个包含字符串或数字键的扁平对象，需要被转换为查询字符串。
+- `serializer`: 自定义的序列化函数，接收键和值作为参数，并返回一个字符串，表示该键值对的序列化结果。
+
+## 返回值
+
+返回一个由 `&` 连接的 URL 编码的查询字符串，使用自定义序列化函数生成。
+
+## 注意事项
+
+- 此函数仅处理扁平对象，不支持嵌套对象。
+- 确保自定义序列化函数正确处理所有可能的数据类型。
+- 你需要在自定义函数中手动处理 URL 编码，除非你有特殊需求。

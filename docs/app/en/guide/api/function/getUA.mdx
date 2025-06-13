@@ -1,0 +1,49 @@
+---
+title: getUA
+description: Utility function to get or override the user agent string.
+---
+
+# `getUA`
+
+Utility function that returns the current user agent string or allows overriding it.
+
+## Usage Scenarios
+
+- **User Agent Detection**: Get the current browser's user agent string
+- **Testing**: Override user agent for testing different browser environments
+- **Feature Detection**: Conditionally enable features based on user agent
+
+## Examples
+
+```ts
+import { getUA } from 'funtool';
+
+// Get current user agent
+const ua = getUA(); // e.g. "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)..."
+
+// Override user agent for testing
+const testUA = getUA('Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X)');
+```
+
+## Signature
+
+```ts
+function getUA(overrideUA?: string): string
+```
+
+## Parameters
+
+- `overrideUA`: Optional string to override the detected user agent
+
+## Return Value
+
+Returns:
+- The overrideUA string if provided
+- The navigator.userAgent string if available
+- Empty string if neither is available
+
+## Notes
+
+- Primarily used internally by other UA-related utilities
+- Useful for testing mobile/desktop behaviors
+- Returns empty string in non-browser environments

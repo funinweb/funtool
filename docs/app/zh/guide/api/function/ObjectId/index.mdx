@@ -1,0 +1,66 @@
+---
+title: ObjectId
+description: 轻量级的MongoDB风格ObjectId实现，支持多种格式。
+---
+
+# `ObjectId`
+
+轻量级的MongoDB风格ObjectId实现，支持十六进制字符串、UUID格式、base64编码和前缀处理。
+
+## 概述
+
+ObjectId类提供:
+- 兼容MongoDB的24字符十六进制字符串ID
+- 多种格式转换(十六进制、UUID、base64)
+- 时间戳提取
+- 比较和相等性检查
+- 从各种字符串格式解析
+
+## 基本用法
+
+```ts
+import { ObjectId } from 'funtool';
+
+// 创建新的ObjectId
+const id1 = new ObjectId();
+
+// 从现有十六进制字符串创建
+const id2 = new ObjectId('5f1d7f3b1c9d440000000000');
+
+// 比较两个ID
+id1.equals(id2); // false
+
+// 获取时间戳
+id1.getTimestamp(); // Unix时间戳(毫秒)
+```
+
+## 特性
+
+- **十六进制格式**: 原生24字符十六进制表示
+- **UUID格式**: 转换为UUID风格字符串
+- **Base64**: 紧凑的base64编码版本
+- **短ID**: 无填充的URL友好base64
+- **时间戳**: 提取创建时间
+- **解析**: 从混合格式字符串解析
+- **验证**: 检查十六进制字符串有效性
+
+## 静态方法
+
+- `isValid(hex)`: 验证十六进制字符串格式
+- `parse(str)`: 从混合格式字符串解析
+- `createFromHexString(hex)`: 从有效十六进制创建
+- `createWithPrefix(prefix)`: 生成带前缀的ID
+
+## 实例方法
+
+- `toHexString()`: 获取24字符十六进制字符串
+- `toUUIDString()`: 转换为UUID格式
+- `toBuffer()`: 获取二进制表示
+- `toBase64()`: Base64编码版本
+- `short()`: 无填充的紧凑base64
+- `getTimestamp()`: 获取创建时间
+- `equals(other)`: 检查相等性
+- `compare(other)`: 比较ID
+- `clone()`: 创建副本
+- `toString()`: toHexString的别名
+- `toJSON()`: 用于JSON序列化

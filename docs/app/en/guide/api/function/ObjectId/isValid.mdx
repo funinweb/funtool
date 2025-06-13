@@ -1,0 +1,38 @@
+---
+title: isValid
+description: Validates that a string is a properly formatted ObjectId hex string.
+---
+
+# `isValid()`
+
+Static method that validates whether a string is a properly formatted ObjectId hex string.
+
+## Usage
+
+```ts
+import { ObjectId } from 'funtool';
+
+ObjectId.isValid('5f1d7f3b1c9d440000000000'); // true
+ObjectId.isValid('invalid'); // false
+```
+
+## Signature
+
+```ts
+static isValid(hex: string): boolean
+```
+
+## Parameters
+
+- `hex`: The string to validate
+
+## Return Value
+
+Returns true if the string is a valid 24-character hex string, false otherwise.
+
+## Notes
+
+- Checks length and hex character validity
+- Does not verify uniqueness
+- Useful for input validation
+- Matches MongoDB validation rules
