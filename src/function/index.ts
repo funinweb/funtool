@@ -5,6 +5,7 @@ export {ObjectId} from './ObjectId'
 export { awaitTo } from './awaitTo';
 export { base64ToBlob } from './base64ToBlob';
 export { base64ToFormData } from './base64ToFormData';
+export { currying } from './currying';
 export { debounce, debounceSync } from './debounce';
 export { generateVerificationCode } from './generateVerificationCode';
 export { getBrowserType } from './getBrowserType';
@@ -19,6 +20,7 @@ export { urlParse } from './urlParse';
 export { urlStringify } from './urlStringify';
 
 // End of auto-generated section
+
 
 
 

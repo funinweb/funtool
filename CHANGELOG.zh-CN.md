@@ -10,6 +10,30 @@
 
 ---
 
+## 1.1.0
+
+*2025-06-16*
+
+### ✨ 新功能
+
+- 函数工具模块，具体包括：
+  - 新增 `ObjectId` 类，用于生成和处理类 MongoDB 的唯一 ID
+  - 新增 `awaitTo` 工具函数，简化 async/await 异步错误处理
+  - 新增 `base64ToBlob` 和 `base64ToFormData`，支持 base64 转换处理
+  - 新增 `currying` 函数，支持函数式编程范式
+  - 新增 `debounce` 和 `throttle` 函数，用于事件节流与防抖处理
+  - 新增 `generateVerificationCode`，支持验证码生成
+  - 新增 `getBrowserType` 与 `parseUA`，用于解析浏览器 UserAgent
+  - 新增 `parseQuery`、`parseQueryDeep`、`urlParse` 与 `urlStringify`，增强 URL 处理能力
+  - 新增 `random` 工具函数，用于随机数生成
+  - 新增中英文文档，涵盖完整使用示例
+  - 补全模块的单元测试
+
+### 📖 文档更新
+
+- 更新 README，新增文档链接入口
+
+
 ## 1.0.0
 
 *2025-06-05*

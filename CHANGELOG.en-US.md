@@ -10,6 +10,30 @@
 
 ---
 
+## 1.1.0
+
+*2025-06-16*
+
+### ✨ Features
+
+- Function Utilities Module,Includes
+  - Added `ObjectId` class for MongoDB-style ID generation and manipulation
+  - Added `awaitTo` utility for error handling with async/await
+  - Added `base64ToBlob` and `base64ToFormData` for base64 conversion
+  - Added `currying` function for functional programming patterns
+  - Added `debounce` and throttle functions for event rate limiting
+  - Added `generateVerificationCode` for random code generation
+  - Added `getBrowserType` and `parseUA` for user agent parsing
+  - Added `parseQuery` , `parseQueryDeep` , `urlParse` , and `urlStringify` for URL handling
+  - Added `random` utility for random number generation
+  - Add Chinese and English documentation with usage examples
+  - Add complete unit tests
+
+### 📖 Documentation
+
+- Update README with documentation links
+
+
 ## 1.0.0
 
 *2025-06-05*
