@@ -1,0 +1,69 @@
+---
+title: 柯里化
+description: 创建具有自动重置和可选触发条件的灵活柯里化函数。
+---
+
+# `currying`
+
+创建一个灵活的柯里化函数，具有参数累积、自动重置能力和可选执行触发条件。
+
+## 使用场景
+
+- **函数式编程**: 构建可复用的函数链
+- **参数收集**: 在执行前逐步收集参数
+- **条件执行**: 基于收集的参数触发执行
+- **数据转换**: 链式map/filter操作
+
+## 示例
+
+```ts
+import { currying } from 'funtool';
+
+// 基本用法，收集3个参数后自动执行
+const sum = currying({
+  fn: (...args) => args.reduce((a, b) => a + b, 0),
+  done: args => args.length >= 3
+});
+sum(1)(2)(3); // 自动执行 → 6
+
+// 手动执行使用value()
+const product = currying({
+  fn: (...args) => args.reduce((a, b) => a * b, 1)
+});
+product(2)(3)(4).value(); // → 24
+
+// 链式转换
+const result = product(1)(2)(3)
+  .map(x => x * 2)
+  .filter(x => x > 2)
+  .value(); // → 24
+```
+
+## 函数签名
+
+```ts
+function currying<Args extends any[], R>(options: {
+  fn: (...args: Args) => R;
+  done?: (args: Args) => boolean;
+}): CurriedFunction<Args, R>
+```
+
+## 参数
+
+- `options.fn`: 收集参数后要执行的函数
+- `options.done`: 触发自动执行的可选条件
+
+## 返回值
+
+返回一个可链式调用的函数，包含：
+- `.map()`: 转换收集的参数
+- `.filter()`: 过滤收集的参数
+- `.value()`: 手动触发执行
+- 通过`valueOf()`和`toString()`隐式转换
+
+## 注意事项
+
+- 保持正确的`this`上下文
+- 支持自动和手动执行
+- 可与map/filter操作链式调用
+- 隐式转换适用于模板字符串和数值运算

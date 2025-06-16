@@ -1,0 +1,69 @@
+---
+title: currying
+description: Creates flexible currying functions with auto-reset and optional trigger conditions.
+---
+
+# `currying`
+
+Creates a flexible currying function with parameter accumulation, auto-reset capability, and optional execution trigger conditions.
+
+## Usage Scenarios
+
+- **Functional Programming**: Build reusable function chains
+- **Parameter Collection**: Gradually collect arguments before execution
+- **Conditional Execution**: Trigger based on collected arguments
+- **Data Transformation**: Chain map/filter operations
+
+## Examples
+
+```ts
+import { currying } from 'funtool';
+
+// Basic usage with auto-execution after 3 args
+const sum = currying({
+  fn: (...args) => args.reduce((a, b) => a + b, 0),
+  done: args => args.length >= 3
+});
+sum(1)(2)(3); // auto executes → 6
+
+// Manual execution with value()
+const product = currying({
+  fn: (...args) => args.reduce((a, b) => a * b, 1)
+});
+product(2)(3)(4).value(); // → 24
+
+// Chaining transformations
+const result = product(1)(2)(3)
+  .map(x => x * 2)
+  .filter(x => x > 2)
+  .value(); // → 24
+```
+
+## Signature
+
+```ts
+function currying<Args extends any[], R>(options: {
+  fn: (...args: Args) => R;
+  done?: (args: Args) => boolean;
+}): CurriedFunction<Args, R>
+```
+
+## Parameters
+
+- `options.fn`: The function to execute after collecting arguments
+- `options.done`: Optional condition to trigger automatic execution
+
+## Return Value
+
+Returns a chainable function with:
+- `.map()`: Transform collected arguments
+- `.filter()`: Filter collected arguments
+- `.value()`: Manually trigger execution
+- Implicit conversion via `valueOf()` and `toString()`
+
+## Notes
+
+- Maintains proper `this` context
+- Supports both automatic and manual execution
+- Chainable with map/filter operations
+- Implicit conversion works with template literals and numeric operations
