@@ -1,6 +1,6 @@
 {
   "name": "funtool",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A modern, efficient, and modular JavaScript utility library designed to enhance developer productivity.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",

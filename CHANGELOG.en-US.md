@@ -10,6 +10,16 @@
 
 ---
 
+## 1.1.1
+
+*2025-07-02*
+
+### 🐞 Bug Fixes
+
+- add explicit type declaration paths in rollup.config.js and package.json
+
+
+
 ## 1.1.0
 
 *2025-06-16*
