@@ -53,6 +53,7 @@ const legacyBabelPlugin = babel({
 
 const exportsMap = {
 	'.': {
+		types: `./dist/index.d.ts`,
 		import: "./dist/index.esm.js",
 		require: "./dist/index.cjs.js",
 		default: "./dist/index.umd.js",
