@@ -10,6 +10,19 @@
 
 ---
 
+## 1.2.0
+
+*2025-07-11*
+
+### ✨ Features
+
+- add `MathX` utility class supporting chainable calls and custom precision
+  - Introduce MathX class for flexible math operations with configurable precision and rounding modes
+  - Add bilingual documentation (English/Chinese) and comprehensive test cases
+  - Update build config and i18n files to support new features
+
+
+
 ## 1.1.1
 
 *2025-07-02*
