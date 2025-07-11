@@ -1,0 +1,180 @@
+---
+title: 数学工具
+description: 具有链式API的灵活数学工具。
+---
+
+# `MathX`
+
+具有链式API的灵活数学工具。
+
+## 使用场景
+
+- **金融计算**：使用可自定义的精度和舍入方式进行精确计算。
+- **科学计算**：使用链式方法处理复杂的数学运算。
+- **数据处理**：使用各种数学函数对数值数据进行归一化和转换。
+
+## 示例
+
+```ts
+import { MathX } from 'funtool';
+
+// 基本初始化
+const mx = new MathX(0.1).setPrecision(2).setRounding('half-up');
+
+// 执行计算
+const result = mx.add(0.2).multiply(2).value(); // => 0.6
+```
+
+## 签名
+
+```ts
+class MathX {
+    constructor(value?: number, precision?: number, rounding?: "half-up" | "up" | "down");
+    set(value: number): this;
+    value(): number;
+    setPrecision(digits: number): this;
+    setRounding(mode: "half-up" | "up" | "down"): this;
+    clone(value?: number): MathX;
+    add(num: number): this;
+    subtract(num: number): this;
+    multiply(num: number): this;
+    divide(num: number): this;
+    abs(): this;
+    sqrt(): this;
+    cbrt(): this;
+    pow(exp: number): this;
+    floor(): this;
+    ceil(): this;
+    round(): this;
+    sign(): this;
+    degToRad(): this;
+    radToDeg(): this;
+    max(...nums: number[]): this;
+    min(...nums: number[]): this;
+    sin(): this;
+    cos(): this;
+    tan(): this;
+    asin(): this;
+    acos(): this;
+    atan(): this;
+    log(): this;
+    log10(): this;
+    exp(): this;
+    toExponential(fractionDigits?: number): string;
+}
+```
+
+## 方法
+
+### `constructor(value?: number, precision?: number, rounding?: "half-up" | "up" | "down")`
+- `value`: 初始值。默认为 `0`。
+- `precision`: 小数位数。默认为 `2`。
+- `rounding`: 舍入模式。默认为 `'half-up'`。
+- 返回值: 一个新的 `MathX` 实例。
+
+### `set(value: number): this`
+- `value`: 新的值。
+- 返回值: 当前实例，用于链式调用。
+
+### `value(): number`
+- 返回值: 当前值。
+
+### `setPrecision(digits: number): this`
+- `digits`: 小数位数。
+- 返回值: 当前实例，用于链式调用。
+
+### `setRounding(mode: "half-up" | "up" | "down"): this`
+- `mode`: 舍入模式 (`'half-up'`, `'up'`, `'down'`)。
+- 返回值: 当前实例，用于链式调用。
+
+### `clone(value?: number): MathX`
+- `value`: 可选的新值。
+- 返回值: 新的 `MathX` 实例。
+
+### `add(num: number): this`
+- `num`: 要相加的数字。
+- 返回值: 当前实例，用于链式调用。
+
+### `subtract(num: number): this`
+- `num`: 要相减的数字。
+- 返回值: 当前实例，用于链式调用。
+
+### `multiply(num: number): this`
+- `num`: 要相乘的数字。
+- 返回值: 当前实例，用于链式调用。
+
+### `divide(num: number): this`
+- `num`: 除数。
+- 抛出错误: 如果 `num` 为 `0`。
+- 返回值: 当前实例，用于链式调用。
+
+### `abs(): this`
+- 返回值: 当前实例，其值为绝对值。
+
+### `sqrt(): this`
+- 抛出错误: 如果当前值为负数。
+- 返回值: 当前实例，其值为平方根。
+
+### `cbrt(): this`
+- 返回值: 当前实例，其值为立方根。
+
+### `pow(exp: number): this`
+- `exp`: 指数。
+- 返回值: 当前实例，其值为幂运算结果。
+
+### `floor(): this`
+- 返回值: 当前实例，其值为向下取整结果。
+
+### `ceil(): this`
+- 返回值: 当前实例，其值为向上取整结果。
+
+### `round(): this`
+- 返回值: 当前实例，其值为四舍五入结果。
+
+### `sign(): this`
+- 返回值: 当前实例，其值为符号值。
+
+### `degToRad(): this`
+- 返回值: 当前实例，其值为角度转换为弧度的结果。
+
+### `radToDeg(): this`
+- 返回值: 当前实例，其值为弧度转换为角度的结果。
+
+### `max(...nums: number[]): this`
+- `nums`: 要比较的数字。
+- 返回值: 当前实例，其值为最大值。
+
+### `min(...nums: number[]): this`
+- `nums`: 要比较的数字。
+- 返回值: 当前实例，其值为最小值。
+
+### `sin(): this`
+- 返回值: 当前实例，其值为正弦值。
+
+### `cos(): this`
+- 返回值: 当前实例，其值为余弦值。
+
+### `tan(): this`
+- 返回值: 当前实例，其值为正切值。
+
+### `asin(): this`
+- 返回值: 当前实例，其值为反正弦值。
+
+### `acos(): this`
+- 返回值: 当前实例，其值为反余弦值。
+
+### `atan(): this`
+- 返回值: 当前实例，其值为反正切值。
+
+### `log(): this`
+- 返回值: 当前实例，其值为自然对数值。
+
+### `log10(): this`
+- 返回值: 当前实例，其值为以10为底的对数值。
+
+### `exp(): this`
+- 返回值: 当前实例，其值为指数值。
+
+### `toExponential(fractionDigits?: number): string`
+- `fractionDigits`: 小数点后的位数。如果省略，则使用必要的位数。
+- 返回值: 科学计数法表示的字符串。

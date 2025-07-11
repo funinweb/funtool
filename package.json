@@ -7,7 +7,7 @@
   "umd:main": "dist/index.umd.js",
   "scripts": {
     "dev": "rollup -w -c rollup.config.js --bundleConfigAsCjs",
-    "build": "rimraf dist && set NODE_ENV=production && npm run generate:module && rollup -c rollup.config.js --bundleConfigAsCjs",
+    "build": "rimraf dist && set NODE_ENV=production && rollup -c rollup.config.js --bundleConfigAsCjs",
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",
@@ -111,6 +111,12 @@
       "import": "./dist/function/index.esm.js",
       "require": "./dist/function/index.cjs.js",
       "default": "./dist/function/index.umd.js"
+    },
+    "./math": {
+      "types": "./dist/math/index.d.ts",
+      "import": "./dist/math/index.esm.js",
+      "require": "./dist/math/index.cjs.js",
+      "default": "./dist/math/index.umd.js"
     },
     "./object": {
       "types": "./dist/object/index.d.ts",

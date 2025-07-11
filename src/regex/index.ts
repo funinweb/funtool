@@ -63,9 +63,16 @@ export const regex = Regex.getInstance();
 // Auto-generated section (do not modify manually)
 
 // Exports
-export { definePlugin } from './definePlugin';
 
 // End of auto-generated section
+
+
+
+
+
+
+
+
 
 
 

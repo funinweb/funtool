@@ -33,5 +33,10 @@
     "type":"dir",
     "name":"function",
     "label":"functionUtilities"
+  },
+  {
+    "type":"dir",
+    "name":"math",
+    "label":"mathUtilities"
   }
 ]

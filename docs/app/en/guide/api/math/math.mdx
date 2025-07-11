@@ -1,0 +1,180 @@
+---
+title: Math
+description: Flexible math tool with chainable APIs.
+---
+
+# `MathX`
+
+Flexible math tool with chainable APIs.
+
+## Usage Scenarios
+
+- **Financial Calculations**: Perform precise calculations with customizable precision and rounding.
+- **Scientific Computations**: Handle complex mathematical operations with chainable methods.
+- **Data Processing**: Normalize and transform numerical data using various mathematical functions.
+
+## Examples
+
+```ts
+import { MathX } from 'funtool';
+
+// Basic initialization
+const mx = new MathX(0.1).setPrecision(2).setRounding('half-up');
+
+// Perform calculations
+const result = mx.add(0.2).multiply(2).value(); // => 0.6
+```
+
+## Signature
+
+```ts
+class MathX {
+    constructor(value?: number, precision?: number, rounding?: "half-up" | "up" | "down");
+    set(value: number): this;
+    value(): number;
+    setPrecision(digits: number): this;
+    setRounding(mode: "half-up" | "up" | "down"): this;
+    clone(value?: number): MathX;
+    add(num: number): this;
+    subtract(num: number): this;
+    multiply(num: number): this;
+    divide(num: number): this;
+    abs(): this;
+    sqrt(): this;
+    cbrt(): this;
+    pow(exp: number): this;
+    floor(): this;
+    ceil(): this;
+    round(): this;
+    sign(): this;
+    degToRad(): this;
+    radToDeg(): this;
+    max(...nums: number[]): this;
+    min(...nums: number[]): this;
+    sin(): this;
+    cos(): this;
+    tan(): this;
+    asin(): this;
+    acos(): this;
+    atan(): this;
+    log(): this;
+    log10(): this;
+    exp(): this;
+    toExponential(fractionDigits?: number): string;
+}
+```
+
+## Methods
+
+### `constructor(value?: number, precision?: number, rounding?: "half-up" | "up" | "down")`
+- `value`: Initial value. Defaults to `0`.
+- `precision`: Decimal places. Defaults to `2`.
+- `rounding`: Rounding mode. Defaults to `'half-up'`.
+- Returns: A new `MathX` instance.
+
+### `set(value: number): this`
+- `value`: New value.
+- Returns: Current instance for chaining.
+
+### `value(): number`
+- Returns: Current value.
+
+### `setPrecision(digits: number): this`
+- `digits`: Number of decimal places.
+- Returns: Current instance for chaining.
+
+### `setRounding(mode: "half-up" | "up" | "down"): this`
+- `mode`: Rounding mode (`'half-up'`, `'up'`, `'down'`).
+- Returns: Current instance for chaining.
+
+### `clone(value?: number): MathX`
+- `value`: Optional new value.
+- Returns: New `MathX` instance.
+
+### `add(num: number): this`
+- `num`: Number to add.
+- Returns: Current instance for chaining.
+
+### `subtract(num: number): this`
+- `num`: Number to subtract.
+- Returns: Current instance for chaining.
+
+### `multiply(num: number): this`
+- `num`: Number to multiply.
+- Returns: Current instance for chaining.
+
+### `divide(num: number): this`
+- `num`: Number to divide by.
+- Throws: Error if `num` is `0`.
+- Returns: Current instance for chaining.
+
+### `abs(): this`
+- Returns: Current instance with absolute value.
+
+### `sqrt(): this`
+- Throws: Error if current value is negative.
+- Returns: Current instance with square root value.
+
+### `cbrt(): this`
+- Returns: Current instance with cube root value.
+
+### `pow(exp: number): this`
+- `exp`: Exponent.
+- Returns: Current instance with power value.
+
+### `floor(): this`
+- Returns: Current instance with floor value.
+
+### `ceil(): this`
+- Returns: Current instance with ceil value.
+
+### `round(): this`
+- Returns: Current instance with rounded value.
+
+### `sign(): this`
+- Returns: Current instance with sign value.
+
+### `degToRad(): this`
+- Returns: Current instance with degrees converted to radians.
+
+### `radToDeg(): this`
+- Returns: Current instance with radians converted to degrees.
+
+### `max(...nums: number[]): this`
+- `nums`: Numbers to compare.
+- Returns: Current instance with maximum value.
+
+### `min(...nums: number[]): this`
+- `nums`: Numbers to compare.
+- Returns: Current instance with minimum value.
+
+### `sin(): this`
+- Returns: Current instance with sine value.
+
+### `cos(): this`
+- Returns: Current instance with cosine value.
+
+### `tan(): this`
+- Returns: Current instance with tangent value.
+
+### `asin(): this`
+- Returns: Current instance with arcsine value.
+
+### `acos(): this`
+- Returns: Current instance with arccosine value.
+
+### `atan(): this`
+- Returns: Current instance with arctangent value.
+
+### `log(): this`
+- Returns: Current instance with natural logarithm value.
+
+### `log10(): this`
+- Returns: Current instance with base-10 logarithm value.
+
+### `exp(): this`
+- Returns: Current instance with exponential value.
+
+### `toExponential(fractionDigits?: number): string`
+- `fractionDigits`: Number of digits after the decimal point. If omitted, uses as many digits as necessary.
+- Returns: Exponential notation string.
