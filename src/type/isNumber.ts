@@ -7,7 +7,7 @@
  * isNumber('123') // => false ❌
  */
 
-export function isNumber(v: any): boolean {
+export function isNumber(v: any): v is number {
   return Object.prototype.toString.call(v) === '[object Number]';
 }
 

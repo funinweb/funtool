@@ -17,7 +17,7 @@ import password from "./password";
 import html from "./html";
 
 
-export const plugins = [
+export const plugins = {
   email,
   mobile,
   alpha,
@@ -35,6 +35,6 @@ export const plugins = [
   nonLatin,
   password,
   html,
-] as const
+} as const
 
-export type RuleName = typeof plugins[number]['name'];
+export type RuleName = keyof typeof plugins;

@@ -1,17 +1,20 @@
 import { Checker } from './checker';
 import { Replacer } from './replacer';
 import {store} from './store'
+import {plugins} from './plugins/index';
+export { RuleName} from './plugins/index';
 import {DefineRegexPlugin} from './definePlugin'
 
 export {DefineRegexPlugin} from './definePlugin'
-
 /**
  * Checker and Replacer tools.
  */
 class Regex {
   private static instance: Regex | null = null;
-
   private constructor() {
+    for(const key in plugins) {
+      (this as Record<string, any>)[key] = plugins[key as keyof typeof plugins];
+    }
   }
 
   public static getInstance(): Regex {
@@ -58,7 +61,7 @@ class Regex {
   }
 }
 
-export const regex = Regex.getInstance();
+export const regex = Regex.getInstance() as Regex & (typeof plugins);
 
 // Auto-generated section (do not modify manually)
 
