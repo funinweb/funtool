@@ -10,6 +10,23 @@
 
 ---
 
+## 1.2.1
+
+*2025-07-31*
+
+### ♻️ Refactors
+
+- refactor(regex): Refactor plugin system and improve type definitions
+  
+  - Changed plugins from an array to an object structure to enable dynamic property access for easier usage and better type safety.
+  - Updated the `RuleName` type to `keyof typeof plugins`, automatically reflecting all available plugin names and enhancing type inference.
+  - Dynamically added plugin methods as instance properties in the `Regex` class to support chainable and dot access for simpler API.
+  - Improved the `isNumber` method with a type predicate for more accurate type narrowing.
+  - Exported `parseQuery` related methods to enhance query string parsing capabilities.
+  - Improved code clarity for easier maintenance and extensibility.
+
+
+
 ## 1.2.0
 
 *2025-07-11*
