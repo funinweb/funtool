@@ -141,7 +141,12 @@ export class ObjectId {
    * 转换为 base64 字符串。
    */
   toBase64(): string {
-    return Buffer.from(this.toBuffer()).toString("base64");
+    const buf = this.toBuffer();
+    if (typeof btoa !== "undefined") {
+      const binary = Array.from(buf).map(b => String.fromCharCode(b)).join("");
+      return btoa(binary);
+    }
+    return Buffer.from(buf).toString("base64");
   }
 
   /**
