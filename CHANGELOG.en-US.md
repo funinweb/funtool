@@ -10,6 +10,17 @@
 
 ---
 
+## 1.2.2
+
+*2026-07-19*
+
+### 🐞 Bug Fixes
+
+- ObjectId class adapted for cross-platform base64 conversion
+  - Optimized `toBase64` method to support both browser and Node.js environments
+
+
+
 ## 1.2.1
 
 *2025-07-31*
